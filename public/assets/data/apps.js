@@ -12,12 +12,6 @@ var apps = [
       
     },
     {
-      "id": "discord",
-      "title": "Discord",
-      "url": "https://discord.com/app",
-      'image': 'https://static.vecteezy.com/system/resources/previews/006/892/625/original/discord-logo-icon-editorial-free-vector.jpg'
-    },
-    {
       "id": "telegram",
       "title": "Telegram",
       "url": "https://web.telegram.org/a/",
