@@ -412,7 +412,7 @@ var games = [
   {
     id: 'aquapark',
     title: 'aquapark.io',
-    url: 'https://assets.3kh0.net/aquapark-slides/index.html',
+    url: 'https://the.deconstructors.co.uk/tam-slippery-water-slides/',
     image: 'https://play-lh.googleusercontent.com/pNI21ILS4I9IAzveYzjbfk5D5LGuL03b0Ea4OtlFRLD_yk7KYLBeLlBmsvhH7Uj-dQn6'
   },
   {
