@@ -69,3 +69,14 @@ function favorite() {
         setObj("favoritedGames", favoritedGames);
     }
 }
+
+function goBack() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("game")) {
+        window.location.href = '/gs.html';
+    } else if (params.get("app")) {
+        window.location.href = '/apps.html';
+    } else {
+        window.location.href = '/';
+    }
+}
