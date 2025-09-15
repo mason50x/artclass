@@ -260,30 +260,6 @@ var games = [
     description: 'A Dance of Fire and Ice is a simple one-button rhythm game. Press on every beat of the music to move in a line. Every pattern has its own rhythm to it. It can get difficult. This game is purely based on rhythm, so use your ears more than your sight.'
   },
   {
-    id: 'escapeprison',
-    title: 'Henry Stickmin: Escaping the Prison',
-    url: 'https://assets.3kh0.net/escapingtheprison/index.html',
-    image: 'https://play-lh.googleusercontent.com/MKW0yzbpA-faDMztP2xkirlXsHwL7QutC_9VyQlbr4VTbPOyCZInL7zYG9EA4XpX4mtM'
-  },
-  {
-    id: 'fleeingthecomplex',
-    title: 'Henry Stickmin: Fleeing the Complex',
-    url: 'https://art-class.github.io/assets/fleeingthecompound/index.html',
-    image: 'https://play-lh.googleusercontent.com/RDk8BpHUESL9J4H-s-07ZC1sNJol8-aZEzz3OEA99PxTYnsZd8038Y-0wRMpCQKDssU'
-  },
-  {
-    id: 'infiltratingtheairship',
-    title: 'Henry Stickmin: Infiltrating the Airship',
-    url: 'https://art-class.github.io/assets/infiltratingtheairship/index.html',
-    image: 'https://play-lh.googleusercontent.com/bRVIDUSlmkDM9ZA9xLczm-PuUa0dYPupAG2ZVNXJvCITc3ZkO7PS-t0qKX1T--7f5-k=w240-h480-rw'
-  },
-  {
-    id: 'breakingthebank',
-    title: 'Henry Stickmin: Breaking the Bank',
-    url: 'https://art-class.github.io/assets/breakingthebank/index.html',
-    image: 'https://play-lh.googleusercontent.com/I9aDLwmiy5iSjeUPs5IDI3lam8iWZ1zVnLF-V_EGvClOLuccjwLNNjZ8xltu4AN60io'
-  },
-  {
     id: 'slope',
     title: 'Slope',
     url: 'https://mathadventure1.github.io/slope/slope/index.html',
