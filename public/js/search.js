@@ -1,5 +1,6 @@
 const frame = document.querySelector("iframe")
 const div = document.querySelector(".center-container")
+const floatingControls = document.querySelector("#floating-controls")
 frame.style.display = "none"
 const input = document.querySelector("input");
 input.addEventListener("keyup", function (event) {
@@ -8,6 +9,7 @@ input.addEventListener("keyup", function (event) {
     if (url) {
       div.style.display = 'none'
       frame.style.display = 'block'
+      floatingControls.style.display = 'flex'
       document.querySelector("iframe").src = __uv$config.prefix + __uv$config.encodeUrl(url);
     } else {
       showError();
@@ -22,6 +24,7 @@ if (params.get("q")) {
   if (url) {
     div.style.display = 'none'
     frame.style.display = 'block'
+    floatingControls.style.display = 'flex'
     document.querySelector("iframe").src = __uv$config.prefix + __uv$config.encodeUrl(url);
   }
 }
@@ -55,4 +58,26 @@ function showError() {
   setTimeout(() => {
     errorMessage.style.display = 'none';
   }, 3000);
+}
+
+function goBackToSearch() {
+  frame.style.display = 'none';
+  div.style.display = 'block';
+  floatingControls.style.display = 'none';
+  input.value = '';
+}
+
+function reloadFrame() {
+  const currentSrc = frame.src;
+  frame.src = currentSrc;
+}
+
+function toggleFullscreen() {
+  if (!document.fullscreenElement) {
+    frame.requestFullscreen().catch(err => {
+      console.log(`Error attempting to enable fullscreen: ${err.message}`);
+    });
+  } else {
+    document.exitFullscreen();
+  }
 }
