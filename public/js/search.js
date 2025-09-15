@@ -10,7 +10,7 @@ input.addEventListener("keyup", function (event) {
       frame.style.display = 'block'
       document.querySelector("iframe").src = __uv$config.prefix + __uv$config.encodeUrl(url);
     } else {
-      alert("Please enter a valid URL (e.g., https://example.com)");
+      showError();
     }
   }
 });
@@ -47,4 +47,12 @@ function validateURL(input) {
 
   // Return null if not a valid URL
   return null;
+}
+
+function showError() {
+  const errorMessage = document.getElementById('error-message');
+  errorMessage.style.display = 'block';
+  setTimeout(() => {
+    errorMessage.style.display = 'none';
+  }, 3000);
 }
