@@ -24,7 +24,6 @@ games.forEach(game => {
   card.classList.add("hvr-bob")
   card.addEventListener("click", () => {
 
-    if (game.id == "customgame") return loadcustomgame()
     window.location.href = `/load.html?game=${game.id}`
   })
 })

@@ -47,30 +47,6 @@ function launchab() {
 
 if (window.self !== window.self) document.querySelector('#launchab').style.display = 'none'
 
-function loadcustomgame() {
-  if (!getObj('customgames')) {
-    setObj('customgames', [])
-  }
-  var name = prompt('What should this game be named? (required)')
-  var url = prompt("What's this game's url? (required)")
-  var icon = prompt("What's this game's icon? (optional)")
-  var description = prompt("What's this game's description? (optional)")
-
-  if (!name || !url) return alert('All required fields must be filled in')
-  if (name.length > 15) return alert('Game name is too long (max 30 characters)')
-
-  fetch('https://www.uuidtools.com/api/generate/v4')
-    .then((response) => response.json())
-    .then((data) => {
-      var customgames = getObj('customgames') || []
-      customgames.push(JSON.parse(`{ "title": "${name} (Custom game)", "url": "${url}", "id": "${data[0]}", "image": "${icon}", "description": "${description}" }`))
-      console.log(customgames)
-      setObj('customgames', customgames)
-
-      console.log(getObj('customgames'))
-      //window.location.href = self.location
-    })
-}
 
 function debug() {
   console.log(getObj('customapps'))
@@ -82,11 +58,6 @@ function clearcustomapps() {
   window.location.reload()
 }
 
-function clearcustomgames() {
-  setObj('customgames', [])
-  console.log('Removed all custom games!')
-  window.location.reload()
-}
 
 // Themes
 if (localStorage.getItem('theme')) {
