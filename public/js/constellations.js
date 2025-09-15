@@ -27,8 +27,8 @@ class ConstellationBackground {
                 size: Math.random() * 2 + 0.5,
                 opacity: Math.random() * 0.6 + 0.4,
                 twinkleSpeed: Math.random() * 0.02 + 0.01,
-                vx: (Math.random() - 0.5) * 0.2,
-                vy: (Math.random() - 0.5) * 0.2
+                vx: (Math.random() - 0.5) * 2.5,
+                vy: (Math.random() - 0.5) * 2.5
             });
         }
     }
@@ -130,8 +130,8 @@ class ConstellationBackground {
             });
 
             // Apply velocity with damping
-            star.vx *= 0.95;
-            star.vy *= 0.95;
+            star.vx *= 0.99;
+            star.vy *= 0.99;
 
             star.x += star.vx;
             star.y += star.vy;
