@@ -59,12 +59,9 @@ function clearcustomapps() {
 }
 
 
-// Themes
-if (localStorage.getItem('theme')) {
-  document.body.setAttribute('theme', localStorage.getItem('theme'))
-} else {
-  document.body.setAttribute('theme', 'main')
-}
+
+// Clear any old theme data
+localStorage.removeItem('theme')
 
 // Tab
 if (localStorage.getItem('tabIcon')) {
@@ -75,10 +72,6 @@ if (localStorage.getItem('tabName')) {
   document.title = localStorage.getItem('tabName')
 }
 
-if (localStorage.getItem('theme')) {
-  document.body.setAttribute('theme', localStorage.getItem('theme'))
-}
-console.log(localStorage.getItem('theme'))
 
 // Panic
 document.addEventListener('keydown', async (e) => {
