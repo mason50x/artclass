@@ -304,7 +304,7 @@ var games = [
   {
     id: 'crossyroad',
     title: 'Crossy Road',
-    url: 'https://assets.3kh0.net/crossyroad/index.html',
+    url: 'https://crossy-road.gitlab.io/file/',
     image: 'https://cdn.jim-nielsen.com/ios/512/crossy-road-endless-arcade-2014-12-02.png'
   },
   {
@@ -382,7 +382,7 @@ var games = [
   {
     id: 'curveball3d',
     title: 'Curve Ball 3D',
-    url: 'https://slopegame.io/curve-.embed',
+    url: 'https://gswitch3.github.io/g/curve-ball-3d/',
     image: 'https://play-lh.googleusercontent.com/sTHCFQc1HlSFK2jHNsQOabTeKBvgtugFxnSa_uNLWX2euDE7ohRnJhgCDapOZ0gvxlQ'
   },
   {
