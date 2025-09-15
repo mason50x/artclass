@@ -88,10 +88,10 @@ nav a[selected] {
   filter: brightness(100%);
 }
 
-nav .navitem a:hover {
-  background-color: #0284d4;
+nav .navitem a:hover:not([selected]) {
+  background-color: rgba(2, 132, 212, 0.2);
   text-decoration: none;
-  color: #1a2023;
+  color: white;
   filter: brightness(100%);
 }
 
