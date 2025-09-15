@@ -1,10 +1,5 @@
 var apps = [
     {
-      'id': 'customapp',
-      'title': 'Add custom app',
-      'image': 'assets/images/add.png'
-    },
-    {
       "id": "google",
       "title": "Google",
       "url": "https://www.google.com/?safe=active&ssui=on",
@@ -111,11 +106,3 @@ var apps = [
       "description": "Windows XP recreation in React.js"
     },
   ]
-  
-  var customapps = JSON.parse(localStorage.getItem("customapps"))
-  if (customapps) customapps.forEach(app => {
-    apps.push(app)
-  })
-  
-  console.log("Loaded " + apps.length + " apps")
-  if (customapps) console.log("Loaded " + customapps.length + " custom apps")

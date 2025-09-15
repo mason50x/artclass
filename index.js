@@ -11,6 +11,12 @@ const publicPath = fileURLToPath(new URL("./public/", import.meta.url));
 const bare = createBareServer("/bare/");
 const app = express();
 
+// Add error handling
+app.use((err, req, res, next) => {
+  console.error('Express error:', err);
+  res.status(500).send('Internal Server Error');
+});
+
 app.use(express.static(publicPath));
 app.use("/uv/", express.static(uvPath));
 
@@ -23,19 +29,45 @@ app.use((req, res) => {
 const server = createServer();
 
 server.on("request", (req, res) => {
-  if (bare.shouldRoute(req)) {
-    bare.routeRequest(req, res);
-  } else {
-    app(req, res);
+  try {
+    if (bare.shouldRoute(req)) {
+      bare.routeRequest(req, res);
+    } else {
+      app(req, res);
+    }
+  } catch (error) {
+    console.error('Request error:', error);
+    if (!res.headersSent) {
+      res.status(500).send('Server Error');
+    }
   }
 });
 
 server.on("upgrade", (req, socket, head) => {
-  if (bare.shouldRoute(req)) {
-    bare.routeUpgrade(req, socket, head);
-  } else {
+  try {
+    if (bare.shouldRoute(req)) {
+      bare.routeUpgrade(req, socket, head);
+    } else {
+      socket.end();
+    }
+  } catch (error) {
+    console.error('Upgrade error:', error);
     socket.end();
   }
+});
+
+// Add global error handlers
+server.on('error', (error) => {
+  console.error('Server error:', error);
+});
+
+process.on('uncaughtException', (error) => {
+  console.error('Uncaught Exception:', error);
+  process.exit(1);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection at:', promise, 'reason:', reason);
 });
 
 let port = parseInt(process.env.PORT || "");
@@ -55,6 +87,12 @@ server.on("listening", () => {
       address.family === "IPv6" ? `[${address.address}]` : address.address
     }:${address.port}`
   );
+
+  // Log memory usage periodically
+  setInterval(() => {
+    const memUsage = process.memoryUsage();
+    console.log(`Memory usage: RSS=${Math.round(memUsage.rss/1024/1024)}MB, Heap=${Math.round(memUsage.heapUsed/1024/1024)}MB`);
+  }, 60000); // Every minute
 });
 
 // https://expressjs.com/en/advanced/healthcheck-graceful-shutdown.html

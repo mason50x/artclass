@@ -5,27 +5,6 @@ const getObj = function (key) {
   return JSON.parse(localStorage.getItem(key))
 }
 
-function loadcustomapp() {
-  if (!getObj('customapps')) {
-    setObj('customapps', [])
-  }
-  var name = prompt('What should this app be named? (required)')
-  var url = prompt("What's this app's url? (required)")
-  var icon = prompt("What's this app's icon? (optional)")
-  var description = prompt("What's this app's description? (optional)")
-
-  if (!name || !url) return alert('All required fields must be filled in')
-  if (name.length > 15) return alert('App name is too long (max 30 characters)')
-
-  fetch('https://www.uuidtools.com/api/generate/v4')
-    .then((response) => response.json())
-    .then((data) => {
-      var customapps = getObj('customapps') || []
-      customapps.push(JSON.parse(`{ "title": "${name} (Custom app)", "url": "${url}", "id": "${data[0]}", "image": "${icon}", "description": "${description}" }`))
-      setObj('customapps', customapps)
-      window.location.href = self.location
-    })
-}
 
 if (localStorage.getItem('launchblank') && window.self !== window.top) {
   launchab()
@@ -48,20 +27,12 @@ function launchab() {
 if (window.self !== window.self) document.querySelector('#launchab').style.display = 'none'
 
 
-function debug() {
-  console.log(getObj('customapps'))
-}
-
-function clearcustomapps() {
-  setObj('customapps', [])
-  console.log('Removed all custom apps!')
-  window.location.reload()
-}
 
 
 
-// Clear any old theme data
+// Clear any old theme and custom app data
 localStorage.removeItem('theme')
+localStorage.removeItem('customapps')
 
 // Tab
 if (localStorage.getItem('tabIcon')) {

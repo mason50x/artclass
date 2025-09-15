@@ -20,8 +20,6 @@ apps.forEach(app => {
   //card.classList.add(`hvr-${effects[Math.floor(Math.random() * effects.length)]}`)
   card.classList.add("hvr-bob")
   card.addEventListener("click", () => {
-
-    if (app.id == "customapp") return loadcustomapp()
     window.location.href = `/load.html?app=${app.id}`
   })
 })
