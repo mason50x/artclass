@@ -3,7 +3,7 @@ var apps = [
       "id": "google",
       "title": "Google",
       "url": "https://www.google.com/?safe=active&ssui=on",
-      'image': 'https://img.freepik.com/free-icon/search_318-265146.jpg'
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Google_Favicon_2025.svg/500px-Google_Favicon_2025.svg.png'
 
     },
     {
