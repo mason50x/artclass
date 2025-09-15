@@ -25,7 +25,7 @@ class ConstellationBackground {
                 x: Math.random() * this.canvas.width,
                 y: Math.random() * this.canvas.height,
                 size: Math.random() * 2 + 0.5,
-                opacity: Math.random() * 0.8 + 0.2,
+                opacity: Math.random() * 0.6 + 0.4,
                 twinkleSpeed: Math.random() * 0.02 + 0.01,
                 vx: (Math.random() - 0.5) * 0.2,
                 vy: (Math.random() - 0.5) * 0.2
@@ -45,7 +45,7 @@ class ConstellationBackground {
 
             // Twinkle effect
             star.opacity += Math.sin(Date.now() * star.twinkleSpeed) * 0.01;
-            star.opacity = Math.max(0.1, Math.min(0.9, star.opacity));
+            star.opacity = Math.max(0.3, Math.min(1.0, star.opacity));
         });
     }
 
@@ -59,7 +59,7 @@ class ConstellationBackground {
 
             if (distToMouse < this.maxDistance) {
                 this.ctx.save();
-                const opacity = (1 - distToMouse / this.maxDistance) * 0.5;
+                const opacity = (1 - distToMouse / this.maxDistance) * 0.8;
                 this.ctx.globalAlpha = opacity;
                 this.ctx.strokeStyle = '#3b82f6';
                 this.ctx.lineWidth = 1;
@@ -80,7 +80,7 @@ class ConstellationBackground {
 
                 if (distance < 120) {
                     this.ctx.save();
-                    const opacity = (1 - distance / 120) * 0.3;
+                    const opacity = (1 - distance / 120) * 0.6;
                     this.ctx.globalAlpha = opacity;
                     this.ctx.strokeStyle = '#ffffff';
                     this.ctx.lineWidth = 0.5;
