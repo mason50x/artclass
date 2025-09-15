@@ -104,13 +104,6 @@ var apps = [
       "image": "https://archive.org/services/img/1d9464dbff7a1630882d0e2090cb714c",
       "description": "Windows XP recreation in React.js"
     },
-    {
-      'id': 'gbaemulator',
-      'title': 'GBA Emulator',
-      'url': 'https://cattn.github.io/gba',
-      "image": "https://cattn.github.io/gba/pwa/apple-icon-180.png",
-      "description": "A Game Boy Advance retro emulator with over 3000 games, and other consoles as well"
-    }
   ]
   
   var customapps = JSON.parse(localStorage.getItem("customapps"))
