@@ -1,9 +1,9 @@
 // Authentication check for Art Class
-// This script checks if user is authenticated and redirects to welcome screen if not
+// This script checks if user is authenticated and redirects to auth screen if not
 
 (function() {
-    // Don't run auth check on the welcome screen itself
-    if (window.location.pathname.includes('welcome.html')) {
+    // Don't run auth check on the auth screen itself
+    if (window.location.pathname.includes('auth.html')) {
         return;
     }
 
@@ -11,13 +11,13 @@
     const isAuthenticated = sessionStorage.getItem('artclass_authenticated') === 'true';
 
     if (!isAuthenticated) {
-        // Redirect to welcome screen
-        window.location.href = '/welcome.html';
+        // Redirect to auth screen
+        window.location.href = '/auth.html';
     }
 })();
 
 // Function to logout (can be called from settings or other pages if needed)
 function logout() {
     sessionStorage.removeItem('artclass_authenticated');
-    window.location.href = '/welcome.html';
+    window.location.href = '/auth.html';
 }
