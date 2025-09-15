@@ -41,10 +41,8 @@
       <h1>Settings</h1>
 
       <h2>Tab cloaking</h2>
-      <input type="text" id="tabname" placeholder="Tab name" />
-      <button onclick="setTab()" class="secondary">Set tab name</button> <br />
-      <input type="text" id="tabicon" placeholder="Tab icon" />
-      <button onclick="setTab()" class="secondary">Set tab icon</button> <br />
+      <input type="text" id="tabname" placeholder="Tab name" /><br />
+      <input type="text" id="tabicon" placeholder="Tab icon" /><br />
 
       <button class="secondary" onclick="setTabPreset('default')">
         <img src="/assets/images/icon.png" />
@@ -78,11 +76,26 @@
         click it, including typing on this page, so set it to a key you don't
         click often.
       </h4>
-      <input type="text" id="panickey" placeholder="Panic key" />
-      <button onclick="setPanicKey()" class="secondary">Set panic key</button>
+      <input type="text" id="panickey" placeholder="Panic key" /><br />
+      <input type="text" id="panicurl" placeholder="Panic url" /><br />
       <br />
-      <input type="text" id="panicurl" placeholder="Panic url" />
-      <button onclick="setPanicUrl()" class="secondary">Set panic url</button>
+
+      <button class="secondary" onclick="setPanicUrlPreset('google')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Google_Favicon_2025.svg/500px-Google_Favicon_2025.svg.png" />
+        Google
+      </button>
+      <button class="secondary" onclick="setPanicUrlPreset('drive')">
+        <img src="https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png" />
+        Drive
+      </button>
+      <button class="secondary" onclick="setPanicUrlPreset('docs')">
+        <img src="https://ssl.gstatic.com/docs/documents/images/kix-favicon7.ico" />
+        Docs
+      </button>
+      <button class="secondary" onclick="setPanicUrlPreset('classroom')">
+        <img src="https://ssl.gstatic.com/classroom/ic_product_classroom_32.png" />
+        Classroom
+      </button>
       <br />
       <button onclick="detectPanic()" id="panickeybtn" class="secondary">
         Auto-detect panic key

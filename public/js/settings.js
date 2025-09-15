@@ -34,9 +34,7 @@ var tabPresets = {
 }
 
 function setTabPreset(tab) {
-
     setTab(tabPresets[tab].name, tabPresets[tab].icon)
-
 }
 
 if (localStorage.getItem("tabName")) document.querySelector("#tabname").value = localStorage.getItem("tabName")
@@ -77,3 +75,47 @@ function setPanicUrl() {
     var url = document.querySelector("#panicurl")
     localStorage.setItem("panicurl", url.value)
 }
+
+var panicUrlPresets = {
+    google: 'https://www.google.com',
+    drive: 'https://drive.google.com',
+    docs: 'https://docs.google.com',
+    classroom: 'https://classroom.google.com'
+}
+
+function setPanicUrlPreset(preset) {
+    var url = panicUrlPresets[preset]
+    document.querySelector("#panicurl").value = url
+    localStorage.setItem("panicurl", url)
+}
+
+// Add auto-save event listeners
+document.addEventListener('DOMContentLoaded', function() {
+    // Tab name auto-save
+    document.querySelector('#tabname').addEventListener('input', function() {
+        setTimeout(() => {
+            setTab(this.value, document.querySelector("#tabicon").value)
+        }, 300)
+    })
+
+    // Tab icon auto-save
+    document.querySelector('#tabicon').addEventListener('input', function() {
+        setTimeout(() => {
+            setTab(document.querySelector('#tabname').value, this.value)
+        }, 300)
+    })
+
+    // Panic key auto-save
+    document.querySelector('#panickey').addEventListener('input', function() {
+        setTimeout(() => {
+            localStorage.setItem("panickey", this.value)
+        }, 300)
+    })
+
+    // Panic URL auto-save
+    document.querySelector('#panicurl').addEventListener('input', function() {
+        setTimeout(() => {
+            localStorage.setItem("panicurl", this.value)
+        }, 300)
+    })
+})
