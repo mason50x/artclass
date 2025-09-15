@@ -9,7 +9,13 @@ var apps = [
       "title": "Google",
       "url": "https://www.google.com/?safe=active&ssui=on",
       'image': 'https://img.freepik.com/free-icon/search_318-265146.jpg'
-      
+
+    },
+    {
+      "id": "gemini",
+      "title": "Google Gemini",
+      "url": "https://gemini.google.com/",
+      'image': 'https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/gemini-color.png'
     },
     {
       "id": "telegram",
