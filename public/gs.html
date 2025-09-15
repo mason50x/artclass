@@ -58,6 +58,12 @@
       overflow-y: auto;
       z-index: 1000;
       margin-top: 2px;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* Internet Explorer 10+ */
+    }
+
+    .suggestions-dropdown::-webkit-scrollbar {
+      display: none; /* WebKit */
     }
 
     .suggestion-item {

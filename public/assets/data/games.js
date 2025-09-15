@@ -122,7 +122,7 @@ var games = [
   {
     id: 'happywheels',
     title: 'Happy Wheels',
-    url: 'https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/proudparrot2/goguardian/happywheels.xml',
+    url: 'https://script.google.com/macros/s/AKfycbyfMPVIGx6dJPrYKeE9e4Erj949-dH28pWVRjdV1vgnoylpBV8af03JNLoz2MwAIBLECg/exec',
     image: 'https://play-lh.googleusercontent.com/SV8RsV5udSeeONjatT5SwleP6lzV6PjtNPs2VvyohJXWSG9fFLNOfslDEHbpDN337wQ'
   },
   {
@@ -310,7 +310,7 @@ var games = [
   {
     id: 'subwaysurfers',
     title: 'Subway Surfers',
-    url: 'https://assets.3kh0.net/subway-surfers/index.html',
+    url: 'https://files.ufreegame.net/1024/Subway-Surfers-Zurich/',
     image: 'https://cdnb.artstation.com/p/assets/images/images/040/799/939/large/celine-j-1-74-shanghai-icon-1024-x.jpg?1629908071'
   },
   {
