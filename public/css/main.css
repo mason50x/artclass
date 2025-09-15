@@ -177,6 +177,7 @@ button:hover {
     position: absolute;
     bottom: 15px;
     width: 100%;
+    text-align: center;
   }
   #menubtns button {
     border: 3px solid white;
