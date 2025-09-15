@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" href="./assets/images/icon.png" type="image/png" />
+    <title>Art Class - Lockscreen</title>
+    <link rel="stylesheet" href="./css/master.css" />
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: "Inter", sans-serif;
+        }
+
+        .lockscreen-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            width: 400px;
+            text-align: center;
+        }
+
+        .lockscreen-logo {
+            margin-bottom: 30px;
+        }
+
+        .lockscreen-logo img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+        }
+
+        .lockscreen-logo h1 {
+            color: #333;
+            font-size: 28px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            box-sizing: border-box;
+            background: white;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .input-group label {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+            transition: all 0.3s;
+            pointer-events: none;
+            background: white;
+            padding: 0 5px;
+        }
+
+        .input-group input:focus + label,
+        .input-group input:not(:placeholder-shown) + label {
+            top: 0;
+            font-size: 12px;
+            color: #667eea;
+        }
+
+        .login-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .login-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .success-message {
+            color: #27ae60;
+            font-size: 14px;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="lockscreen-container">
+        <div class="lockscreen-logo">
+            <img src="./assets/images/icon.png" alt="Art Class Logo" />
+            <h1>Art Class</h1>
+        </div>
+
+        <form class="login-form" id="loginForm">
+            <div class="input-group">
+                <input type="password" id="email" placeholder=" " required />
+                <label for="email">Email</label>
+            </div>
+
+            <div class="input-group">
+                <input type="password" id="password" placeholder=" " required />
+                <label for="password">Password</label>
+            </div>
+
+            <button type="submit" class="login-button">Enter Art Class</button>
+
+            <div class="error-message" id="errorMessage">
+                Invalid credentials. Please try again.
+            </div>
+
+            <div class="success-message" id="successMessage">
+                Welcome! Redirecting...
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            const successMessage = document.getElementById('successMessage');
+
+            // Hide previous messages
+            errorMessage.style.display = 'none';
+            successMessage.style.display = 'none';
+
+            // Check credentials
+            if (email === 'dog' && password === 'dog') {
+                // Store authentication status
+                sessionStorage.setItem('artclass_authenticated', 'true');
+
+                // Show success message
+                successMessage.style.display = 'block';
+
+                // Redirect to main page after a short delay
+                setTimeout(() => {
+                    window.location.href = '/index.html';
+                }, 1500);
+            } else {
+                // Show error message
+                errorMessage.style.display = 'block';
+
+                // Clear the form
+                document.getElementById('email').value = '';
+                document.getElementById('password').value = '';
+            }
+        });
+
+        // Check if already authenticated
+        if (sessionStorage.getItem('artclass_authenticated') === 'true') {
+            window.location.href = '/index.html';
+        }
+    </script>
+</body>
+</html>
