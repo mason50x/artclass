@@ -40,7 +40,7 @@ nav a {
   margin: 10px;
   transition: all 0.6s;
   padding: 10px 15px;
-  border-radius: 15px;
+  border-radius: 9999px;
 
   display: flex;
   justify-content: center;
@@ -61,7 +61,14 @@ nav .navitem a {
   position: relative;
 }
 
-nav a[selected], nav .navitem a:hover {
+nav a[selected] {
+  background-color: white;
+  text-decoration: none;
+  color: black;
+  filter: brightness(100%);
+}
+
+nav .navitem a:hover {
   background-color: var(--accent);
   text-decoration: none;
   color: var(--background);

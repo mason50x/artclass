@@ -30,7 +30,8 @@ body {
   }
 
 h1 , h2 , h3  {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
 }
 
 h1 { font-size: 50px; }
@@ -40,7 +41,7 @@ h1 { font-size: 50px; }
 p { font-size: 20px; }
 
 h1 > span {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     background: linear-gradient(45deg, var(--accent), #00d4ff, var(--accent));
     background-size: 200% 200%;
     -webkit-background-clip: text;
@@ -84,7 +85,7 @@ button {
     transition: 0.4s all;
 }
 
-.play { font-family: "Montserrat"; font-weight: 700; color: var(--background); }
+.play { font-family: "Inter"; font-weight: 600; color: var(--background); }
 
 button:hover {
     filter: brightness(80%);
@@ -167,7 +168,7 @@ button:hover {
   }
   #menubtns button {
     border: 3px solid white;
-    font-family: "DM Sans";
+    font-family: "Inter";
     padding: 7px 15px;
     font-size: 15px;
     border-radius: 10px;

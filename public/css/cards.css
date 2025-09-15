@@ -21,7 +21,7 @@
 
 .card {
     border-radius: 3vh;
-    font-family: "DM Sans";
+    font-family: "Inter";
     cursor: pointer;
     transition: all 0.3s;
     padding: 1rem;
