@@ -72,7 +72,7 @@ var games = [
     id: 'backrooms',
     title: 'Backrooms',
     description: 'Scary game based on the viral 4Chan post.',
-    url: 'https://assets.3kh0.net/backrooms/index.html',
+    url: 'https://backroomsgame.io/game/backrooms/',
     image: 'https://media.wired.com/photos/627b0c1fb6048c47d506c6c0/1:1/w_679,h_679,c_limit/Backrooms-Games.jpg'
   },
   {
@@ -249,13 +249,13 @@ var games = [
   {
     id: 'awesometanks2',
     title: 'Awesome Tanks 2',
-    url: 'https://assets.3kh0.net/awesometanks2/index.html',
+    url: 'https://mathgames66.github.io/games/html5/awesometanks2/',
     image: 'https://play-lh.googleusercontent.com/fiH2wSovQkxQ2dQViDAphNBbM0B1dYxTlJqnYwKXeSoQQZbBNkZZuLyMkv4gglb7LH4'
   },
   {
     id: 'fireandice',
     title: 'A Dance of Fire and Ice',
-    url: 'https://assets.3kh0.net/a-dance-of-fire-and-ice/index.html',
+    url: 'https://htmlxm.github.io/h8/a-dance-of-fire-and-ice/',
     image: 'https://play-lh.googleusercontent.com/L8rCly8hMWuP95PbihDZlSV2u0oGrs0hl2lEXboO7XHX2XalJZ1rjgOsFYXnEDWbpQ',
     description: 'A Dance of Fire and Ice is a simple one-button rhythm game. Press on every beat of the music to move in a line. Every pattern has its own rhythm to it. It can get difficult. This game is purely based on rhythm, so use your ears more than your sight.'
   },
@@ -292,7 +292,7 @@ var games = [
   {
     id: 'baldisbasics',
     title: 'Baldi\'s Basics',
-    url: 'https://assets.3kh0.net/baldis-basics/index.html',
+    url: 'https://baldisbasics.gitlab.io/file/',
     image: 'https://play-lh.googleusercontent.com/EPV1TB4So1lB0DGrdCVExDpNU8ML67nd8OqBeoOIM-s6sDicxmDdPvCXD6n7LKevFl0'
   },
   {
@@ -340,13 +340,13 @@ var games = [
   {
     id: 'bloxors',
     title: 'Bloxors',
-    url: 'https://assets.3kh0.net/bloxors/index.html',
+    url: 'https://www.twoplayergames.org/gameframe/bloxorz?embed=1',
     image: 'https://play-lh.googleusercontent.com/FHpA3r3FHDzVNtBpjpi9Zq8JA81bvRXBEbdkBvL3COOucsMfn_fYYhEFE5g55VkeSQ'
   },
   {
     id: 'chromedino',
     title: "Chrome Dino Game",
-    url: 'https://assets.3kh0.net/chrome-dino/index.html',
+    url: 'https://chrome-dino-game.github.io/',
     image: 'https://qph.cf2.quoracdn.net/main-qimg-c803e5912e045867b4e2f033c1b57ff9-lq'
   },
   {
@@ -364,13 +364,13 @@ var games = [
   {
     id: 'basketballstars',
     title: 'Basketball Stars',
-    url: 'https://assets.3kh0.net/basketball-stars/index.html',
+    url: 'https://script.google.com/macros/s/AKfycbwzYMDDcdDUAvEP7iO6OdRk-5_oUp6vYvDdyEEz8tTOzWi5y4-Qf3vQ6TBoZuc9UYVcLg/exec',
     image: 'https://play-lh.googleusercontent.com/EjJV6kCXgX9EIhKEtpYhQF8-BUb5En8sDKpOPiWSQJUxv9_RAfl4tMxyIMkQYgeqC6I=w240-h480-rw'
   },
   {
     id: 'amongus',
     title: 'Among Us',
-    url: 'https://assets.3kh0.net/among-us/index.html',
+    url: 'https://previews.customer.envatousercontent.com/files/322345709/index.html',
     image: 'https://play-lh.googleusercontent.com/8ddL1kuoNUB5vUvgDVjYY3_6HwQcrg1K2fd_R8soD-e2QYj8fT9cfhfh3G0hnSruLKec'
   },
   {
@@ -388,13 +388,13 @@ var games = [
   {
     id: 'bitlife',
     title: 'Bitlife',
-    url: 'https://assets.3kh0.net/bitlife/index.html',
+    url: 'https://bitlifeonline.bitbucket.io/file/',
     image: 'https://d.newsweek.com/en/full/1317374/bitlife-ribbons-how-get-all-complete-list-android-ios-cheats-guide-tips-become.jpg?w=1600&h=1600&q=88&f=75befc746fb83a0c568c44ca07bc5e64'
   },
   {
     id: 'btd4',
     title: 'Bloons TD 4',
-    url: 'https://assets.3kh0.net/btd4/index.html',
+    url: 'https://bloons-td.gitlab.io/file/',
     image: 'https://assets-prd.ignimgs.com/2022/08/16/bloons-td4-button-1660612386362.jpg'
   },
   {
@@ -418,7 +418,7 @@ var games = [
   {
     id: '2048',
     title: '2048',
-    url: 'https://assets.3kh0.net/2048/index.html',
+    url: 'https://glebbahmutov.com/2048/',
     image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/2048_logo.svg/220px-2048_logo.svg.png'
   },
   {
@@ -431,15 +431,15 @@ var games = [
   {
     id: 'baconmaydie',
     title: 'Bacon May Die',
-    url: 'https://rawcdn.githack.com/nightrose-labs/quartz/c1832d589bc39c298bd23149733fca1026972d06/2/e333d315-40d0-46f6-a1ef-7e3f6bdd5113/index.html',
-    image: 'https://rawcdn.githack.com/nightrose-labs/quartz/c1832d589bc39c298bd23149733fca1026972d06/thumb/e333d315-40d0-46f6-a1ef-7e3f6bdd5113.jpg',
+    url: 'https://bacon-maydie.github.io/file/',
+    image: 'https://play-lh.googleusercontent.com/W_dghckKR-MD8Hx5YvCpdx3bYNeqrBdZqnMI02JnP5rVH8VqGaQUzdiMXd2wdJGLeP0=s96-rw',
     description: 'Warning: pressing ESC will exit the game.'
   },
   {
     id: 'burninrubber5xs',
     title: 'Burnin\' Rubber 5 XS',
-    url: 'https://rawcdn.githack.com/nightrose-labs/quartz/8ad8d5b123954f4a5d7e35ca84d5aacba0061eec/1/c35dc918-139e-4159-be3d-0d1ef0557e4e/index.html',
-    image: 'https://rawcdn.githack.com/nightrose-labs/quartz/master/thumb/c35dc918-139e-4159-be3d-0d1ef0557e4e.jpg',
+    url: 'https://ubgfun.github.io/cars/burnin-rubber-5-xs/',
+    image: 'https://imgs.crazygames.com/auto-covers/burnin-rubber-5-xs_1x1?format=auto&quality=100&metadata=none&width=1200',
     description: 'This game is resource-heavy. Make sure to adjust quality using the Star button in the main menu.'
   },
   {
@@ -514,7 +514,7 @@ var games = [
   {
     id: 'brawlguys',
     title: 'Brawl Guys',
-    url: 'https://zayaruzostreetorgan.com/uploads/5/5/6/7/5567194/custom_themes/139948058740159493/files/index.html',
+    url: 'https://html5.gamemonetize.co/ddek6s43vtxox5ocpsctljrtny62f1ss/',
     image: 'https://play-lh.googleusercontent.com/EiElcSrd6-o-19roiswSx0AZPzsq6qF3hUGHsSWDl5UVtj7G23DHkneM8ucwqyOmEg'
   },
   {
