@@ -8,7 +8,7 @@
     }
 
     // Check if user is authenticated
-    const isAuthenticated = sessionStorage.getItem('artclass_authenticated') === 'true';
+    const isAuthenticated = localStorage.getItem('artclass_authenticated') === 'true';
 
     if (!isAuthenticated) {
         // Redirect to auth screen
@@ -18,6 +18,6 @@
 
 // Function to logout (can be called from settings or other pages if needed)
 function logout() {
-    sessionStorage.removeItem('artclass_authenticated');
+    localStorage.removeItem('artclass_authenticated');
     window.location.href = '/auth.html';
 }

@@ -227,7 +227,7 @@
             // Check credentials against encrypted hashes
             if (emailHash === VALID_EMAIL_HASH && passwordHash === VALID_PASSWORD_HASH) {
                 // Store authentication status
-                sessionStorage.setItem('artclass_authenticated', 'true');
+                localStorage.setItem('artclass_authenticated', 'true');
 
                 // Hide form and show unlock animation
                 const authContainer = document.querySelector('.auth-container');
@@ -257,7 +257,7 @@
         });
 
         // Check if already authenticated
-        if (sessionStorage.getItem('artclass_authenticated') === 'true') {
+        if (localStorage.getItem('artclass_authenticated') === 'true') {
             window.location.href = '/index.html';
         }
     </script>
