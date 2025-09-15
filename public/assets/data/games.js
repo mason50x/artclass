@@ -8,7 +8,7 @@ var games = [
   {
     id: 'eggycar',
     title: 'Eggy Car',
-    url: 'https://assets.3kh0.net/eggycar/index.html',
+    url: 'https://hva2021.github.io/eggy-car/index.html',
     image: 'https://assets.3kh0.net/eggycar/eggy-car.png'
   },
   {
@@ -40,14 +40,14 @@ var games = [
     id: 'fbwg',
     title: 'Fireboy and Watergirl',
     description: 'A 2 player game where you have to work together using logic and teamwork to get to the finish line.',
-    url: 'https://educationgg-23704.web.app/games/FBWG4-main/index.html',
+    url: 'https://fireboy-and-watergirl-online.github.io/file/',
     image: 'https://play-lh.googleusercontent.com/5-YcjiTyMrPJEZe078dHMxnCxcg2A_8NWJZQieRvn2Gkf8JOuHZEbTmFyQ9gn5p2lnU'
   },
   {
     id: 'driftboss',
     title: 'Drift Boss',
     image: 'https://play-lh.googleusercontent.com/fLrnXuD1B0w6FEDJ1UKmv_TYbNyJ4GwzsQu9ltx57MfIj037nig4cVunG3CYmczkjMDA',
-    url: 'https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://738501629-461082748261058427.preview.editmysite.com/uploads/b/139890129-817510652323129407/files/drbo.xml'
+    url: 'https://driftbossonline.github.io/file/'
   },
   {
     id: 'osu',
@@ -59,7 +59,7 @@ var games = [
   {
     id: 'cuttherope',
     title: 'Cut the Rope',
-    url: 'https://assets.3kh0.net/ctr/index.html',
+    url: 'https://script.google.com/macros/s/AKfycbzC5BJN124UUKkQqKJwi6D_xOIz7Vy0fHyc1Fl8NEnSUtRXD-AUGnkKt3u1bugFLT5s/exec',
     image: 'https://play-lh.googleusercontent.com/8FNcAyLXtQB_0Ux2ZO8VZoEoihL6a5VMBNf6V2lydRM24hXLnNUdlEup1d5miVjl3JY'
   },
   {
@@ -142,8 +142,8 @@ var games = [
   {
     id: 'fnf',
     title: 'Friday Night Funkin',
-    url: 'https://assets.3kh0.net/fridaynightfunkin/index.html',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Boyfriend-2.png/250px-Boyfriend-2.png'
+    url: 'https://fridaynightfunkinweek7.github.io/',
+    image: 'https://img.utdstc.com/icon/807/216/8072161110b1f6a2990a4baeb55eaaeab761fc199d9c001c7b6623f4cf8c6eb7:200'
   },
   {
     id: 'paperio2',
@@ -160,7 +160,7 @@ var games = [
   {
     id: 'ducklife4',
     title: 'Duck Life 4',
-    url: 'https://assets.3kh0.net/ducklife4/index.html',
+    url: 'https://htmlxm.github.io/h/duck-life-4/',
     image: 'https://play-lh.googleusercontent.com/AUGkRrKMtUCLVE9vCvlfMY9Ny9EBqzx17yejVtEEhvpkw-H6lJlvBHgCMqPJm8HV_tM'
   },
   {
@@ -316,8 +316,8 @@ var games = [
   {
     id: 'geometrydash',
     title: 'Geometry Dash',
-    url: 'https://assets.3kh0.net/geodash/index.html',
-    image: 'https://upload.wikimedia.org/wikipedia/en/3/35/Geometry_Dash_Logo.PNG'
+    url: 'https://scratch.mit.edu/projects/105500895/embed',
+    image: 'https://i.redd.it/koaxrnoyfvoa1.jpg'
   },
   {
     id: 'idlecraft',
@@ -334,7 +334,7 @@ var games = [
   {
     id: 'fruitninja',
     title: 'Fruit Ninja',
-    url: 'https://assets.3kh0.net/fruitninja/index.html',
+    url: 'https://www.culinaryschools.org/kids-games/ninja-fruit-slice/game.php',
     image: 'https://play-lh.googleusercontent.com/iRlGmvtJ524J-gAGdJJchMv-MH-9AuG80TAx8Rv8q3lObiI7kLVZrEvjVOM-yw3BBH4'
   },
   {
@@ -406,7 +406,7 @@ var games = [
   {
     id: 'dogeminer',
     title: "Doge Miner",
-    url: 'https://assets.3kh0.net/DogeMiner/index.html',
+    url: 'https://doge-miner.gitlab.io/file/',
     image: 'https://play-lh.googleusercontent.com/7diC1RZgf6Z5XCspiwJMYD3vQz5TmjFElLw5qnPJZjcjNXgfhepPJzmIBijgraJRd8uv'
   },
   {
@@ -445,8 +445,8 @@ var games = [
   {
     id: 'funnyshooter2',
     title: 'Funny Shooter 2',
-    url: 'https://rawcdn.githack.com/nightrose-labs/quartz/master/1/6af3cc65-32f9-4f3d-a66c-6c8882a7c5df/index.html',
-    image: 'https://rawcdn.githack.com/nightrose-labs/quartz/master/thumb/6af3cc65-32f9-4f3d-a66c-6c8882a7c5df.jpg',
+    url: 'https://funnyshooter.gitlab.io/file/',
+    image: 'https://imgs.crazygames.com/funny-shooter-2_1x1/20241113090815/funny-shooter-2_1x1-cover?format=auto&quality=100&metadata=none&width=1200',
     description: 'This game has a working rewarded ad bypass, but it will temporarily mute the game. It will unmute at level start/end.'
   },
   {
@@ -518,15 +518,9 @@ var games = [
     image: 'https://play-lh.googleusercontent.com/EiElcSrd6-o-19roiswSx0AZPzsq6qF3hUGHsSWDl5UVtj7G23DHkneM8ucwqyOmEg'
   },
   {
-    id: 'digtochina',
-    title: 'Dig to China',
-    url: 'https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://s3.amazonaws.com/production-assetsbucket-8ljvyr1xczmb/1ee20621-61bc-4ec8-a8ec-5e839c2e6edc%2Fdig-to-china.xml',
-    image: 'https://play-lh.googleusercontent.com/R1o8_AuZ53wC5Q60ZKoGBdIXjm4v7k99uGW1Lb8NFk58MeAO_e-IqcOxdPnjOK90'
-  },
-  {
     id: 'helixjump',
     title: 'Helix Jump',
-    url: 'https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/gertdoro/Toolkit@147a37a734f3e4f155e48dbda25000afdc2970ba/Apps/Helix.xml',
+    url: 'https://the.deconstructors.co.uk/tam-helix-jump-3d/',
     image: 'https://play-lh.googleusercontent.com/cZHORa1z78dfMsP_nxCkplmHGUx5wfjY0x2jK59GWL7rUL5o6c_KiQ7QL9o4T22qbH8'
   },
   {
