@@ -189,7 +189,20 @@
     </div>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
+        // Hash function for credentials
+        async function hashCredential(text) {
+            const encoder = new TextEncoder();
+            const data = encoder.encode(text);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        // Encrypted credential hashes (SHA-256 of 'dog')
+        const VALID_EMAIL_HASH = 'cd6357efdd966de8c0cb2f876cc89ec74ce35f0968e11743987084bd42fb8944';
+        const VALID_PASSWORD_HASH = 'cd6357efdd966de8c0cb2f876cc89ec74ce35f0968e11743987084bd42fb8944';
+
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
             const email = document.getElementById('email').value;
@@ -201,8 +214,12 @@
             errorMessage.style.display = 'none';
             successMessage.style.display = 'none';
 
-            // Check credentials
-            if (email === 'dog' && password === 'dog') {
+            // Hash the input credentials
+            const emailHash = await hashCredential(email);
+            const passwordHash = await hashCredential(password);
+
+            // Check credentials against encrypted hashes
+            if (emailHash === VALID_EMAIL_HASH && passwordHash === VALID_PASSWORD_HASH) {
                 // Store authentication status
                 sessionStorage.setItem('artclass_authenticated', 'true');
 
@@ -214,7 +231,7 @@
                 authContainer.style.display = 'none';
                 unlockAnimation.style.display = 'flex';
 
-                // Change to unlock emoji after rotation starts
+                // Change to unlock emoji at same speed as rotation (80% of animation)
                 setTimeout(() => {
                     lockEmoji.textContent = '🔓';
                 }, 1600);
