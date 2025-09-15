@@ -46,7 +46,7 @@ var apps = [
       "id": "reddit",
       "title": "Reddit",
       "url": "https://reddit.com",
-      'image': 'https://www.redditinc.com/assets/images/site/reddit-logo.png'
+      'image': 'https://external-preview.redd.it/tvUwj7NCSm_YzXPXIJE6ZWceln3IrbmFiO3kGF9GYVw.jpg?auto=webp&s=2d89ac7c3648c6f957bf9b02197477b1cc7046e9'
     },
     {
       "id": "youtube",
@@ -56,9 +56,9 @@ var apps = [
     },
     {
       "id": "twitter",
-      "title": "Twitter",
+      "title": "X",
       "url": "https://x.com",
-      'image': 'https://seeklogo.com/images/T/twitter-icon-square-logo-108D17D373-seeklogo.com.png'
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/X_icon_2.svg/1483px-X_icon_2.svg.png'
     },
     {
       'id': 'spotify',
@@ -85,24 +85,9 @@ var apps = [
       'image': 'https://docs.google.com/drawings/d/e/2PACX-1vR6y2GvcGu9PdrX9zzE24dhm24hClcNsdAmZjIgSUC8sFOahf6t7Yg6l_W8Rd4GduWOH_X02GHVFdBb/pub?w=512&h=512'
     },
     {
-      'id': 'win11',
-      'title': 'Windows 11 in React',
-      'url': 'https://win11.blueedge.me/',
-      "image": "https://cdn.upload.systems/uploads/lnysPmIS.png",
-      "description": "A remake of the Windows 11 UI in React.js"
-    },
-    {
-      'id': 'win10',
-      'title': 'Windows 10 in React',
-      'url': 'https://win-10.vercel.app/',
-      "image": "https://downlody.com/windows/files/image/Windows-10-icon.png",
-      "description": "Windows 10 recreation in React.js"
-    },
-    {
-      'id': 'winxp',
-      'title': 'Windows XP in React',
-      'url': 'https://www.oonjaa.com/',
-      "image": "https://archive.org/services/img/1d9464dbff7a1630882d0e2090cb714c",
-      "description": "Windows XP recreation in React.js"
+      'id': 'netflix',
+      'title': 'Netflix',
+      'url': 'https://netflix.com',
+      'image': 'https://images.ctfassets.net/y2ske730sjqp/5QQ9SVIdc1tmkqrtFnG9U1/de758bba0f65dcc1c6bc1f31f161003d/BrandAssets_Logos_02-NSymbol.jpg?w=940'
     },
   ]
