@@ -12,6 +12,17 @@ body {
     -webkit-background-size: cover;
 }
 
+#constellation-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.6;
+}
+
 /* width */
 ::-webkit-scrollbar {
     width: 10px;
@@ -76,16 +87,16 @@ a:hover {
 }
 
 button {
-    color: var(--background);
+    color: white;
     background-color: var(--accent);
     padding: 8px 15px;
     border: none;
     font-size: 18px;
-    border-radius: 5px;   
+    border-radius: 9999px;
     transition: 0.4s all;
 }
 
-.play { font-family: "Inter"; font-weight: 600; color: var(--background); }
+.play { font-family: "Inter"; font-weight: 600; color: white; }
 
 button:hover {
     filter: brightness(80%);
