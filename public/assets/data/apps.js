@@ -56,7 +56,7 @@ var apps = [
     {
       "id": "twitter",
       "title": "Twitter",
-      "url": "https://twitter.com",
+      "url": "https://x.com",
       'image': 'https://seeklogo.com/images/T/twitter-icon-square-logo-108D17D373-seeklogo.com.png'
     },
     {

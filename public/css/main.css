@@ -41,7 +41,18 @@ p { font-size: 20px; }
 
 h1 > span {
     font-family: "Montserrat", sans-serif;
-    color: var(--accent);
+    background: linear-gradient(45deg, var(--accent), #00d4ff, var(--accent));
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 1s infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .center-container {
