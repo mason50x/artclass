@@ -4,22 +4,29 @@ frame.style.display = "none"
 const input = document.querySelector("input");
 input.addEventListener("keyup", function (event) {
   if (event.key === "Enter") {
-    div.style.display = 'none'
-    frame.style.display = 'block'
-    document.querySelector("iframe").src = __uv$config.prefix + __uv$config.encodeUrl(search(input.value));
-
+    const url = validateURL(input.value);
+    if (url) {
+      div.style.display = 'none'
+      frame.style.display = 'block'
+      document.querySelector("iframe").src = __uv$config.prefix + __uv$config.encodeUrl(url);
+    } else {
+      alert("Please enter a valid URL (e.g., https://example.com)");
+    }
   }
 });
 
 var params = new URLSearchParams(window.location.search)
 console.log("Searching for " + params.get("q"))
 if (params.get("q")) {
-  div.style.display = 'none'
-  frame.style.display = 'block'
-  document.querySelector("iframe").src = __uv$config.prefix + __uv$config.encodeUrl(search(params.get("q")));
+  const url = validateURL(params.get("q"));
+  if (url) {
+    div.style.display = 'none'
+    frame.style.display = 'block'
+    document.querySelector("iframe").src = __uv$config.prefix + __uv$config.encodeUrl(url);
+  }
 }
 
-function search(input, template) {
+function validateURL(input) {
   try {
     // input is a valid URL:
     // eg: https://example.com, https://example.com/test?q=param
@@ -38,9 +45,6 @@ function search(input, template) {
     // input was not valid URL
   }
 
-  // input may have been a valid URL, however the hostname was invalid
-
-  // Attempts to convert the input to a fully qualified URL have failed
-  // Treat the input as a search query
-  return `https://www.google.com/search?q=${encodeURIComponent(input)}`
+  // Return null if not a valid URL
+  return null;
 }
