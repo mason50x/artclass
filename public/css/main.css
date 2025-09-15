@@ -51,18 +51,21 @@ p { font-size: 20px; }
 
 h1 > span {
     font-family: "Inter", sans-serif;
-    background: linear-gradient(45deg, #0284d4, #00d4ff, #0284d4);
-    background-size: 200% 200%;
+    font-weight: 900;
+    background: linear-gradient(90deg, #0284d4, #00d4ff, #87ceeb, #00d4ff, #0284d4);
+    background-size: 300% 100%;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: shimmer 1s infinite;
+    animation: shimmer 2.5s ease-in-out infinite;
 }
 
 @keyframes shimmer {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% { background-position: 0% 0%; }
+    25% { background-position: 50% 0%; }
+    50% { background-position: 100% 0%; }
+    75% { background-position: 50% 0%; }
+    100% { background-position: 0% 0%; }
 }
 
 .center-container {
