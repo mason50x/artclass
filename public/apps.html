@@ -34,7 +34,10 @@
   </nav>
 
   <h1>Apps</h1>
-  <input type="text" class="input" id="search" placeholder="Search Apps" style="text-align: center" />
+  <div class="search-container" style="position: relative; display: inline-block;">
+    <input type="text" class="input" id="search" placeholder="Search Apps" style="text-align: center" autocomplete="off" />
+    <div id="suggestions" class="suggestions-dropdown" style="display: none;"></div>
+  </div>
   <div class="cardgroup" id="appcards"></div>
 </body>
 
@@ -42,22 +45,159 @@
 <script src="./assets/data/apps.js"></script>
 <script src="./js/apps.js"></script>
 
+<style>
+  .suggestions-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 5px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    margin-top: 2px;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+  }
+
+  .suggestions-dropdown::-webkit-scrollbar {
+    display: none; /* WebKit */
+  }
+
+  .suggestion-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    color: white;
+    border-bottom: 1px solid #333;
+    transition: background-color 0.2s;
+  }
+
+  .suggestion-item:hover,
+  .suggestion-item.highlighted {
+    background-color: #0284d4;
+  }
+
+  .suggestion-item:last-child {
+    border-bottom: none;
+  }
+
+  .search-container {
+    width: 500px;
+  }
+</style>
+
 <script>
   const searchInput = document.querySelector('#search')
+  const suggestionsContainer = document.querySelector('#suggestions')
   const items = document.querySelectorAll('.card')
+  let currentHighlight = -1
+  let allAppTitles = []
 
-  searchInput.addEventListener('input', function (event) {
-    const query = event.target.value.toLowerCase()
+  // Wait for apps to load, then extract titles
+  setTimeout(() => {
+    const appCards = document.querySelectorAll('.card h4')
+    allAppTitles = Array.from(appCards).map(card => card.textContent)
+  }, 100)
+
+  function showSuggestions(query) {
+    if (!query.trim()) {
+      hideSuggestions()
+      return
+    }
+
+    const matches = allAppTitles
+      .filter(title => title.toLowerCase().includes(query.toLowerCase()))
+      .slice(0, 5) // Limit to 5 suggestions
+
+    if (matches.length === 0) {
+      hideSuggestions()
+      return
+    }
+
+    suggestionsContainer.innerHTML = matches
+      .map((title, index) => `<div class="suggestion-item" data-index="${index}">${title}</div>`)
+      .join('')
+
+    suggestionsContainer.style.display = 'block'
+    currentHighlight = -1
+  }
+
+  function hideSuggestions() {
+    suggestionsContainer.style.display = 'none'
+    currentHighlight = -1
+  }
+
+  function highlightSuggestion(index) {
+    const suggestions = suggestionsContainer.querySelectorAll('.suggestion-item')
+    suggestions.forEach((item, i) => {
+      item.classList.toggle('highlighted', i === index)
+    })
+    currentHighlight = index
+  }
+
+  function selectSuggestion(title) {
+    searchInput.value = title
+    hideSuggestions()
+    filterApps(title)
+  }
+
+  function filterApps(query) {
+    const lowerQuery = query.toLowerCase()
 
     items.forEach(function (item) {
       const title = item.querySelector('.card h4').textContent.toLowerCase()
 
-      if (title.includes(query)) {
+      if (title.includes(lowerQuery)) {
         item.style.display = 'block'
       } else {
         item.style.display = 'none'
       }
     })
+  }
+
+  // Event listeners
+  searchInput.addEventListener('input', function (event) {
+    const query = event.target.value
+    showSuggestions(query)
+    filterApps(query)
+  })
+
+  searchInput.addEventListener('keydown', function (event) {
+    const suggestions = suggestionsContainer.querySelectorAll('.suggestion-item')
+
+    if (event.key === 'ArrowDown') {
+      event.preventDefault()
+      if (currentHighlight < suggestions.length - 1) {
+        highlightSuggestion(currentHighlight + 1)
+      }
+    } else if (event.key === 'ArrowUp') {
+      event.preventDefault()
+      if (currentHighlight > 0) {
+        highlightSuggestion(currentHighlight - 1)
+      }
+    } else if (event.key === 'Enter') {
+      event.preventDefault()
+      if (currentHighlight >= 0 && suggestions[currentHighlight]) {
+        selectSuggestion(suggestions[currentHighlight].textContent)
+      }
+    } else if (event.key === 'Escape') {
+      hideSuggestions()
+    }
+  })
+
+  suggestionsContainer.addEventListener('click', function (event) {
+    if (event.target.classList.contains('suggestion-item')) {
+      selectSuggestion(event.target.textContent)
+    }
+  })
+
+  // Hide suggestions when clicking outside
+  document.addEventListener('click', function (event) {
+    if (!event.target.closest('.search-container')) {
+      hideSuggestions()
+    }
   })
 </script>
 
