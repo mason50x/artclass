@@ -1,18 +1,5 @@
 var apps = [
     {
-      "id": "google",
-      "title": "Google",
-      "url": "https://www.google.com/?safe=active&ssui=on",
-      'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Google_Favicon_2025.svg/500px-Google_Favicon_2025.svg.png'
-
-    },
-    {
-      "id": "gemini",
-      "title": "Google Gemini",
-      "url": "https://gemini.google.com/",
-      'image': 'https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/gemini-color.png'
-    },
-    {
       'id': 'vscode',
       'title': 'Visual Studio Code',
       'url': 'https://vscode.dev/',
@@ -77,5 +64,101 @@ var apps = [
       'title': 'CrazyGames',
       'url': 'https://crazygames.com',
       'image': 'https://files.crazygames.com/assets/2022/PNG/Ziggy_Default.png'
+    },
+    {
+      'id': 'discord',
+      'title': 'Discord',
+      'url': 'https://discord.com/channels/@me',
+      'image': 'https://static.vecteezy.com/system/resources/previews/006/892/625/non_2x/discord-logo-icon-editorial-free-vector.jpg'
+    },
+    {
+      'id': 'twitch',
+      'title': 'Twitch',
+      'url': 'https://twitch.tv',
+      'image': 'https://img.freepik.com/premium-vector/twitch-logo_578229-259.jpg'
+    },
+    {
+      'id': 'instagram',
+      'title': 'Instagram',
+      'url': 'https://instagram.com',
+      'image': 'https://cdn.pixabay.com/photo/2021/06/15/12/14/instagram-6338393_1280.png'
+    },
+    {
+      'id': 'whatsapp',
+      'title': 'WhatsApp Web',
+      'url': 'https://web.whatsapp.com',
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/WhatsApp_icon.png/598px-WhatsApp_icon.png'
+    },
+    {
+      'id': 'facebook',
+      'title': 'Facebook',
+      'url': 'https://facebook.com',
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1024px-Facebook_Logo_%282019%29.png'
+    },
+    {
+      'id': 'github',
+      'title': 'GitHub',
+      'url': 'https://github.com',
+      'image': 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png'
+    },
+    {
+      'id': 'stackoverflow',
+      'title': 'Stack Overflow',
+      'url': 'https://stackoverflow.com',
+      'image': 'https://cdn.sstatic.net/Sites/stackoverflow/Img/apple-touch-icon@2.png'
+    },
+    {
+      'id': 'amazon',
+      'title': 'Amazon',
+      'url': 'https://amazon.com',
+      'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKT8ybzOCCWP0YuUu4znbTcOtkd4tTUo54KQ&s'
+    },
+    {
+      'id': 'linkedin',
+      'title': 'LinkedIn',
+      'url': 'https://linkedin.com',
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/768px-LinkedIn_logo_initials.png'
+    },
+    {
+      'id': 'figma',
+      'title': 'Figma',
+      'url': 'https://figma.com',
+      'image': 'https://cdn-icons-png.flaticon.com/512/5968/5968705.png'
+    },
+    {
+      'id': 'canva',
+      'title': 'Canva',
+      'url': 'https://canva.com',
+      'image': 'https://img.utdstc.com/icon/431/c6b/431c6be8e8dbb358738980c75c35c56ee8e8c3238089ed9b6f04d295d4008970:200'
+    },
+    {
+      'id': 'notion',
+      'title': 'Notion',
+      'url': 'https://notion.so',
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Notion-logo.svg/2048px-Notion-logo.svg.png'
+    },
+    {
+      'id': 'slack',
+      'title': 'Slack',
+      'url': 'https://slack.com',
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Slack_icon_2019.svg/2048px-Slack_icon_2019.svg.png'
+    },
+    {
+      'id': 'pinterest',
+      'title': 'Pinterest',
+      'url': 'https://pinterest.com',
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Pinterest-logo.png/800px-Pinterest-logo.png'
+    },
+    {
+      'id': 'dropbox',
+      'title': 'Dropbox',
+      'url': 'https://dropbox.com',
+      'image': 'https://cdn-icons-png.flaticon.com/512/2496/2496092.png'
+    },
+    {
+      'id': 'onedrive',
+      'title': 'OneDrive',
+      'url': 'https://onedrive.live.com',
+      'image': 'https://cdn-icons-png.flaticon.com/512/5968/5968523.png'
     },
   ]
