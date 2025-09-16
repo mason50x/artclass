@@ -25,7 +25,40 @@ function launchab() {
 }
 
 function showUpdateLog() {
+  // Set cookie to mark current version as viewed
+  document.cookie = `updateLogViewedVersion=${CURRENT_UPDATE_VERSION}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`
   window.location.href = '/updates.html'
+}
+
+// Current update version - INCREMENT THIS WHEN ADDING NEW UPDATES
+const CURRENT_UPDATE_VERSION = "2.2.0"
+
+// Check if updates have been viewed and show/hide badge accordingly
+function checkUpdateBadge() {
+  const updateBadge = document.getElementById('updateBadge')
+  if (updateBadge) {
+    const viewedVersion = getCookie('updateLogViewedVersion')
+
+    if (viewedVersion === CURRENT_UPDATE_VERSION) {
+      updateBadge.classList.add('hidden')
+    } else {
+      updateBadge.classList.remove('hidden')
+    }
+  }
+}
+
+// Helper function to get cookie value
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+  return null;
+}
+
+// Function to reset the update badge (call this when new updates are added)
+function resetUpdateBadge() {
+  document.cookie = "updateLogViewedVersion=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/"
+  checkUpdateBadge()
 }
 
 if (window.self !== window.self) document.querySelector('#launchab').style.display = 'none'
@@ -95,7 +128,10 @@ function displayRandomMessage() {
   }
 }
 
-// Display random message when page loads
-document.addEventListener('DOMContentLoaded', displayRandomMessage)
+// Display random message and check update badge when page loads
+document.addEventListener('DOMContentLoaded', function() {
+  displayRandomMessage()
+  checkUpdateBadge()
+})
 
 // Debug

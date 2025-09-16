@@ -331,6 +331,23 @@ margin: 5px auto;
   padding: 0 20px;
 }
 
+/* Fix positioning for update log page */
+body.updates-page {
+  height: auto;
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
+body.updates-page .center-container {
+  position: static;
+  transform: none;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  left: auto;
+  top: auto;
+  padding-top: 10px;
+}
+
 .update-entry {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -384,4 +401,47 @@ margin: 5px auto;
   font-weight: bold;
   position: absolute;
   left: 0;
+}
+
+/* Update Badge Styles */
+.button-with-badge {
+  position: relative;
+  display: inline-block;
+}
+
+.update-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #ef4444;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulse 2s infinite;
+  z-index: 10;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.update-badge.hidden {
+  display: none;
 }

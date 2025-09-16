@@ -14,7 +14,7 @@
     <script src="./js/preload.js"></script>
 
   </head>
-  <body>
+  <body class="updates-page">
     <nav>
       <div class="logo">
         <a href="/">
@@ -34,6 +34,17 @@
     <div class="center-container">
       <h1>Update Log</h1>
       <div class="update-log">
+        <div class="update-entry">
+          <h3>Version 2.2.0 - Test Update</h3>
+          <p class="update-date">January 2025</p>
+          <ul>
+            <li>Test update to verify badge system functionality</li>
+            <li>Improved update notification system with version tracking</li>
+            <li>Fixed update cards positioning to prevent navbar overflow</li>
+            <li>Enhanced user experience with better visual feedback</li>
+          </ul>
+        </div>
+
         <div class="update-entry">
           <h3>Version 2.1.0 - Recent Updates</h3>
           <p class="update-date">January 2025</p>
@@ -76,6 +87,13 @@
       </button>
     </div>
     <script src="./js/index.js"></script>
+    <script>
+      // Mark current version as viewed when page loads
+      document.addEventListener('DOMContentLoaded', function() {
+        const CURRENT_UPDATE_VERSION = "2.2.0"
+        document.cookie = `updateLogViewedVersion=${CURRENT_UPDATE_VERSION}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`
+      })
+    </script>
 
   </body>
 </html>
