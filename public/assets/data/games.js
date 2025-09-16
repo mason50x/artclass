@@ -7,9 +7,11 @@ var games = [
     image: 'https://play-lh.googleusercontent.com/e5jzYTn7Mjh9Ghn-DFpVedkOlRfSOyCS2AFgXdTrADIuuUbjx6vP6r_YOM2j5m7uLQ'
   },
   {
-    id: 'mine'
-    title: 'minecraft'
-    url: 'eaglecraft.com'
+    id: 'mine',
+    title: 'Minecraft',
+    description: 'build blocks, mine resources, survive the night, craft your world',
+    url: 'https://eaglercraft.com',
+    image: 'https://www.minecraft.net/content/dam/games/minecraft/key-art/Minecraft-Java-Edition_KeyArt.jpg'
   },
   {
     id: 'eggycar',
@@ -251,12 +253,6 @@ var games = [
     title: 'snowball.io',
     url: 'https://assets.3kh0.net/snowbattle/index.html',
     image: 'https://play-lh.googleusercontent.com/X8FEOENa_t5mlRllBh2RRLc6sMnPIq56Wxa2ndValDOmwzIRhAv7MG6fT97TLQ2DK48'
-  },
-  {
-    id: 'minecraft',
-    title: 'Minecraft Classic',
-    url: 'https://assets.3kh0.net/minecraft-classic/index.html',
-    image: 'https://cdn.iconscout.com/icon/free/png-256/minecraft-2752120-2284937.png'
   },
   {
     id: 'smashkarts',
