@@ -18,7 +18,7 @@ var games = [
     title: 'Eggy Car',
     description: 'drive car with egg, don\'t drop egg, egg more important than life',
     url: 'https://hva2021.github.io/eggy-car/index.html',
-    image: 'https://assets.3kh0.net/eggycar/eggy-car.png'
+    image: 'https://static.keygames.com/9/113739/96341/1024x1024/eggy-car.webp'
   },
   {
     id: 'rocketleague',

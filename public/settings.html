@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="preload" href="./assets/images/logo.png" as="image" type="image/png" />
-    <link rel="icon" href="./assets/images/logo.png" type="image/png" />
     <link
       rel="shortcut icon"
       href="./assets/images/logo.png"
@@ -12,20 +10,18 @@
 
     <link rel="stylesheet" href="./css/master.css" />
 
-    <script src="./js/auth.js"></script>
     <script src="/uv/uv.bundle.js" charset="UTF-8"></script>
     <script src="/uv/uv.config.js"></script>
     <script src="./js/preload.js"></script>
 
+    <script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script>
   </head>
 
   <body>
     <nav>
       <div class="logo">
-        <a href="/">
-          <img src="./assets/images/logo.png" alt="Logo" draggable="false" />
-          <h1>Infinite</h1>
-        </a>
+        <img src="./assets/images/logo.png" alt="Logo" draggable="false" />
+        <h1>Infinite</h1>
       </div>
 
       <p id="time"></p>
@@ -34,8 +30,8 @@
         <div class="navitem"><a href="/">Home</a></div>
         <div class="navitem"><a href="/gs.html">Games</a></div>
         <div class="navitem"><a href="/apps.html">Apps</a></div>
-        <div class="navitem"><a href="/search.html">Web Proxy</a></div>
-        <div class="navitem"><a selected href="/settings.html">Settings</a></div>
+        <div class="navitem"><a href="/emulator.html">Emulator</a></div>
+        <div class="navitem"><a href="/search.html">Search</a></div>
       </div>
     </nav>
 
@@ -43,15 +39,17 @@
       <h1>Settings</h1>
 
       <h2>Tab cloaking</h2>
-      <input type="text" id="tabname" placeholder="Tab name" /><br />
-      <input type="text" id="tabicon" placeholder="Tab icon" /><br />
+      <input type="text" id="tabname" placeholder="Tab name" />
+      <button onclick="setTab()" class="secondary">Set tab name</button> <br />
+      <input type="text" id="tabicon" placeholder="Tab icon" />
+      <button onclick="setTab()" class="secondary">Set tab icon</button> <br />
 
       <button class="secondary" onclick="setTabPreset('default')">
         <img src="/assets/images/logo.png" />
       </button>
       <button class="secondary" onclick="setTabPreset('google')">
         <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Google_Favicon_2025.svg/500px-Google_Favicon_2025.svg.png"
+          src="https://static-00.iconduck.com/assets.00/google-icon-2048x2048-czn3g8x8.png"
         />
       </button>
       <button class="secondary" onclick="setTabPreset('drive')">
@@ -72,140 +70,25 @@
 
       <br /><br />
 
-      <h2>Panic Key Setup</h2>
-
-      <!-- Current Configuration Display -->
-      <div id="panic-current-config" style="display: none;">
-        <div class="current-panic-display">
-          <h3>Panic Key Configured</h3>
-          <div class="config-info">
-            <div class="config-item">
-              <strong>Panic Key:</strong> <span id="current-panic-key">Not set</span>
-            </div>
-            <div class="config-item">
-              <strong>Redirect URL:</strong> <span id="current-panic-url">Not set</span>
-            </div>
-          </div>
-          <div class="config-actions">
-            <button onclick="reconfigurePanicKey()" class="secondary">Reconfigure</button>
-            <button onclick="clearPanicKey()" class="secondary danger">Remove</button>
-          </div>
-        </div>
-      </div>
-
-      <div id="panic-setup-container">
-        <!-- Step 1: Introduction -->
-        <div id="panic-step-1" class="panic-step">
-          <h3>🚨 Set up your panic key</h3>
-          <p>A panic key instantly redirects to a safe website when pressed. This helps you quickly switch away from this site if needed.</p>
-          <div class="panic-tips">
-            <h4>💡 Tips for choosing a good panic key:</h4>
-            <ul>
-              <li>Use a key you don't press often (like F1, F2, or the ` key)</li>
-              <li>Avoid common keys like Space, Enter, or letters you type frequently</li>
-              <li>The panic key works anywhere on this site, even while typing</li>
-            </ul>
-          </div>
-          <button onclick="goToPanicStep(2)" class="button">Get Started →</button>
-        </div>
-
-        <!-- Step 2: Choose URL -->
-        <div id="panic-step-2" class="panic-step" style="display: none;">
-          <h3>Step 1: Choose where to redirect</h3>
-          <p>Select a safe website to redirect to when the panic key is pressed:</p>
-
-          <div class="panic-url-grid">
-            <button class="panic-url-option" onclick="setPanicUrlAndContinue('google')">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Google_Favicon_2025.svg/500px-Google_Favicon_2025.svg.png" />
-              <span>Google</span>
-            </button>
-            <button class="panic-url-option" onclick="setPanicUrlAndContinue('drive')">
-              <img src="https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png" />
-              <span>Google Drive</span>
-            </button>
-            <button class="panic-url-option" onclick="setPanicUrlAndContinue('docs')">
-              <img src="https://ssl.gstatic.com/docs/documents/images/kix-favicon7.ico" />
-              <span>Google Docs</span>
-            </button>
-            <button class="panic-url-option" onclick="setPanicUrlAndContinue('classroom')">
-              <img src="https://ssl.gstatic.com/classroom/ic_product_classroom_32.png" />
-              <span>Google Classroom</span>
-            </button>
-          </div>
-
-          <div class="custom-url-section">
-            <p>Or enter a custom URL:</p>
-            <input type="text" id="panicurl" placeholder="https://example.com" />
-            <button onclick="setCustomPanicUrlAndContinue()" class="secondary">Use Custom URL</button>
-          </div>
-
-          <button onclick="goToPanicStep(1)" class="secondary">← Back</button>
-        </div>
-
-        <!-- Step 3: Choose Key -->
-        <div id="panic-step-3" class="panic-step" style="display: none;">
-          <h3>Step 2: Choose your panic key</h3>
-          <p>Selected URL: <strong id="selected-panic-url"></strong></p>
-
-          <div class="key-selection-methods">
-            <div class="method-card">
-              <h4>🖱️ Recommended: Auto-detect</h4>
-              <p>Click the button below, then press the key you want to use:</p>
-              <button onclick="startGuidedDetection()" id="guided-detect-btn" class="button">
-                Press to detect key
-              </button>
-              <div id="detection-status" style="display: none;"></div>
-            </div>
-
-            <div class="method-card">
-              <h4>⌨️ Manual entry</h4>
-              <p>Type the key name manually (e.g., "F1", "Escape", "`"):</p>
-              <input type="text" id="panickey" placeholder="Enter key name" />
-              <button onclick="setManualKeyAndFinish()" class="secondary">Set Key</button>
-            </div>
-          </div>
-
-          <button onclick="goToPanicStep(2)" class="secondary">← Back</button>
-        </div>
-
-        <!-- Step 4: Success -->
-        <div id="panic-step-4" class="panic-step" style="display: none;">
-          <h3>✅ Panic key setup complete!</h3>
-          <div class="success-summary">
-            <p><strong>Panic Key:</strong> <span id="final-key"></span></p>
-            <p><strong>Redirect URL:</strong> <span id="final-url"></span></p>
-          </div>
-
-          <div class="test-section">
-            <h4>🧪 Test your panic key</h4>
-            <p>Try pressing your panic key now to make sure it works!</p>
-            <button onclick="testPanicKey()" class="button">Test Panic Key</button>
-          </div>
-
-          <div class="completion-actions">
-            <button onclick="goToPanicStep(1)" class="secondary">Set Up Again</button>
-            <button onclick="closePanicSetup()" class="button">Done</button>
-          </div>
-        </div>
-
-        <!-- Existing/Advanced Settings -->
-        <div id="panic-advanced" style="display: none;">
-          <h3>Advanced Settings</h3>
-          <input type="text" id="panickey-advanced" placeholder="Panic key" />
-          <input type="text" id="panicurl-advanced" placeholder="Panic url" />
-          <button onclick="detectPanic()" id="panickeybtn" class="secondary">Auto-detect panic key</button>
-        </div>
-      </div>
-
-      <div id="panic-current-settings" style="margin-top: 20px;">
-        <button onclick="toggleAdvancedPanic()" class="secondary" id="advanced-toggle">Show Advanced Settings</button>
-      </div>
+      <h2>Account</h2>
+      <button onclick="logout()" class="action-button danger" style="background-color: #e74c3c;">Logout</button>
 
       <br /><br />
 
-      <h2>Authentication</h2>
-      <button onclick="logout()" class="secondary" style="background-color: #e74c3c; color: white;">
-        Log Out
+      <h2>Panic Key</h2>
+      <h4>
+        WARNING: Panic keys trigger whenever you click that key whenever you
+        click it, including typing on this page, so set it to a key you don't
+        click often.
+      </h4>
+      <input type="text" id="panickey" placeholder="Panic key" />
+      <button onclick="setPanicKey()" class="secondary">Set panic key</button>
+      <br />
+      <input type="text" id="panicurl" placeholder="Panic url" />
+      <button onclick="setPanicUrl()" class="secondary">Set panic url</button>
+      <br />
+      <button onclick="detectPanic()" id="panickeybtn" class="secondary">
+        Auto-detect panic key
       </button>
     </div>
   </body>
@@ -213,4 +96,9 @@
   <script src="./js/index.js"></script>
   <script src="./js/settings.js"></script>
 
+  <script type="text/javascript">
+      aclib.runAutoTag({
+          zoneId: '6hmeyutild',
+      });
+  </script>
 </html>
