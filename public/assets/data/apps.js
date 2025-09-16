@@ -161,4 +161,94 @@ var apps = [
       'url': 'https://onedrive.live.com',
       'image': 'https://cdn-icons-png.flaticon.com/512/5968/5968523.png'
     },
+    {
+      'id': 'nba',
+      'title': 'NBA',
+      'url': 'https://nba.com',
+      'image': 'https://static.vecteezy.com/system/resources/thumbnails/027/127/440/small_2x/nba-logo-nba-icon-transparent-free-png.png'
+    },
+    {
+      'id': 'poki',
+      'title': 'Poki',
+      'url': 'https://poki.com',
+      'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0UOfhJT5UOAzWznFy3EuIOh8dbEcRCeWfcQ&s'
+    },
+    {
+      'id': 'temu',
+      'title': 'Temu',
+      'url': 'https://temu.com',
+      'image': 'https://i.pinimg.com/474x/51/f0/74/51f0747d0411b526d57f70139b4d4348.jpg'
+    },
+    {
+      'id': 'geforcenow',
+      'title': 'GeForce Now',
+      'url': 'https://play.geforcenow.com',
+      'image': 'https://play-lh.googleusercontent.com/_-b_HQXrVyyhZSHj_BoE9u_-cxkcHDH_yLX5rDjJsFMIfsCNQs9F3QP4JvEFcWaSIz0'
+    },
+    {
+      'id': 'hbomax',
+      'title': 'HBO Max',
+      'url': 'https://play.max.com',
+      'image': 'https://cdn2.steamgriddb.com/icon/590fcadab00abacc5caaf30b51e91ad3/24/256x256.png'
+    },
+    {
+      'id': 'movieweb',
+      'title': 'Movie Web',
+      'url': 'https://movie-web.app',
+      'image': 'https://cdn-icons-png.flaticon.com/512/8109/8109065.png'
+    },
+    {
+      'id': 'mlb',
+      'title': 'MLB',
+      'url': 'https://mlb.com',
+      'image': 'https://content.sportslogos.net/logos/4/490/full/2585__major_league_baseball-alternate-2019.png'
+    },
+    {
+      'id': 'newgrounds',
+      'title': 'Newgrounds',
+      'url': 'https://newgrounds.com',
+      'image': 'https://i.redd.it/hep7d95hfjw81.jpg'
+    },
+    {
+      'id': 'paramount',
+      'title': 'Paramount+',
+      'url': 'https://paramountplus.com',
+      'image': 'https://play-lh.googleusercontent.com/oi4GE8ulxHp4Y2xVzKu_WAMrgE4Jj4Kbdd7hAWLeoZTsMtC5bYTd2xcYhlvMk69pTFY'
+    },
+    {
+      'id': 'gptzero',
+      'title': 'GPTZero',
+      'url': 'https://gptzero.me',
+      'image': 'https://media.licdn.com/dms/image/v2/D560BAQFn4s6Nr1sKVw/company-logo_200_200/company-logo_200_200/0/1686030874712/gptzero_logo?e=2147483647&v=beta&t=6EbDNdTgAfwP9o4coYr5V0aIhYKVo2dvOXZqs48aEl8'
+    },
+    {
+      'id': 'soundcloud',
+      'title': 'SoundCloud',
+      'url': 'https://soundcloud.com',
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Antu_soundcloud.svg/2048px-Antu_soundcloud.svg.png'
+    },
+    {
+      'id': 'applemusic',
+      'title': 'Apple Music',
+      'url': 'https://music.apple.com',
+      'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7k7lN6ADI2uE11Jr2h27ZzqXK2bp63f055fl-S1ogdFQfZYXSHLFy4bOMuH07L9T0Rn0&usqp=CAU'
+    },
+    {
+      'id': 'vercel',
+      'title': 'Vercel',
+      'url': 'https://vercel.com',
+      'image': 'https://assets.vercel.com/image/upload/front/favicon/vercel/180x180.png'
+    },
+    {
+      'id': 'wikipedia',
+      'title': 'Wikipedia',
+      'url': 'https://wikipedia.org',
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Wikipedia-logo-v2.svg/2048px-Wikipedia-logo-v2.svg.png'
+    },
+    {
+      'id': 'y8',
+      'title': 'Y8',
+      'url': 'https://y8.com',
+      'image': 'https://play-lh.googleusercontent.com/rrFtf3hQpmMUmwHdcsvsV6vNpjMP9wsbvt6PpVg6sUleu0iJrlqVQizckc49dNkFQho'
+    },
   ]
