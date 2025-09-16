@@ -5,11 +5,18 @@ class ConstellationBackground {
         this.stars = [];
         this.mouse = { x: 0, y: 0 };
         this.maxDistance = 150;
+        this.isInteractive = this.checkIfInteractive();
 
         this.init();
         this.createStars();
         this.animate();
         this.bindEvents();
+    }
+
+    checkIfInteractive() {
+        // Only interactive on index page
+        const path = window.location.pathname;
+        return path === '/' || path === '/index.html';
     }
 
     init() {
@@ -95,19 +102,21 @@ class ConstellationBackground {
 
     updateStars() {
         this.stars.forEach(star => {
-            // Cursor repulsion force
-            const distToMouse = Math.sqrt(
-                Math.pow(star.x - this.mouse.x, 2) +
-                Math.pow(star.y - this.mouse.y, 2)
-            );
+            // Cursor repulsion force - only on interactive pages
+            if (this.isInteractive) {
+                const distToMouse = Math.sqrt(
+                    Math.pow(star.x - this.mouse.x, 2) +
+                    Math.pow(star.y - this.mouse.y, 2)
+                );
 
-            if (distToMouse < this.maxDistance && distToMouse > 0) {
-                const force = (this.maxDistance - distToMouse) / this.maxDistance;
-                const angle = Math.atan2(star.y - this.mouse.y, star.x - this.mouse.x);
-                const pushStrength = force * 2;
+                if (distToMouse < this.maxDistance && distToMouse > 0) {
+                    const force = (this.maxDistance - distToMouse) / this.maxDistance;
+                    const angle = Math.atan2(star.y - this.mouse.y, star.x - this.mouse.x);
+                    const pushStrength = force * 2;
 
-                star.vx += Math.cos(angle) * pushStrength * 0.1;
-                star.vy += Math.sin(angle) * pushStrength * 0.1;
+                    star.vx += Math.cos(angle) * pushStrength * 0.1;
+                    star.vy += Math.sin(angle) * pushStrength * 0.1;
+                }
             }
 
             // Attraction to nearby stars (clustering effect)
@@ -166,10 +175,13 @@ class ConstellationBackground {
     }
 
     bindEvents() {
-        window.addEventListener('mousemove', (e) => {
-            this.mouse.x = e.clientX;
-            this.mouse.y = e.clientY;
-        });
+        // Only bind mouse events on interactive pages
+        if (this.isInteractive) {
+            window.addEventListener('mousemove', (e) => {
+                this.mouse.x = e.clientX;
+                this.mouse.y = e.clientY;
+            });
+        }
 
         window.addEventListener('resize', () => {
             this.canvas.width = window.innerWidth;
