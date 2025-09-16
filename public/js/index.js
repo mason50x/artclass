@@ -31,7 +31,7 @@ function showUpdateLog() {
 }
 
 // Current update version - INCREMENT THIS WHEN ADDING NEW UPDATES
-const CURRENT_UPDATE_VERSION = "2.2.0"
+const CURRENT_UPDATE_VERSION = "1.0"
 
 // Check if updates have been viewed and show/hide badge accordingly
 function checkUpdateBadge() {
