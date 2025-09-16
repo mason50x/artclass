@@ -44,9 +44,151 @@ if (localStorage.getItem("panickey")) document.querySelector("#panickey").value 
 if (localStorage.getItem("panicurl")) document.querySelector("#panicurl").value = localStorage.getItem("panicurl")
 
 
+// Guided Panic Key Setup Functions
+var currentPanicStep = 1;
+var selectedPanicUrl = '';
 var detecting = false;
+
+function goToPanicStep(step) {
+    // Hide all steps
+    for (let i = 1; i <= 4; i++) {
+        const stepEl = document.querySelector(`#panic-step-${i}`);
+        if (stepEl) stepEl.style.display = 'none';
+    }
+
+    // Show current step
+    const currentStepEl = document.querySelector(`#panic-step-${step}`);
+    if (currentStepEl) {
+        currentStepEl.style.display = 'block';
+        currentPanicStep = step;
+    }
+}
+
+function setPanicUrlAndContinue(preset) {
+    var url = panicUrlPresets[preset];
+    selectedPanicUrl = url;
+    localStorage.setItem("panicurl", url);
+
+    // Update the display in step 3
+    document.querySelector("#selected-panic-url").textContent = url;
+
+    goToPanicStep(3);
+}
+
+function setCustomPanicUrlAndContinue() {
+    var url = document.querySelector("#panicurl").value;
+    if (!url) {
+        alert("Please enter a URL");
+        return;
+    }
+
+    if (!url.startsWith('http://') && !url.startsWith('https://')) {
+        url = 'https://' + url;
+    }
+
+    selectedPanicUrl = url;
+    localStorage.setItem("panicurl", url);
+
+    // Update the display in step 3
+    document.querySelector("#selected-panic-url").textContent = url;
+
+    goToPanicStep(3);
+}
+
+function startGuidedDetection() {
+    var button = document.querySelector("#guided-detect-btn");
+    var status = document.querySelector("#detection-status");
+
+    button.disabled = true;
+    button.innerHTML = "Press any key now...";
+    status.style.display = 'block';
+    status.innerHTML = '<p style="color: #f39c12;">⏳ Waiting for key press...</p>';
+
+    detecting = true;
+    document.addEventListener("keydown", guidedDetectHandler);
+
+    function guidedDetectHandler(e) {
+        e.preventDefault();
+
+        var keyName = e.key;
+        localStorage.setItem("panickey", keyName);
+
+        status.innerHTML = `<p style="color: #27ae60;">✅ Key detected: <strong>${keyName}</strong></p>`;
+        button.innerHTML = "Key Set!";
+        button.disabled = false;
+        detecting = false;
+
+        document.removeEventListener("keydown", guidedDetectHandler);
+
+        // Auto-advance to success step after a short delay
+        setTimeout(() => {
+            finishPanicSetup(keyName, selectedPanicUrl);
+        }, 1500);
+    }
+}
+
+function setManualKeyAndFinish() {
+    var keyInput = document.querySelector("#panickey");
+    var keyName = keyInput.value.trim();
+
+    if (!keyName) {
+        alert("Please enter a key name");
+        return;
+    }
+
+    localStorage.setItem("panickey", keyName);
+    finishPanicSetup(keyName, selectedPanicUrl);
+}
+
+function finishPanicSetup(keyName, url) {
+    document.querySelector("#final-key").textContent = keyName;
+    document.querySelector("#final-url").textContent = url;
+    goToPanicStep(4);
+}
+
+function testPanicKey() {
+    var panicKey = localStorage.getItem("panickey");
+    var panicUrl = localStorage.getItem("panicurl");
+
+    if (!panicKey || !panicUrl) {
+        alert("Panic key not properly configured");
+        return;
+    }
+
+    if (confirm(`This will redirect to: ${panicUrl}\n\nContinue with test?`)) {
+        window.location.href = panicUrl;
+    }
+}
+
+function closePanicSetup() {
+    // After completing setup, show the current configuration
+    checkPanicKeyConfiguration();
+}
+
+function toggleAdvancedPanic() {
+    var advanced = document.querySelector("#panic-advanced");
+    var toggle = document.querySelector("#advanced-toggle");
+
+    if (advanced.style.display === 'none' || !advanced.style.display) {
+        advanced.style.display = 'block';
+        toggle.textContent = 'Hide Advanced Settings';
+
+        // Sync with existing values
+        if (localStorage.getItem("panickey")) {
+            document.querySelector("#panickey-advanced").value = localStorage.getItem("panickey");
+        }
+        if (localStorage.getItem("panicurl")) {
+            document.querySelector("#panicurl-advanced").value = localStorage.getItem("panicurl");
+        }
+    } else {
+        advanced.style.display = 'none';
+        toggle.textContent = 'Show Advanced Settings';
+    }
+}
+
+// Original detectPanic function for advanced mode
 function detectPanic() {
-    var key = document.querySelector("#panickey")
+    var key = document.querySelector("#panickey-advanced")
     var button = document.querySelector("#panickeybtn")
     button.disabled = true
     button.innerHTML = "Press any key..."
@@ -63,7 +205,6 @@ function detectPanic() {
 
         document.removeEventListener("keydown", detectPanicHandler)
     }
-
 }
 
 function setPanicKey() {
@@ -89,8 +230,82 @@ function setPanicUrlPreset(preset) {
     localStorage.setItem("panicurl", url)
 }
 
+// Current panic key configuration functions
+function checkPanicKeyConfiguration() {
+    var panicKey = localStorage.getItem("panickey");
+    var panicUrl = localStorage.getItem("panicurl");
+
+    var currentConfig = document.querySelector("#panic-current-config");
+    var setupContainer = document.querySelector("#panic-setup-container");
+
+    if (panicKey && panicUrl) {
+        // Show current configuration
+        document.querySelector("#current-panic-key").textContent = panicKey;
+        document.querySelector("#current-panic-url").textContent = panicUrl;
+        currentConfig.style.display = 'block';
+        setupContainer.style.display = 'none';
+    } else {
+        // Show setup wizard
+        currentConfig.style.display = 'none';
+        setupContainer.style.display = 'block';
+        goToPanicStep(1);
+    }
+}
+
+function testCurrentPanicKey() {
+    var panicKey = localStorage.getItem("panickey");
+    var panicUrl = localStorage.getItem("panicurl");
+
+    if (!panicKey || !panicUrl) {
+        alert("Panic key not properly configured");
+        return;
+    }
+
+    if (confirm(`This will test your panic key by redirecting to: ${panicUrl}\n\nPress OK to test, then press your panic key (${panicKey}) to see if it works.`)) {
+        // Give user time to press the panic key
+        var testButton = event.target;
+        testButton.innerHTML = "Press your panic key now...";
+        testButton.disabled = true;
+
+        setTimeout(() => {
+            testButton.innerHTML = "🧪 Test Panic Key";
+            testButton.disabled = false;
+            alert("Test timeout. If the page didn't redirect when you pressed your panic key, try reconfiguring it.");
+        }, 5000);
+    }
+}
+
+function reconfigurePanicKey() {
+    var currentConfig = document.querySelector("#panic-current-config");
+    var setupContainer = document.querySelector("#panic-setup-container");
+
+    currentConfig.style.display = 'none';
+    setupContainer.style.display = 'block';
+    goToPanicStep(1);
+}
+
+function clearPanicKey() {
+    if (confirm("Are you sure you want to remove your panic key configuration? This will disable the panic key functionality.")) {
+        localStorage.removeItem("panickey");
+        localStorage.removeItem("panicurl");
+
+        // Clear input fields
+        var keyInput = document.querySelector("#panickey");
+        var urlInput = document.querySelector("#panicurl");
+        if (keyInput) keyInput.value = '';
+        if (urlInput) urlInput.value = '';
+
+        // Update display
+        checkPanicKeyConfiguration();
+
+        alert("Panic key configuration removed successfully.");
+    }
+}
+
 // Add auto-save event listeners
 document.addEventListener('DOMContentLoaded', function() {
+    // Check and display current panic key configuration
+    checkPanicKeyConfiguration();
     // Tab name auto-save
     document.querySelector('#tabname').addEventListener('input', function() {
         setTimeout(() => {
