@@ -29,7 +29,7 @@ var tabPresets = {
     },
     default: {
         name: 'Infinite',
-        icon: '/assets/images/icon.png'
+        icon: '/assets/images/logo.png'
     }
 }
 
