@@ -7,6 +7,11 @@ var games = [
     image: 'https://play-lh.googleusercontent.com/e5jzYTn7Mjh9Ghn-DFpVedkOlRfSOyCS2AFgXdTrADIuuUbjx6vP6r_YOM2j5m7uLQ'
   },
   {
+    id: 'mine'
+    title: 'minecraft'
+    url: 'eaglecraft.com'
+  },
+  {
     id: 'eggycar',
     title: 'Eggy Car',
     description: 'drive car with egg, don\'t drop egg, egg more important than life',
