@@ -322,3 +322,66 @@ margin: 5px auto;
   filter: brightness(85%);
   transform: translateY(-2px);
 }
+
+/* Update Log Styles */
+.update-log {
+  text-align: left;
+  max-width: 800px;
+  margin: 0 auto 30px auto;
+  padding: 0 20px;
+}
+
+.update-entry {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.update-entry:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(2, 132, 212, 0.3);
+  transform: translateY(-2px);
+}
+
+.update-entry h3 {
+  color: #0284d4;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-family: "Inter", sans-serif;
+}
+
+.update-date {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.update-entry ul {
+  list-style: none;
+  padding: 0;
+}
+
+.update-entry li {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 8px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.update-entry li:before {
+  content: "•";
+  color: #0284d4;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
