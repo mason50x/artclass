@@ -13,24 +13,6 @@ var apps = [
       'image': 'https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/gemini-color.png'
     },
     {
-      "id": "telegram",
-      "title": "Telegram",
-      "url": "https://web.telegram.org/a/",
-      'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/512px-Telegram_logo.svg.png'
-    }, 
-    {
-      "id": "guilded",
-      "title": "Guilded",
-      "url": "https://www.guilded.gg/",
-      'image': 'https://yt3.googleusercontent.com/cPlwwgZkQQgHRLAg7jvJG4yKGLDId6NH7H_S87TCoEV_dbsF9Me_4YSBL5DyMsndx6hzoZxHUw=s176-c-k-c0x00ffffff-no-rj'
-    },
-    {
-      "id": "geforce",
-      "title": "GeForce NOW (may not work)",
-      "url": "https://play.geforcenow.com",
-      'image': 'https://raw.githubusercontent.com/proudparrot2/cdn/main/8z9zeDIT_400x400-removebg-preview.png'
-    },
-    {
       'id': 'vscode',
       'title': 'Visual Studio Code',
       'url': 'https://vscode.dev/',
@@ -73,12 +55,6 @@ var apps = [
       'image': 'https://images.chesscomfiles.com/uploads/v1/images_users/tiny_mce/SamCopeland/phpmeXx6V.png'
     },
     {
-      'id': 'movie-web',
-      'title': 'movie-web',
-      'url': 'http://movie-web.app/',
-      'image': 'https://github.com/movie-web/movie-web/blob/dev/public/android-chrome-512x512.png?raw=true'
-    },
-    {
       'id': 'coolmathgames',
       'title': 'Cool Math Games',
       'url': 'https://coolmathgames.com',
@@ -89,5 +65,17 @@ var apps = [
       'title': 'Netflix',
       'url': 'https://netflix.com',
       'image': 'https://images.ctfassets.net/y2ske730sjqp/5QQ9SVIdc1tmkqrtFnG9U1/de758bba0f65dcc1c6bc1f31f161003d/BrandAssets_Logos_02-NSymbol.jpg?w=940'
+    },
+    {
+      'id': 'nowgg',
+      'title': 'now.gg',
+      'url': 'https://now.gg',
+      'image': 'https://miro.medium.com/v2/resize:fit:1000/1*YM7t6RluDCb0XT62yy2aqQ.png'
+    },
+    {
+      'id': 'crazygames',
+      'title': 'CrazyGames',
+      'url': 'https://crazygames.com',
+      'image': 'https://files.crazygames.com/assets/2022/PNG/Ziggy_Default.png'
     },
   ]
