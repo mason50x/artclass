@@ -24,6 +24,10 @@ function launchab() {
   window.parent.window.location.replace(localStorage.getItem('panicurl') || 'https://classroom.google.com/h')
 }
 
+function showUpdateLog() {
+  window.location.href = '/updates.html'
+}
+
 if (window.self !== window.self) document.querySelector('#launchab').style.display = 'none'
 
 
