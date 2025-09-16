@@ -35,14 +35,14 @@ const CURRENT_UPDATE_VERSION = "1.1"
 
 // Check if updates have been viewed and show/hide badge accordingly
 function checkUpdateBadge() {
-  const updateBadge = document.getElementById('updateBadge')
-  if (updateBadge) {
+  const updateButton = document.querySelector('.button-with-badge .action-button')
+  if (updateButton) {
     const viewedVersion = getCookie('updateLogViewedVersion')
 
     if (viewedVersion === CURRENT_UPDATE_VERSION) {
-      updateBadge.classList.add('hidden')
+      updateButton.classList.remove('has-update')
     } else {
-      updateBadge.classList.remove('hidden')
+      updateButton.classList.add('has-update')
     }
   }
 }

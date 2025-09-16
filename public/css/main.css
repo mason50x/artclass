@@ -413,23 +413,37 @@ body.updates-page .center-container h1 {
   display: inline-block;
 }
 
-.update-badge {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  background-color: #dc2626;
-  color: white;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  font-size: 12px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
+.button-with-badge .action-button.has-update {
+  position: relative;
+  border: 2px solid transparent;
+  background: linear-gradient(#0284d4, #0284d4) padding-box,
+              linear-gradient(45deg, #ffffff, #87ceeb, #ffffff, #87ceeb) border-box;
+  animation: shimmerBorder 2s ease-in-out infinite;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
+@keyframes shimmerBorder {
+  0% {
+    background: linear-gradient(#0284d4, #0284d4) padding-box,
+                linear-gradient(45deg, #ffffff, #87ceeb, #ffffff, #87ceeb) border-box;
+  }
+  25% {
+    background: linear-gradient(#0284d4, #0284d4) padding-box,
+                linear-gradient(90deg, #87ceeb, #ffffff, #87ceeb, #ffffff) border-box;
+  }
+  50% {
+    background: linear-gradient(#0284d4, #0284d4) padding-box,
+                linear-gradient(135deg, #ffffff, #87ceeb, #ffffff, #87ceeb) border-box;
+  }
+  75% {
+    background: linear-gradient(#0284d4, #0284d4) padding-box,
+                linear-gradient(180deg, #87ceeb, #ffffff, #87ceeb, #ffffff) border-box;
+  }
+  100% {
+    background: linear-gradient(#0284d4, #0284d4) padding-box,
+                linear-gradient(45deg, #ffffff, #87ceeb, #ffffff, #87ceeb) border-box;
+  }
+}
 
 .update-badge.hidden {
   display: none;
