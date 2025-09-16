@@ -199,7 +199,7 @@
 
     <div class="unlock-animation" id="unlockAnimation">
         <div style="text-align: center;">
-            <p class="shimmer-text" style="font-size: 48px; margin: 10px 0 5px 0; font-weight: 600;">Welcome to Artclass, Nerd</p>
+            <p class="shimmer-text" style="font-size: 48px; margin: 10px 0 5px 0; font-weight: 600;">Welcome to Infinite, Nerd</p>
             <div class="loading-spinner"></div>
         </div>
     </div>
@@ -237,7 +237,7 @@
             // Check credentials against encrypted hashes
             if (emailHash === VALID_EMAIL_HASH && passwordHash === VALID_PASSWORD_HASH) {
                 // Store authentication status
-                localStorage.setItem('artclass_authenticated', 'true');
+                localStorage.setItem('infinite_authenticated', 'true');
 
                 // Hide form and show unlock animation
                 const authContainer = document.querySelector('.auth-container');
@@ -261,7 +261,7 @@
         });
 
         // Check if already authenticated
-        if (localStorage.getItem('artclass_authenticated') === 'true') {
+        if (localStorage.getItem('infinite_authenticated') === 'true') {
             window.location.href = '/index.html';
         }
     </script>

@@ -28,7 +28,7 @@ var tabPresets = {
         icon: 'https://ssl.gstatic.com/classroom/ic_product_classroom_32.png'
     },
     default: {
-        name: 'Art Class',
+        name: 'Infinite',
         icon: '/assets/images/icon.png'
     }
 }

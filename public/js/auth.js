@@ -1,4 +1,4 @@
-// Authentication check for Art Class
+// Authentication check for Infinite
 // This script checks if user is authenticated and redirects to auth screen if not
 
 (function() {
@@ -8,7 +8,7 @@
     }
 
     // Check if user is authenticated
-    const isAuthenticated = localStorage.getItem('artclass_authenticated') === 'true';
+    const isAuthenticated = localStorage.getItem('infinite_authenticated') === 'true';
 
     if (!isAuthenticated) {
         // Redirect to auth screen
@@ -18,6 +18,6 @@
 
 // Function to logout (can be called from settings or other pages if needed)
 function logout() {
-    localStorage.removeItem('artclass_authenticated');
+    localStorage.removeItem('infinite_authenticated');
     window.location.href = '/auth.html';
 }
