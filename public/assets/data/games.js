@@ -10,8 +10,8 @@ var games = [
     id: 'mine',
     title: 'Minecraft',
     description: 'build blocks, mine resources, survive the night, craft your world',
-    url: 'https://eaglercraft.com',
-    image: 'https://www.minecraft.net/content/dam/games/minecraft/key-art/Minecraft-Java-Edition_KeyArt.jpg'
+    url: 'https://eaglercraft.com/mc/1.8.8',
+    image: 'https://art.pixilart.com/sr2b732d91f2f20.png'
   },
   {
     id: 'eggycar',
