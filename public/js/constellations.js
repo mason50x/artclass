@@ -43,9 +43,8 @@ class ConstellationBackground {
             this.ctx.fill();
             this.ctx.restore();
 
-            // Twinkle effect
-            star.opacity += Math.sin(Date.now() * star.twinkleSpeed) * 0.01;
-            star.opacity = Math.max(0.3, Math.min(1.0, star.opacity));
+            // Stable opacity - no more twinkling/fading
+            star.opacity = 0.8;
         });
     }
 
@@ -136,11 +135,23 @@ class ConstellationBackground {
             star.x += star.vx;
             star.y += star.vy;
 
-            // Wrap around edges
-            if (star.x < 0) star.x = this.canvas.width;
-            if (star.x > this.canvas.width) star.x = 0;
-            if (star.y < 0) star.y = this.canvas.height;
-            if (star.y > this.canvas.height) star.y = 0;
+            // Keep stars within frame boundaries
+            if (star.x < 0) {
+                star.x = 0;
+                star.vx = Math.abs(star.vx) * 0.5; // bounce back with reduced velocity
+            }
+            if (star.x > this.canvas.width) {
+                star.x = this.canvas.width;
+                star.vx = -Math.abs(star.vx) * 0.5; // bounce back with reduced velocity
+            }
+            if (star.y < 0) {
+                star.y = 0;
+                star.vy = Math.abs(star.vy) * 0.5; // bounce back with reduced velocity
+            }
+            if (star.y > this.canvas.height) {
+                star.y = this.canvas.height;
+                star.vy = -Math.abs(star.vy) * 0.5; // bounce back with reduced velocity
+            }
         });
     }
 
