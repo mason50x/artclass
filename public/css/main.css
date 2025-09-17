@@ -53,8 +53,6 @@ h1 {
     line-height: 1.2;
     margin-bottom: 0.5rem;
     letter-spacing: -0.02em;
-    opacity: 0;
-    animation: fadeInShimmer 2s ease-out forwards;
 }
 
 h1 > span {
