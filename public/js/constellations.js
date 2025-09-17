@@ -119,27 +119,13 @@ class ConstellationBackground {
                 }
             }
 
-            // Attraction to nearby stars (clustering effect)
-            this.stars.forEach(otherStar => {
-                if (star !== otherStar) {
-                    const distance = Math.sqrt(
-                        Math.pow(star.x - otherStar.x, 2) +
-                        Math.pow(star.y - otherStar.y, 2)
-                    );
+            // Gentle drift - stars move very slowly in random directions
+            star.vx += (Math.random() - 0.5) * 0.002;
+            star.vy += (Math.random() - 0.5) * 0.002;
 
-                    if (distance < 80 && distance > 0) {
-                        const force = 0.0005;
-                        const angle = Math.atan2(otherStar.y - star.y, otherStar.x - star.x);
-
-                        star.vx += Math.cos(angle) * force;
-                        star.vy += Math.sin(angle) * force;
-                    }
-                }
-            });
-
-            // Apply velocity with damping
-            star.vx *= 0.99;
-            star.vy *= 0.99;
+            // Apply velocity with minimal damping
+            star.vx *= 0.995;
+            star.vy *= 0.995;
 
             star.x += star.vx;
             star.y += star.vy;
