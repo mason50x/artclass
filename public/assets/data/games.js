@@ -3,7 +3,7 @@ var games = [
     id: 'idlebreakout',
     title: 'Idle Breakout',
     description: 'click balls, break bricks, become unstoppable brick-smashing machine',
-    url: 'https://assets.3kh0.net/idle-breakout/index.html/',
+    url: 'https://idle-breakout.github.io/games/idle-breakout/index.html',
     image: 'https://play-lh.googleusercontent.com/e5jzYTn7Mjh9Ghn-DFpVedkOlRfSOyCS2AFgXdTrADIuuUbjx6vP6r_YOM2j5m7uLQ'
   },
   {
@@ -24,8 +24,8 @@ var games = [
     id: 'rocketleague',
     title: 'Rocket League',
     description: 'cars playing soccer but with rockets and way too much boost',
-    url: 'https://glcdn.githack.com/kaioxdev/legacy-assets/-/raw/main/Rocket-League/index.html',
-    image: 'https://www.softgozar.com/Image/Softwares/Thumbnail/Rocket_League_Anniversary_SoftGozar.com.png'
+    url: 'https://rocket-soccer-derby.github.io/file/',
+    image: 'https://cdn2.iconfinder.com/data/icons/popular-games-1/50/rocketleague_squircle-512.png'
   },
   {
     id: 'cookieclicker',
@@ -101,14 +101,14 @@ var games = [
     id: 'papaburgers',
     title: 'Papa\'s Burgeria',
     description: 'flip burgers, serve customers, become fast food overlord',
-    url: 'https://mazahacka2017.github.io/papas-burgeria',
+    url: 'https://dnrweqffuwjtx.cloudfront.net/games/2024/flash/papas-burgeria/index.html',
     image: 'https://i.flipline.com/gamefiles/papasburgeriatogo/app_upsell_C.jpg'
   },
   {
     id: 'papasicecream',
     title: 'Papa\'s Scooperia',
     description: 'scoop ice cream, add toppings, satisfy sugar addicts',
-    url: 'https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://s3.amazonaws.com/production-assetsbucket-8ljvyr1xczmb/1ee20621-61bc-4ec8-a8ec-5e839c2e6edc%2Fpapa-s-scooperia.xml',
+    url: 'https://dnrweqffuwjtx.cloudfront.net/games/2024/flash/papas-scooperia/index.html',
     image: 'https://play-lh.googleusercontent.com/KpLBHo89bWG3jmuYb_KqDD1rZSY4XzXcHiMLZ1PCv83GMwVMcJluuuXrT32oQGCo51A'
   },
   {
@@ -122,14 +122,14 @@ var games = [
     id: 'jetpackjoyride',
     title: 'Jetpack Joyride',
     description: 'fly jetpack, dodge missiles, collect coins, crash spectacularly',
-    url: 'https://assets.3kh0.net/jetpack-joyride/index.html',
+    url: 'https://abinbins.github.io/a7/jetpack-joyride/',
     image: 'https://play-lh.googleusercontent.com/Pl2nmu5U9CH3NQqLBTjnokoV325zESrX6KIaHrwSqREEJDWIv1yJpRCXzl9r3oMnEWHC',
   },
   {
     id: 'shellshockers',
     title: 'Shell Shockers',
     description: 'eggs with guns shoot other eggs, yolk everywhere, surprisingly violent',
-    url: 'https://assets.3kh0.net/shellshockers/index.html',
+    url: 'https://orcatech2711.github.io/nano/games/shellshockers/index.html',
     image: 'https://play-lh.googleusercontent.com/P-nde227L29s8w5U44kTPLiEnMEJUhJpEr4jL6tD6LV65Xz0JZtI4wEyFN-smsNrx-Q'
   },
   {
@@ -172,7 +172,7 @@ var games = [
     id: 'paperio2',
     title: 'Paper.io 2',
     description: 'draw lines, claim territory, cut enemies while they cut you',
-    url: 'https://assets.3kh0.net/paperio2/index.html',
+    url: 'https://paperio-2.github.io/a9/paper-io-2/',
     image: 'https://play-lh.googleusercontent.com/KxcjUrs8S75iOPnKBR2b-s7eGtqbREwLgzttVxaM9Znl5ZxsDCl6qEZHny4rBkMeYA=w240-h480-rw'
   },
   {
@@ -191,7 +191,7 @@ var games = [
   },
   {
     id: 'retrobowl',
-    url: 'https://assets.3kh0.net/retro-bowl/index.html',
+    url: 'https://ethonion10.neocities.org/',
     title: 'Retro Bowl',
     image: 'https://play-lh.googleusercontent.com/WRM5Y1xZmzcCP1YtO5zl6G2g7CU5c5ZfjX4UVrgi1bpNgkfy-wuB-bQx3kkeRfaGYQ'
   },
@@ -230,7 +230,7 @@ var games = [
   {
     id: 'run2',
     title: 'Run 2',
-    url: 'https://glcdn.githack.com/kaioxdev/legacy-assets/-/raw/main/Run%202/index.html',
+    url: 'https://ubg89.github.io/Run2/',
     image: 'https://i.pinimg.com/280x280_RS/b6/2f/e8/b62fe8c6a9ceb9fd7e5257ad25f6897d.jpg',
     description: 'Run 2 is a classic game where you swerve through space in a race to the finish. Play hundreds of new levels in this fast-paced platformer'
   },
@@ -238,7 +238,7 @@ var games = [
     id: 'justfall',
     title: 'Just Fall',
     description: 'Just Fall is a game similar to Fall Guys, where you compete in minigames to be the sole winner',
-    url: 'https://assets.3kh0.net/just-fall/index.html',
+    url: 'https://just-fall-lol.github.io/file/',
     image: 'https://play-lh.googleusercontent.com/-0rSllZ8as88Jcs3iZ7-JCFyTb3YLB-HjR7bY7P6q_2MAswmDH4h1qNPfFiaZqzkkg'
   },
   {
@@ -318,7 +318,7 @@ var games = [
   {
     id: 'idlecraft',
     title: 'Idlecraft',
-    url: 'https://assets.3kh0.net/grindcraft/index.html',
+    url: 'https://html5.gamedistribution.com/rvvASMiM/d1eb46064cfc41629a2b06e2a2a68a31/index.html',
     image: 'https://play-lh.googleusercontent.com/Pl3YYYdxM1Lhe-pXFwaLfmzSpqDZqlzvxS7-BH60Mho_cydWeOCkhTCrSgtMEXL54Cm0'
   },
   {
@@ -370,12 +370,6 @@ var games = [
     image: 'https://play-lh.googleusercontent.com/8ddL1kuoNUB5vUvgDVjYY3_6HwQcrg1K2fd_R8soD-e2QYj8fT9cfhfh3G0hnSruLKec'
   },
   {
-    id: 'rocketleague',
-    title: 'Rocket League',
-    url: 'https://assets.3kh0.net/Rocket-League/index.html',
-    image: 'https://cdn2.iconfinder.com/data/icons/popular-games-1/50/rocketleague_squircle-512.png'
-  },
-  {
     id: 'curveball3d',
     title: 'Curve Ball 3D',
     url: 'https://gswitch3.github.io/g/curve-ball-3d/',
@@ -396,7 +390,7 @@ var games = [
   {
     id: 'ovo',
     title: 'OvO',
-    url: 'https://purepro4561.github.io/OvO',
+    url: 'https://ovoclassic-pro.github.io/file/',
     image: 'https://play-lh.googleusercontent.com/v7KwGdPjJGjJjRXn46sck4DwDBdKSeRzGN44CjiXUtKV0jjOi51Bt4wcXud0m-SkXg=w240-h480-rw'
   },
   {
@@ -449,21 +443,21 @@ var games = [
     id: 'hydrostorm2',
     title: 'Hydro Storm 2',
     url: 'https://rawcdn.githack.com/nightrose-labs/quartz/8ad8d5b123954f4a5d7e35ca84d5aacba0061eec/1/283a1142-4fa3-46c4-8a3f-35ac3a28f072/index.html',
-    image: 'https://rawcdn.githack.com/nightrose-labs/quartz/master/thumb/283a1142-4fa3-46c4-8a3f-35ac3a28f072.jpg',
+    image: 'https://img.itch.zone/aW1nLzQ0NDIyMjUucG5n/original/el5LWv.png',
     description: 'This game is resource-heavy. Make sure to adjust quality using the Star button in the main menu.'
   },
   {
     id: 'pixwars2',
     title: 'PixWars 2',
-    url: 'https://rawcdn.githack.com/nightrose-labs/quartz/master/1/c4e5b82d-a26a-437b-8b6e-7598c98cf39b/index.html',
-    image: 'https://rawcdn.githack.com/nightrose-labs/quartz/master/thumb/c4e5b82d-a26a-437b-8b6e-7598c98cf39b.jpg',
+    url: 'https://class811.github.io/g6/pixwars-2/',
+    image: 'https://cdn-1.webcatalog.io/catalog/poki-pixwars-2/poki-pixwars-2-icon-filled-256.webp?v=1714778810721',
     description: 'An error is displayed during startup. It can be ignored, the game still works.'
   },
   {
     id: 'recoil',
     title: 'Recoil',
-    url: 'https://rawcdn.githack.com/nightrose-labs/quartz/b0687b5099af0b76aedf37743f2d03cbeef26467/2/5cf218d2-f550-420c-8e55-7029efc5b4db/index.html',
-    image: 'https://rawcdn.githack.com/nightrose-labs/quartz/master/thumb/5cf218d2-f550-420c-8e55-7029efc5b4db.jpg'
+    url: 'https://23azostore.github.io/s6/recoil/',
+    image: 'https://vgmsite.com/soundtracks/recoil-windows-gamerip-1999/8842460-recoil-windows-other.jpg'
   },
   {
     id: 'vex8',
@@ -492,8 +486,8 @@ var games = [
   {
     id: 'johnnyupgrade',
     title: 'Johnny Upgrade',
-    url: 'https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://s3.amazonaws.com/production-assetsbucket-8ljvyr1xczmb/f107b843-3661-4036-9397-2b0c6414a369%2Fjohnny-upgrade.xml',
-    image: 'https://lh5.googleusercontent.com/K7sBfR_F4vAkFU9TVSx-hEKnE4b-dhautdjFBoCbXU_Qbq1SAsYXxjCKBXkFeOs8ju2kSQzR7gdyawMdWULaZ44=w1280'
+    url: 'https://slope-game.github.io/new3623/johnny-upgrade/',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwR255KbD3yFlHuogEuNIk4uOYWciMrqTiPqsstZUIAPhyn8eomyvJ8hh6rX-MUJiRlSc&usqp=CAU'
   },
   {
     id: 'holeio',
@@ -504,7 +498,7 @@ var games = [
   {
     id: 'penguinio',
     title: "Penguin.io",
-    url: 'https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/gertdoro/Kubeflow@a4cad845becd2a794dc59bbf5bfff375c5dae041/admission-webhook/examples/penguin.xml',
+    url: 'https://penguins-io.com/',
     image: 'https://play-lh.googleusercontent.com/YsT4stD48fWw0XuIT87ilZtBfTkOGlxj3PpWI9qeFUkrvpu1xjemXzqf12DxBvv-Ikk'
   },
   {
