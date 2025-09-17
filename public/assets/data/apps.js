@@ -217,12 +217,6 @@ var apps = [
       'image': 'https://play-lh.googleusercontent.com/oi4GE8ulxHp4Y2xVzKu_WAMrgE4Jj4Kbdd7hAWLeoZTsMtC5bYTd2xcYhlvMk69pTFY'
     },
     {
-      'id': 'gptzero',
-      'title': 'GPTZero',
-      'url': 'https://gptzero.me',
-      'image': 'https://media.licdn.com/dms/image/v2/D560BAQFn4s6Nr1sKVw/company-logo_200_200/company-logo_200_200/0/1686030874712/gptzero_logo?e=2147483647&v=beta&t=6EbDNdTgAfwP9o4coYr5V0aIhYKVo2dvOXZqs48aEl8'
-    },
-    {
       'id': 'soundcloud',
       'title': 'SoundCloud',
       'url': 'https://soundcloud.com',
