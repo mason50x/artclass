@@ -80,7 +80,7 @@ var games = [
     id: 'tombofthemask',
     title: 'Tomb of the Mask',
     description: 'climb walls wearing magic mask, avoid spikes, die repeatedly',
-    url: 'https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/sk1bx/element@9cccb2fafb569c963501a5d818472b561121cea6/totm.xml',
+    url: 'https://tombofthemask.gitlab.io/file/',
     image: 'https://play-lh.googleusercontent.com/gTd127I81O2i2Q6kfCJoN-M0OSWmgsdjB47orUFpLwANW7VZLJYrOxMVt-OpilDXszg=w240-h480-rw'
   },
   {
@@ -204,7 +204,7 @@ var games = [
   {
     id: 'templerun2',
     title: 'Temple Run 2',
-    url: 'https://assets.3kh0.net/temple-run-2/index.html',
+    url: 'https://23azostore.github.io/s8/temple-run-2/',
     image: 'https://play-lh.googleusercontent.com/go4XqS4mYs-G2tZymiVLF4wJYXIi5QrvwixNRzssk4G_vRBHrAdg4E1ddNwy9c2cZA'
   },
   {
@@ -251,14 +251,14 @@ var games = [
   {
     id: 'snowball',
     title: 'snowball.io',
-    url: 'https://assets.3kh0.net/snowbattle/index.html',
+    url: 'https://snowballio.gitlab.io/file/',
     image: 'https://play-lh.googleusercontent.com/X8FEOENa_t5mlRllBh2RRLc6sMnPIq56Wxa2ndValDOmwzIRhAv7MG6fT97TLQ2DK48'
   },
   {
     id: 'smashkarts',
     title: 'Smash Karts',
-    url: 'https://assets.3kh0.net/smashkarts/index.html',
-    image: 'https://geometry-dash.co/upload/imgs/smash-karts-logo.png'
+    url: 'https://webgltest-17af1.firebaseapp.com/',
+    image: 'https://yt3.googleusercontent.com/OKPFuDO6MCmgJOieSXnx2N0vlGpl13J68P72MKoHaTK5cBxWFuIYO7SjaSSa0Ndmp3NHwR_b=s900-c-k-c0x00ffffff-no-rj'
   },
   {
     id: 'tunnelrush',
@@ -463,7 +463,7 @@ var games = [
     id: 'vex8',
     title: 'Vex 8',
     url: 'https://rawcdn.githack.com/nightrose-labs/quartz/8ad8d5b123954f4a5d7e35ca84d5aacba0061eec/2/6dcc5fd9-a43a-4e13-9b6f-456a416e1059/index.html',
-    image: 'https://rawcdn.githack.com/nightrose-labs/quartz/master/thumb/6dcc5fd9-a43a-4e13-9b6f-456a416e1059.jpg'
+    image: 'https://static.keygames.com/4/117014/103021/1024x1024/vex-8.webp'
   },
   {
     id: 'thefinalearth2',
@@ -474,8 +474,8 @@ var games = [
   {
     id: 'snowrider',
     title: 'Snow Rider',
-    url: 'https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/sk1bx/89574567@71f165531792ae450fe0a522a52ba4e827344de2/sr3d.xml',
-    image: 'https://lh5.googleusercontent.com/7h-724mAeXnnyC-MA1OA8RI1iaQYgcCZlAt9A8hLk8BLruu0Bu5NCBH1geQJqAUmMztyS4dEIQruPJYgypQTarqr9G4-ydAM8bsQxL2rFL6LUPxbi2JnBEgrWqeg08a9Lg=w1280'
+    url: 'https://drippy-cat.github.io/snowrider3D/',
+    image: 'https://play-lh.googleusercontent.com/rvs-Y7c8PCBSkXoDGeEXtzSfPmxZ6IY2czOhpMQmH8jOs3qGOiMTtzIbA9qJTaT9qhk'
   },
   {
     id: '1on1basketball',
