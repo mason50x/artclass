@@ -47,23 +47,45 @@ h1 { font-size: 50px; }
 
 p { font-size: 20px; }
 
+h1 {
+    font-size: 3.5rem;
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+    opacity: 0;
+    animation: fadeInShimmer 2s ease-out forwards;
+}
+
 h1 > span {
     font-family: "Inter", sans-serif;
-    font-weight: 900;
-    background: linear-gradient(90deg, #0284d4, #00d4ff, #87ceeb, #00d4ff, #0284d4);
-    background-size: 300% 100%;
+    font-weight: 700;
+    background: linear-gradient(135deg, #87ceeb, #0284d4, #00d4ff, #0284d4, #87ceeb);
+    background-size: 200% 100%;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: shimmer 2.5s ease-in-out infinite;
+    animation: shimmer 3s ease-in-out infinite;
 }
 
 @keyframes shimmer {
-    0% { background-position: 0% 0%; }
-    25% { background-position: 50% 0%; }
-    50% { background-position: 100% 0%; }
-    75% { background-position: 50% 0%; }
-    100% { background-position: 0% 0%; }
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+@keyframes fadeInShimmer {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .center-container {
@@ -72,6 +94,8 @@ h1 > span {
 	top: 50%;
 	transform: translate(-50%, -50%);
     text-align: center;
+    max-width: 800px;
+    padding: 2rem;
 }
 
 a, a:visited {
@@ -319,6 +343,61 @@ margin: 5px auto;
 .action-button:hover {
   filter: brightness(85%);
   transform: translateY(-2px);
+}
+
+.modern-btn {
+  background: linear-gradient(135deg, #0284d4, #0ea5e9) !important;
+  border: 1px solid rgba(2, 132, 212, 0.3) !important;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 32px rgba(2, 132, 212, 0.3);
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  animation: buttonFadeIn 2.5s ease-out 0.5s forwards;
+}
+
+.modern-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: buttonShimmer 1s ease-out 3s;
+}
+
+@keyframes buttonFadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes buttonShimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.modern-btn:hover {
+  background: linear-gradient(135deg, #0369a1, #0284d4) !important;
+  border-color: rgba(2, 132, 212, 0.5) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(2, 132, 212, 0.4);
+  filter: none;
+}
+
+.modern-btn:hover::before {
+  animation: none;
 }
 
 /* Update Log Styles */
