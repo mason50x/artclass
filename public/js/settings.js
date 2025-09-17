@@ -13,7 +13,7 @@ function setTab(name = document.querySelector('#tabname').value, icon = document
 var tabPresets = {
     google: {
         name: 'Google',
-        icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Google_Favicon_2025.svg/500px-Google_Favicon_2025.svg.png'
+        icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Google_Favicon_2025.svg/1920px-Google_Favicon_2025.svg.png'
     },
     drive: {
         name: 'My Drive - Google Drive',
