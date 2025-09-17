@@ -186,8 +186,17 @@
             }
         }
 
+        @keyframes periodicSpin {
+            0%, 85% {
+                transform: rotate(0deg);
+            }
+            90%, 100% {
+                transform: rotate(360deg);
+            }
+        }
+
         .pulse-logo {
-            animation: pulse 2s ease-in-out infinite;
+            animation: periodicSpin 15s ease-in-out infinite;
         }
 
     </style>
@@ -195,7 +204,7 @@
 <body>
     <div class="auth-container">
         <div class="auth-logo">
-            <img src="./assets/images/white_logo.png" alt="Infinite" style="max-width: 200px; height: auto; margin-bottom: 20px;" />
+            <img src="./assets/images/white_logo.png" alt="Infinite" class="pulse-logo" style="max-width: 200px; height: auto; margin-bottom: 30px;" />
         </div>
 
         <form class="login-form" id="loginForm">
