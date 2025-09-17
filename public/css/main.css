@@ -400,32 +400,12 @@ margin: 5px auto;
 
 /* Update Log Styles */
 .update-log {
-  text-align: left;
+  text-align: center;
   max-width: 800px;
   margin: 0 auto 30px auto;
   padding: 0 20px;
 }
 
-/* Fix positioning for update log page */
-body.updates-page {
-  height: auto;
-  min-height: 100vh;
-  overflow-y: auto;
-}
-
-body.updates-page .center-container {
-  position: static;
-  transform: none;
-  margin-top: 20px;
-  margin-bottom: 40px;
-  left: auto;
-  top: auto;
-  padding-top: 10px;
-}
-
-body.updates-page .center-container h1 {
-  margin-bottom: 30px;
-}
 
 .update-entry {
   background: rgba(255, 255, 255, 0.05);
@@ -435,6 +415,7 @@ body.updates-page .center-container h1 {
   margin-bottom: 20px;
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
+  text-align: center;
 }
 
 .update-entry:hover {
@@ -463,6 +444,8 @@ body.updates-page .center-container h1 {
 .update-entry ul {
   list-style: none;
   padding: 0;
+  display: inline-block;
+  text-align: left;
 }
 
 .update-entry li {
