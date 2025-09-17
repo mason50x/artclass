@@ -192,10 +192,11 @@ var apps = [
       'image': 'https://cdn2.steamgriddb.com/icon/590fcadab00abacc5caaf30b51e91ad3/24/256x256.png'
     },
     {
-      'id': 'movieweb',
-      'title': 'Movie Web',
-      'url': 'https://movie-web.app',
-      'image': 'https://cdn-icons-png.flaticon.com/512/8109/8109065.png'
+      'id': 'fmovies',
+      'title': 'FMovies',
+      'url': 'https://ww4.fmovies.co/24/',
+      'image': 'https://cdn-icons-png.flaticon.com/512/8109/8109065.png',
+      'description': 'you might need to try multiple servers since fmovies can be unreliable'
     },
     {
       'id': 'mlb',
