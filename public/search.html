@@ -226,6 +226,19 @@
       overflow: hidden;
     }
 
+    .tab-content {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
     .browser-frame {
       width: 100%;
       height: 100%;
@@ -334,14 +347,8 @@
     </div>
 
     <!-- Content Area -->
-    <div class="browser-content">
-      <iframe class="browser-frame" id="browser-frame"></iframe>
-      <div class="start-page" id="start-page">
-        <div class="start-content">
-          <h1>Welcome to Infinite Search</h1>
-          <p>Enter a URL or search term in the address bar above</p>
-        </div>
-      </div>
+    <div class="browser-content" id="browser-content">
+      <!-- Tabs content will be dynamically added here -->
     </div>
 
     <div id="error-message" style="display: none; color: #ff6b6b; margin-top: 10px; padding: 10px; background: rgba(255, 107, 107, 0.1); border-radius: 5px; border: 1px solid rgba(255, 107, 107, 0.3);">

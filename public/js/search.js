@@ -1,38 +1,193 @@
-const frame = document.querySelector(".browser-frame")
-const startPage = document.querySelector(".start-page")
 const urlInput = document.querySelector(".url-input");
 const goBtn = document.querySelector(".go-btn");
 const backBtn = document.querySelector("#back-btn");
 const forwardBtn = document.querySelector("#forward-btn");
 const refreshBtn = document.querySelector("#refresh-btn");
 const fullscreenBtn = document.querySelector("#fullscreen-btn");
-const tabTitle = document.querySelector(".tab-title");
+const tabBar = document.querySelector(".tab-bar");
+const newTabBtn = document.querySelector(".new-tab-btn");
+const browserContent = document.querySelector("#browser-content");
 
-let history = [];
-let historyIndex = -1;
+let tabs = [];
+let activeTabId = null;
+let tabCounter = 0;
+
+// Tab management functions
+function createTab(url = null) {
+  tabCounter++;
+  const tabId = `tab-${tabCounter}`;
+
+  const tab = {
+    id: tabId,
+    title: url ? getDomainFromUrl(url) : 'New Tab',
+    url: url,
+    history: url ? [url] : [],
+    historyIndex: url ? 0 : -1,
+    element: null,
+    contentElement: null,
+    iframe: null,
+    startPage: null
+  };
+
+  // Create tab element
+  const tabElement = document.createElement('div');
+  tabElement.className = 'tab';
+  tabElement.id = tabId;
+  tabElement.innerHTML = `
+    <span class="tab-title">${tab.title}</span>
+    <button class="tab-close" onclick="closeTab('${tabId}')">&times;</button>
+  `;
+
+  // Create tab content
+  const contentElement = document.createElement('div');
+  contentElement.className = 'tab-content';
+  contentElement.id = `content-${tabId}`;
+
+  // Create iframe for this tab
+  const iframe = document.createElement('iframe');
+  iframe.className = 'browser-frame';
+  iframe.style.display = 'none';
+
+  // Create start page for this tab
+  const startPageElement = document.createElement('div');
+  startPageElement.className = 'start-page';
+  startPageElement.innerHTML = `
+    <div class="start-content">
+      <h1>Welcome to Infinite Search</h1>
+      <p>Enter a URL or search term in the address bar above</p>
+    </div>
+  `;
+
+  contentElement.appendChild(iframe);
+  contentElement.appendChild(startPageElement);
+
+  tab.element = tabElement;
+  tab.contentElement = contentElement;
+  tab.iframe = iframe;
+  tab.startPage = startPageElement;
+
+  // Add event listener for tab switching
+  tabElement.addEventListener('click', (e) => {
+    if (!e.target.classList.contains('tab-close')) {
+      switchToTab(tabId);
+    }
+  });
+
+  // Insert tab before the new tab button
+  tabBar.insertBefore(tabElement, newTabBtn);
+  browserContent.appendChild(contentElement);
+
+  tabs.push(tab);
+
+  // Navigate to URL if provided
+  if (url) {
+    navigateTabToUrl(tabId, url);
+  }
+
+  return tabId;
+}
+
+function switchToTab(tabId) {
+  // Remove active class from all tabs
+  tabs.forEach(tab => {
+    tab.element.classList.remove('active');
+    tab.contentElement.classList.remove('active');
+  });
+
+  // Add active class to selected tab
+  const tab = tabs.find(t => t.id === tabId);
+  if (tab) {
+    tab.element.classList.add('active');
+    tab.contentElement.classList.add('active');
+    activeTabId = tabId;
+
+    // Update UI based on tab state
+    updateUIForTab(tab);
+  }
+}
+
+function closeTab(tabId) {
+  const tabIndex = tabs.findIndex(t => t.id === tabId);
+  if (tabIndex === -1) return;
+
+  const tab = tabs[tabIndex];
+
+  // Remove DOM elements
+  tab.element.remove();
+  tab.contentElement.remove();
+
+  // Remove from tabs array
+  tabs.splice(tabIndex, 1);
+
+  // If this was the active tab, switch to another
+  if (activeTabId === tabId) {
+    if (tabs.length > 0) {
+      // Switch to the previous tab, or first tab if this was the first
+      const newActiveIndex = Math.max(0, tabIndex - 1);
+      switchToTab(tabs[newActiveIndex].id);
+    } else {
+      // No tabs left, create a new one
+      const newTabId = createTab();
+      switchToTab(newTabId);
+    }
+  }
+}
+
+function navigateTabToUrl(tabId, inputValue) {
+  const url = validateURL(inputValue);
+  if (!url) {
+    showError();
+    return;
+  }
+
+  const tab = tabs.find(t => t.id === tabId);
+  if (!tab) return;
+
+  // Update tab history
+  tab.history = tab.history.slice(0, tab.historyIndex + 1);
+  tab.history.push(url);
+  tab.historyIndex = tab.history.length - 1;
+  tab.url = url;
+
+  // Update tab title
+  tab.title = getDomainFromUrl(url);
+  tab.element.querySelector('.tab-title').textContent = tab.title;
+
+  // Navigate iframe
+  tab.startPage.style.display = 'none';
+  tab.iframe.style.display = 'block';
+  tab.iframe.src = __uv$config.prefix + __uv$config.encodeUrl(url);
+
+  // Update UI if this is the active tab
+  if (activeTabId === tabId) {
+    updateUIForTab(tab);
+  }
+}
+
+function updateUIForTab(tab) {
+  urlInput.value = tab.url || '';
+  updateNavButtons(tab);
+}
+
+function updateNavButtons(tab = null) {
+  if (!tab) tab = tabs.find(t => t.id === activeTabId);
+  if (!tab) return;
+
+  backBtn.disabled = tab.historyIndex <= 0;
+  forwardBtn.disabled = tab.historyIndex >= tab.history.length - 1;
+}
 
 function navigateToUrl(inputValue) {
-  const url = validateURL(inputValue);
-  if (url) {
-    startPage.style.display = 'none';
-    frame.style.display = 'block';
-    frame.src = __uv$config.prefix + __uv$config.encodeUrl(url);
+  if (activeTabId) {
+    navigateTabToUrl(activeTabId, inputValue);
+  }
+}
 
-    // Update history
-    history = history.slice(0, historyIndex + 1);
-    history.push(url);
-    historyIndex = history.length - 1;
-
-    // Update navigation buttons
-    updateNavButtons();
-
-    // Update tab title
-    updateTabTitle(url);
-
-    // Update URL input
-    urlInput.value = url;
-  } else {
-    showError();
+function getDomainFromUrl(url) {
+  try {
+    return new URL(url).hostname;
+  } catch (e) {
+    return 'New Tab';
   }
 }
 
@@ -47,30 +202,31 @@ goBtn.addEventListener("click", function() {
 });
 
 backBtn.addEventListener("click", function() {
-  if (historyIndex > 0) {
-    historyIndex--;
-    const url = history[historyIndex];
-    frame.src = __uv$config.prefix + __uv$config.encodeUrl(url);
-    urlInput.value = url;
-    updateTabTitle(url);
-    updateNavButtons();
+  const tab = tabs.find(t => t.id === activeTabId);
+  if (tab && tab.historyIndex > 0) {
+    tab.historyIndex--;
+    const url = tab.history[tab.historyIndex];
+    tab.iframe.src = __uv$config.prefix + __uv$config.encodeUrl(url);
+    tab.url = url;
+    updateUIForTab(tab);
   }
 });
 
 forwardBtn.addEventListener("click", function() {
-  if (historyIndex < history.length - 1) {
-    historyIndex++;
-    const url = history[historyIndex];
-    frame.src = __uv$config.prefix + __uv$config.encodeUrl(url);
-    urlInput.value = url;
-    updateTabTitle(url);
-    updateNavButtons();
+  const tab = tabs.find(t => t.id === activeTabId);
+  if (tab && tab.historyIndex < tab.history.length - 1) {
+    tab.historyIndex++;
+    const url = tab.history[tab.historyIndex];
+    tab.iframe.src = __uv$config.prefix + __uv$config.encodeUrl(url);
+    tab.url = url;
+    updateUIForTab(tab);
   }
 });
 
 refreshBtn.addEventListener("click", function() {
-  if (frame.src) {
-    frame.src = frame.src;
+  const tab = tabs.find(t => t.id === activeTabId);
+  if (tab && tab.iframe.src) {
+    tab.iframe.src = tab.iframe.src;
   }
 });
 
@@ -78,25 +234,26 @@ fullscreenBtn.addEventListener("click", function() {
   toggleFullscreen();
 });
 
-function updateNavButtons() {
-  backBtn.disabled = historyIndex <= 0;
-  forwardBtn.disabled = historyIndex >= history.length - 1;
-}
+newTabBtn.addEventListener("click", function() {
+  const newTabId = createTab();
+  switchToTab(newTabId);
+});
 
-function updateTabTitle(url) {
-  try {
-    const urlObj = new URL(url);
-    tabTitle.textContent = urlObj.hostname;
-  } catch (e) {
-    tabTitle.textContent = "New Tab";
+// Initialize with first tab
+window.addEventListener('DOMContentLoaded', function() {
+  // Remove the existing static tab
+  const existingTab = document.querySelector('#tab1');
+  if (existingTab) {
+    existingTab.remove();
   }
-}
 
-var params = new URLSearchParams(window.location.search)
-console.log("Searching for " + params.get("q"))
-if (params.get("q")) {
-  navigateToUrl(params.get("q"));
-}
+  // Create initial tab
+  const params = new URLSearchParams(window.location.search);
+  const initialUrl = params.get("q");
+
+  const newTabId = createTab(initialUrl);
+  switchToTab(newTabId);
+});
 
 function validateURL(input) {
   try {
@@ -130,13 +287,17 @@ function showError() {
 }
 
 function goBackToSearch() {
-  frame.style.display = 'none';
-  startPage.style.display = 'flex';
-  urlInput.value = '';
-  tabTitle.textContent = 'New Tab';
-  history = [];
-  historyIndex = -1;
-  updateNavButtons();
+  const tab = tabs.find(t => t.id === activeTabId);
+  if (tab) {
+    tab.iframe.style.display = 'none';
+    tab.startPage.style.display = 'flex';
+    tab.url = null;
+    tab.history = [];
+    tab.historyIndex = -1;
+    tab.title = 'New Tab';
+    tab.element.querySelector('.tab-title').textContent = 'New Tab';
+    updateUIForTab(tab);
+  }
 }
 
 function toggleFullscreen() {
