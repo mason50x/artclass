@@ -294,3 +294,8 @@ var apps = [
       'description': 'ai chatbot that answers questions and helps with tasks'
     },
   ]
+apps.sort(function (a, b) {
+  return a.title.localeCompare(b.title);
+});
+
+console.log("Loaded " + apps.length + " apps")

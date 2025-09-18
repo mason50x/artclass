@@ -158,7 +158,14 @@
     function selectSuggestion(title) {
       searchInput.value = title
       hideSuggestions()
-      filterGames(title)
+
+      // Find the game and launch it
+      const game = games.find(g => g.title === title)
+      if (game) {
+        window.location.href = `/load.html?game=${game.id}`
+      } else {
+        filterGames(title)
+      }
     }
 
     function filterGames(query) {

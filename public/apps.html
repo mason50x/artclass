@@ -156,7 +156,14 @@
   function selectSuggestion(title) {
     searchInput.value = title
     hideSuggestions()
-    filterApps(title)
+
+    // Find the app and launch it
+    const app = apps.find(a => a.title === title)
+    if (app) {
+      window.location.href = `/load.html?app=${app.id}`
+    } else {
+      filterApps(title)
+    }
   }
 
   function filterApps(query) {
