@@ -6,6 +6,258 @@
   <title>Infinite</title>
 
   <link rel="stylesheet" href="./css/master.css" />
+  <style>
+    .browser-container {
+      position: fixed;
+      top: 75px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .browser-chrome {
+      background: rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .tab-bar {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px 0 12px;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .tab {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px 8px 0 0;
+      margin-right: 4px;
+      min-width: 200px;
+      max-width: 240px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tab.active {
+      background: rgba(255, 255, 255, 0.1);
+      border-bottom-color: transparent;
+    }
+
+    .tab-title {
+      flex: 1;
+      color: white;
+      font-size: 14px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .tab-close {
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.6);
+      cursor: pointer;
+      margin-left: 8px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .tab-close:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+    }
+
+    .new-tab-btn {
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.6);
+      cursor: pointer;
+      width: 28px;
+      height: 28px;
+      border-radius: 4px;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .new-tab-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+    }
+
+    .browser-controls {
+      display: flex;
+      align-items: center;
+      padding: 12px;
+      gap: 12px;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 4px;
+    }
+
+    .nav-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: white;
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      font-size: 12px;
+    }
+
+    .nav-btn:hover:not(:disabled) {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .address-bar {
+      flex: 1;
+    }
+
+    .url-input-container {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 0 12px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .url-input-container:focus-within {
+      border-color: #0284d4;
+      box-shadow: 0 0 0 3px rgba(2, 132, 212, 0.1);
+    }
+
+    .url-icon {
+      color: rgba(255, 255, 255, 0.5);
+      margin-right: 8px;
+      font-size: 14px;
+    }
+
+    .url-input {
+      flex: 1;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 14px;
+      padding: 10px 0;
+      outline: none;
+    }
+
+    .url-input::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .go-btn {
+      background: #0284d4;
+      border: none;
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 8px;
+      transition: all 0.2s ease;
+      font-size: 12px;
+    }
+
+    .go-btn:hover {
+      background: #0369a1;
+    }
+
+    .browser-menu {
+      display: flex;
+    }
+
+    .menu-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: white;
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      font-size: 12px;
+    }
+
+    .menu-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .browser-content {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .browser-frame {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: white;
+      display: none;
+    }
+
+    .start-page {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .start-content {
+      text-align: center;
+    }
+
+    .start-content h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: white;
+    }
+
+    .start-content p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 1.1rem;
+    }
+  </style>
   <script src="/uv/uv.bundle.js" charset="UTF-8"></script>
   <script src="/uv/uv.config.js"></script>
   <script src="./js/preload.js"></script>
@@ -34,14 +286,68 @@
     </div>
   </nav>
 
-  <div class="center-container">
-    <h1>Search</h1>
-    <input class="pxyinput" type="text" placeholder="Search..." aria-label="Enter URL to browse" />
+  <div class="browser-container">
+    <!-- Browser Chrome -->
+    <div class="browser-chrome">
+      <!-- Tab Bar -->
+      <div class="tab-bar">
+        <div class="tab active" id="tab1">
+          <span class="tab-title">New Tab</span>
+          <button class="tab-close">&times;</button>
+        </div>
+        <button class="new-tab-btn">+</button>
+      </div>
+
+      <!-- Browser Controls -->
+      <div class="browser-controls">
+        <div class="nav-buttons">
+          <button class="nav-btn" id="back-btn" disabled>
+            <i class="fas fa-arrow-left"></i>
+          </button>
+          <button class="nav-btn" id="forward-btn" disabled>
+            <i class="fas fa-arrow-right"></i>
+          </button>
+          <button class="nav-btn" id="refresh-btn">
+            <i class="fas fa-redo"></i>
+          </button>
+        </div>
+
+        <div class="address-bar">
+          <div class="url-input-container">
+            <i class="fas fa-globe url-icon"></i>
+            <input class="url-input" type="text" placeholder="Search or enter URL..." aria-label="Enter URL to browse" />
+            <button class="go-btn">
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="browser-menu">
+          <button class="nav-btn" id="fullscreen-btn">
+            <i class="fas fa-expand"></i>
+          </button>
+          <button class="menu-btn">
+            <i class="fas fa-ellipsis-v"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content Area -->
+    <div class="browser-content">
+      <iframe class="browser-frame" id="browser-frame"></iframe>
+      <div class="start-page" id="start-page">
+        <div class="start-content">
+          <h1>Welcome to Infinite Search</h1>
+          <p>Enter a URL or search term in the address bar above</p>
+        </div>
+      </div>
+    </div>
+
     <div id="error-message" style="display: none; color: #ff6b6b; margin-top: 10px; padding: 10px; background: rgba(255, 107, 107, 0.1); border-radius: 5px; border: 1px solid rgba(255, 107, 107, 0.3);">
       Please enter a valid URL (e.g., google.com or https://example.com)
     </div>
   </div>
-  <iframe class="frame"></iframe>
 </body>
 
 <script src="./js/index.js"></script>

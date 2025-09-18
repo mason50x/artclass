@@ -1,29 +1,101 @@
-const frame = document.querySelector("iframe")
-const div = document.querySelector(".center-container")
-frame.style.display = "none"
-const input = document.querySelector("input");
-input.addEventListener("keyup", function (event) {
+const frame = document.querySelector(".browser-frame")
+const startPage = document.querySelector(".start-page")
+const urlInput = document.querySelector(".url-input");
+const goBtn = document.querySelector(".go-btn");
+const backBtn = document.querySelector("#back-btn");
+const forwardBtn = document.querySelector("#forward-btn");
+const refreshBtn = document.querySelector("#refresh-btn");
+const fullscreenBtn = document.querySelector("#fullscreen-btn");
+const tabTitle = document.querySelector(".tab-title");
+
+let history = [];
+let historyIndex = -1;
+
+function navigateToUrl(inputValue) {
+  const url = validateURL(inputValue);
+  if (url) {
+    startPage.style.display = 'none';
+    frame.style.display = 'block';
+    frame.src = __uv$config.prefix + __uv$config.encodeUrl(url);
+
+    // Update history
+    history = history.slice(0, historyIndex + 1);
+    history.push(url);
+    historyIndex = history.length - 1;
+
+    // Update navigation buttons
+    updateNavButtons();
+
+    // Update tab title
+    updateTabTitle(url);
+
+    // Update URL input
+    urlInput.value = url;
+  } else {
+    showError();
+  }
+}
+
+urlInput.addEventListener("keyup", function (event) {
   if (event.key === "Enter") {
-    const url = validateURL(input.value);
-    if (url) {
-      div.style.display = 'none'
-      frame.style.display = 'block'
-      document.querySelector("iframe").src = __uv$config.prefix + __uv$config.encodeUrl(url);
-    } else {
-      showError();
-    }
+    navigateToUrl(urlInput.value);
   }
 });
+
+goBtn.addEventListener("click", function() {
+  navigateToUrl(urlInput.value);
+});
+
+backBtn.addEventListener("click", function() {
+  if (historyIndex > 0) {
+    historyIndex--;
+    const url = history[historyIndex];
+    frame.src = __uv$config.prefix + __uv$config.encodeUrl(url);
+    urlInput.value = url;
+    updateTabTitle(url);
+    updateNavButtons();
+  }
+});
+
+forwardBtn.addEventListener("click", function() {
+  if (historyIndex < history.length - 1) {
+    historyIndex++;
+    const url = history[historyIndex];
+    frame.src = __uv$config.prefix + __uv$config.encodeUrl(url);
+    urlInput.value = url;
+    updateTabTitle(url);
+    updateNavButtons();
+  }
+});
+
+refreshBtn.addEventListener("click", function() {
+  if (frame.src) {
+    frame.src = frame.src;
+  }
+});
+
+fullscreenBtn.addEventListener("click", function() {
+  toggleFullscreen();
+});
+
+function updateNavButtons() {
+  backBtn.disabled = historyIndex <= 0;
+  forwardBtn.disabled = historyIndex >= history.length - 1;
+}
+
+function updateTabTitle(url) {
+  try {
+    const urlObj = new URL(url);
+    tabTitle.textContent = urlObj.hostname;
+  } catch (e) {
+    tabTitle.textContent = "New Tab";
+  }
+}
 
 var params = new URLSearchParams(window.location.search)
 console.log("Searching for " + params.get("q"))
 if (params.get("q")) {
-  const url = validateURL(params.get("q"));
-  if (url) {
-    div.style.display = 'none'
-    frame.style.display = 'block'
-    document.querySelector("iframe").src = __uv$config.prefix + __uv$config.encodeUrl(url);
-  }
+  navigateToUrl(params.get("q"));
 }
 
 function validateURL(input) {
@@ -59,18 +131,17 @@ function showError() {
 
 function goBackToSearch() {
   frame.style.display = 'none';
-  div.style.display = 'block';
-  input.value = '';
-}
-
-function reloadFrame() {
-  const currentSrc = frame.src;
-  frame.src = currentSrc;
+  startPage.style.display = 'flex';
+  urlInput.value = '';
+  tabTitle.textContent = 'New Tab';
+  history = [];
+  historyIndex = -1;
+  updateNavButtons();
 }
 
 function toggleFullscreen() {
   if (!document.fullscreenElement) {
-    frame.requestFullscreen().catch(err => {
+    document.querySelector('.browser-container').requestFullscreen().catch(err => {
       console.log(`Error attempting to enable fullscreen: ${err.message}`);
     });
   } else {
