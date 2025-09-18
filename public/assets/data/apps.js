@@ -63,13 +63,6 @@ var apps = [
       'description': 'stream movies and shows, binge watch everything'
     },
     {
-      'id': 'nowgg',
-      'title': 'now.gg',
-      'url': 'https://now.gg',
-      'image': 'https://miro.medium.com/v2/resize:fit:1000/1*YM7t6RluDCb0XT62yy2aqQ.png',
-      'description': 'play mobile games in browser, cloud gaming platform'
-    },
-    {
       'id': 'crazygames',
       'title': 'CrazyGames',
       'url': 'https://crazygames.com',
@@ -147,13 +140,6 @@ var apps = [
       'description': 'design and prototype interfaces, collaborative design tool'
     },
     {
-      'id': 'canva',
-      'title': 'Canva',
-      'url': 'https://canva.com',
-      'image': 'https://img.utdstc.com/icon/431/c6b/431c6be8e8dbb358738980c75c35c56ee8e8c3238089ed9b6f04d295d4008970:200',
-      'description': 'create graphics and presentations, drag and drop design'
-    },
-    {
       'id': 'notion',
       'title': 'Notion',
       'url': 'https://notion.so',
@@ -161,25 +147,11 @@ var apps = [
       'description': 'notes and database hybrid, organize everything'
     },
     {
-      'id': 'slack',
-      'title': 'Slack',
-      'url': 'https://slack.com',
-      'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Slack_icon_2019.svg/2048px-Slack_icon_2019.svg.png',
-      'description': 'team communication and collaboration platform'
-    },
-    {
       'id': 'pinterest',
       'title': 'Pinterest',
       'url': 'https://pinterest.com',
       'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Pinterest-logo.png/800px-Pinterest-logo.png',
       'description': 'discover ideas and inspiration through pins'
-    },
-    {
-      'id': 'dropbox',
-      'title': 'Dropbox',
-      'url': 'https://dropbox.com',
-      'image': 'https://cdn-icons-png.flaticon.com/512/2496/2496092.png',
-      'description': 'cloud storage and file sharing service'
     },
     {
       'id': 'onedrive',
@@ -201,13 +173,6 @@ var apps = [
       'url': 'https://poki.com',
       'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0UOfhJT5UOAzWznFy3EuIOh8dbEcRCeWfcQ&s',
       'description': 'free online games platform, instant play'
-    },
-    {
-      'id': 'temu',
-      'title': 'Temu',
-      'url': 'https://temu.com',
-      'image': 'https://i.pinimg.com/474x/51/f0/74/51f0747d0411b526d57f70139b4d4348.jpg',
-      'description': 'cheap online shopping from china, budget marketplace'
     },
     {
       'id': 'geforcenow',
