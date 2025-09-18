@@ -193,25 +193,29 @@ var games = [
     id: 'retrobowl',
     url: 'https://ethonion10.neocities.org/',
     title: 'Retro Bowl',
-    image: 'https://play-lh.googleusercontent.com/WRM5Y1xZmzcCP1YtO5zl6G2g7CU5c5ZfjX4UVrgi1bpNgkfy-wuB-bQx3kkeRfaGYQ'
+    image: 'https://play-lh.googleusercontent.com/WRM5Y1xZmzcCP1YtO5zl6G2g7CU5c5ZfjX4UVrgi1bpNgkfy-wuB-bQx3kkeRfaGYQ',
+    description: 'american football but pixelated, manage team and throw touchdowns'
   },
   {
     id: 'littlealchemy',
     title: 'Little Alchemy',
     url: 'https://littlealchemy.com',
-    image: 'https://play-lh.googleusercontent.com/-NQ2QLAOaafy7iHAJcrdEFk-tyVicnbwy6iLehml8K0Higi60sSVn0829bcyi1lOUw'
+    image: 'https://play-lh.googleusercontent.com/-NQ2QLAOaafy7iHAJcrdEFk-tyVicnbwy6iLehml8K0Higi60sSVn0829bcyi1lOUw',
+    description: 'mix elements to create new things, start with air and water'
   },
   {
     id: 'templerun2',
     title: 'Temple Run 2',
     url: 'https://23azostore.github.io/s8/temple-run-2/',
-    image: 'https://play-lh.googleusercontent.com/go4XqS4mYs-G2tZymiVLF4wJYXIi5QrvwixNRzssk4G_vRBHrAdg4E1ddNwy9c2cZA'
+    image: 'https://play-lh.googleusercontent.com/go4XqS4mYs-G2tZymiVLF4wJYXIi5QrvwixNRzssk4G_vRBHrAdg4E1ddNwy9c2cZA',
+    description: 'run from monkeys through ancient temple, swipe to survive'
   },
   {
     id: 'stickmanhook',
     title: 'Stickman Hook',
     url: 'https://assets.3kh0.net/stickman-hook/index.html',
-    image: 'https://play-lh.googleusercontent.com/yXqBI1Vb1b-xjwmXLE2T7FQbgHIxfvjze1b6jO2aLHfy8Y8ta7NFSEVqZoPHtM2Ajyrl'
+    image: 'https://play-lh.googleusercontent.com/yXqBI1Vb1b-xjwmXLE2T7FQbgHIxfvjze1b6jO2aLHfy8Y8ta7NFSEVqZoPHtM2Ajyrl',
+    description: 'swing on hooks like spider-man, time your release perfectly'
   },
   {
     id: 'run3',
@@ -252,25 +256,29 @@ var games = [
     id: 'snowball',
     title: 'snowball.io',
     url: 'https://snowballio.gitlab.io/file/',
-    image: 'https://play-lh.googleusercontent.com/X8FEOENa_t5mlRllBh2RRLc6sMnPIq56Wxa2ndValDOmwzIRhAv7MG6fT97TLQ2DK48'
+    image: 'https://play-lh.googleusercontent.com/X8FEOENa_t5mlRllBh2RRLc6sMnPIq56Wxa2ndValDOmwzIRhAv7MG6fT97TLQ2DK48',
+    description: 'roll snowball to knock others off icy platforms, last one standing wins'
   },
   {
     id: 'smashkarts',
     title: 'Smash Karts',
     url: 'https://webgltest-17af1.firebaseapp.com/',
-    image: 'https://yt3.googleusercontent.com/OKPFuDO6MCmgJOieSXnx2N0vlGpl13J68P72MKoHaTK5cBxWFuIYO7SjaSSa0Ndmp3NHwR_b=s900-c-k-c0x00ffffff-no-rj'
+    image: 'https://yt3.googleusercontent.com/OKPFuDO6MCmgJOieSXnx2N0vlGpl13J68P72MKoHaTK5cBxWFuIYO7SjaSSa0Ndmp3NHwR_b=s900-c-k-c0x00ffffff-no-rj',
+    description: 'kart racing with weapons and power-ups, mario kart but chaotic'
   },
   {
     id: 'tunnelrush',
     title: 'Tunnel Rush',
     url: 'https://assets.3kh0.net/tunnel-rush/index.html',
     image: 'https://images.hellokids.com/_uploads/_tiny_galerie/20180415/vign-tunnel-rush-hk-w8v_u89.jpg',
+    description: 'speed through colorful tunnel avoiding obstacles, reflexes required'
   },
   {
     id: 'awesometanks2',
     title: 'Awesome Tanks 2',
     url: 'https://mathgames66.github.io/games/html5/awesometanks2/',
-    image: 'https://play-lh.googleusercontent.com/fiH2wSovQkxQ2dQViDAphNBbM0B1dYxTlJqnYwKXeSoQQZbBNkZZuLyMkv4gglb7LH4'
+    image: 'https://play-lh.googleusercontent.com/fiH2wSovQkxQ2dQViDAphNBbM0B1dYxTlJqnYwKXeSoQQZbBNkZZuLyMkv4gglb7LH4',
+    description: 'drive tank and shoot enemies, upgrade weapons and armor'
   },
   {
     id: 'fireandice',
@@ -283,133 +291,155 @@ var games = [
     id: 'slope',
     title: 'Slope',
     url: 'https://mathadventure1.github.io/slope/slope/index.html',
-    image: 'https://play-lh.googleusercontent.com/uJn2i9h7KxYQarC_c3K4qH6o7gLtflFnhD_dN14MNkzHJ1NeNFzCL69jpB5mT0vCoQs'
+    image: 'https://play-lh.googleusercontent.com/uJn2i9h7KxYQarC_c3K4qH6o7gLtflFnhD_dN14MNkzHJ1NeNFzCL69jpB5mT0vCoQs',
+    description: 'roll ball down endless slope, dodge red blocks, speed increases'
   },
   {
     id: 'baldisbasics',
     title: 'Baldi\'s Basics',
     url: 'https://baldisbasics.gitlab.io/file/',
-    image: 'https://play-lh.googleusercontent.com/EPV1TB4So1lB0DGrdCVExDpNU8ML67nd8OqBeoOIM-s6sDicxmDdPvCXD6n7LKevFl0'
+    image: 'https://play-lh.googleusercontent.com/EPV1TB4So1lB0DGrdCVExDpNU8ML67nd8OqBeoOIM-s6sDicxmDdPvCXD6n7LKevFl0',
+    description: 'escape school from angry math teacher, horror but educational'
   },
   {
     id: '1v1lol',
     title: "1v1.lol",
     url: 'https://docs-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/ko1ov/to@1e8a949f89fcf2b110640c41a0705db01405d161/d7uf4.xml#',
-    image: 'https://play-lh.googleusercontent.com/-dE43Bqni_bUnq0L-piPxiJG4YiCotk5khMdrQaQBJrXJ3vSgjNeIaKyA34rBvKQSyOy'
+    image: 'https://play-lh.googleusercontent.com/-dE43Bqni_bUnq0L-piPxiJG4YiCotk5khMdrQaQBJrXJ3vSgjNeIaKyA34rBvKQSyOy',
+    description: 'build walls and shoot enemies in battle royale style'
   },
   {
     id: 'crossyroad',
     title: 'Crossy Road',
     url: 'https://crossy-road.gitlab.io/file/',
-    image: 'https://cdn.jim-nielsen.com/ios/512/crossy-road-endless-arcade-2014-12-02.png'
+    image: 'https://cdn.jim-nielsen.com/ios/512/crossy-road-endless-arcade-2014-12-02.png',
+    description: 'hop across roads and rivers, frogger but with chickens'
   },
   {
     id: 'subwaysurfers',
     title: 'Subway Surfers',
     url: 'https://files.ufreegame.net/1024/Subway-Surfers-Zurich/',
-    image: 'https://cdnb.artstation.com/p/assets/images/images/040/799/939/large/celine-j-1-74-shanghai-icon-1024-x.jpg?1629908071'
+    image: 'https://cdnb.artstation.com/p/assets/images/images/040/799/939/large/celine-j-1-74-shanghai-icon-1024-x.jpg?1629908071',
+    description: 'run on train tracks dodging obstacles and collecting coins'
   },
   {
     id: 'geometrydash',
     title: 'Geometry Dash',
     url: 'https://scratch.mit.edu/projects/105500895/embed',
-    image: 'https://i.redd.it/koaxrnoyfvoa1.jpg'
+    image: 'https://i.redd.it/koaxrnoyfvoa1.jpg',
+    description: 'jump cube through spikes to electronic music, timing is everything'
   },
   {
     id: 'idlecraft',
     title: 'Idlecraft',
     url: 'https://html5.gamedistribution.com/rvvASMiM/d1eb46064cfc41629a2b06e2a2a68a31/index.html',
-    image: 'https://play-lh.googleusercontent.com/Pl3YYYdxM1Lhe-pXFwaLfmzSpqDZqlzvxS7-BH60Mho_cydWeOCkhTCrSgtMEXL54Cm0'
+    image: 'https://play-lh.googleusercontent.com/Pl3YYYdxM1Lhe-pXFwaLfmzSpqDZqlzvxS7-BH60Mho_cydWeOCkhTCrSgtMEXL54Cm0',
+    description: 'minecraft but automated, watch your world build itself'
   },
   {
     id: '8ballpool',
     title: '8 Ball Pool',
     url: 'https://8ball-pool.io',
-    image: 'https://play-lh.googleusercontent.com/bPz1guJ6FHF3oIOEy3KqwpaDDKO-hLRaZoyzmM8bLFLN8fWm6L0_EuUnkwv9iqPo3Ag'
+    image: 'https://play-lh.googleusercontent.com/bPz1guJ6FHF3oIOEy3KqwpaDDKO-hLRaZoyzmM8bLFLN8fWm6L0_EuUnkwv9iqPo3Ag',
+    description: 'classic pool game, sink your balls before opponent'
   },
   {
     id: 'fruitninja',
     title: 'Fruit Ninja',
     url: 'https://www.culinaryschools.org/kids-games/ninja-fruit-slice/game.php',
-    image: 'https://play-lh.googleusercontent.com/iRlGmvtJ524J-gAGdJJchMv-MH-9AuG80TAx8Rv8q3lObiI7kLVZrEvjVOM-yw3BBH4'
+    image: 'https://play-lh.googleusercontent.com/iRlGmvtJ524J-gAGdJJchMv-MH-9AuG80TAx8Rv8q3lObiI7kLVZrEvjVOM-yw3BBH4',
+    description: 'slice flying fruit with ninja skills, avoid the bombs'
   },
   {
     id: 'bloxors',
     title: 'Bloxors',
     url: 'https://www.twoplayergames.org/gameframe/bloxorz?embed=1',
-    image: 'https://play-lh.googleusercontent.com/FHpA3r3FHDzVNtBpjpi9Zq8JA81bvRXBEbdkBvL3COOucsMfn_fYYhEFE5g55VkeSQ'
+    image: 'https://play-lh.googleusercontent.com/FHpA3r3FHDzVNtBpjpi9Zq8JA81bvRXBEbdkBvL3COOucsMfn_fYYhEFE5g55VkeSQ',
+    description: 'roll rectangular block into square hole, 3d puzzle game'
   },
   {
     id: 'chromedino',
     title: "Chrome Dino Game",
     url: 'https://chrome-dino-game.github.io/',
-    image: 'https://qph.cf2.quoracdn.net/main-qimg-c803e5912e045867b4e2f033c1b57ff9-lq'
+    image: 'https://qph.cf2.quoracdn.net/main-qimg-c803e5912e045867b4e2f033c1b57ff9-lq',
+    description: 'jump dinosaur over cacti when internet dies, classic'
   },
   {
     id: 'doodlejump',
     title: 'Doodle Jump',
     url: 'https://doodlejump.io/play/',
-    image: 'https://assets-prd.ignimgs.com/2022/03/16/doodlejump-1647405974576.jpg'
+    image: 'https://assets-prd.ignimgs.com/2022/03/16/doodlejump-1647405974576.jpg',
+    description: 'jump on platforms going up forever, avoid monsters'
   },
   {
     id: 'slither',
     title: 'slither.io',
     url: 'https://slither.io',
-    image: 'https://play-lh.googleusercontent.com/oObkhKfUXOY5yzheKe9w1Y1pXZBgdiSksMeNmT0BijoQ8J75maTCIW2TA7-6pA6EMA'
+    image: 'https://play-lh.googleusercontent.com/oObkhKfUXOY5yzheKe9w1Y1pXZBgdiSksMeNmT0BijoQ8J75maTCIW2TA7-6pA6EMA',
+    description: 'grow snake by eating dots, cut off other players'
   },
   {
     id: 'basketballstars',
     title: 'Basketball Stars',
     url: 'https://script.google.com/macros/s/AKfycbwzYMDDcdDUAvEP7iO6OdRk-5_oUp6vYvDdyEEz8tTOzWi5y4-Qf3vQ6TBoZuc9UYVcLg/exec',
-    image: 'https://play-lh.googleusercontent.com/EjJV6kCXgX9EIhKEtpYhQF8-BUb5En8sDKpOPiWSQJUxv9_RAfl4tMxyIMkQYgeqC6I=w240-h480-rw'
+    image: 'https://play-lh.googleusercontent.com/EjJV6kCXgX9EIhKEtpYhQF8-BUb5En8sDKpOPiWSQJUxv9_RAfl4tMxyIMkQYgeqC6I=w240-h480-rw',
+    description: 'shoot hoops in street basketball, beat opponents'
   },
   {
     id: 'amongus',
     title: 'Among Us',
     url: 'https://previews.customer.envatousercontent.com/files/322345709/index.html',
-    image: 'https://play-lh.googleusercontent.com/8ddL1kuoNUB5vUvgDVjYY3_6HwQcrg1K2fd_R8soD-e2QYj8fT9cfhfh3G0hnSruLKec'
+    image: 'https://play-lh.googleusercontent.com/8ddL1kuoNUB5vUvgDVjYY3_6HwQcrg1K2fd_R8soD-e2QYj8fT9cfhfh3G0hnSruLKec',
+    description: 'find the impostor among crewmates, complete tasks or vote'
   },
   {
     id: 'curveball3d',
     title: 'Curve Ball 3D',
     url: 'https://gswitch3.github.io/g/curve-ball-3d/',
-    image: 'https://play-lh.googleusercontent.com/sTHCFQc1HlSFK2jHNsQOabTeKBvgtugFxnSa_uNLWX2euDE7ohRnJhgCDapOZ0gvxlQ'
+    image: 'https://play-lh.googleusercontent.com/sTHCFQc1HlSFK2jHNsQOabTeKBvgtugFxnSa_uNLWX2euDE7ohRnJhgCDapOZ0gvxlQ',
+    description: 'pong but in 3d tunnel, curve ball to beat opponent'
   },
   {
     id: 'bitlife',
     title: 'Bitlife',
     url: 'https://bitlifeonline.bitbucket.io/file/',
-    image: 'https://d.newsweek.com/en/full/1317374/bitlife-ribbons-how-get-all-complete-list-android-ios-cheats-guide-tips-become.jpg?w=1600&h=1600&q=88&f=75befc746fb83a0c568c44ca07bc5e64'
+    image: 'https://d.newsweek.com/en/full/1317374/bitlife-ribbons-how-get-all-complete-list-android-ios-cheats-guide-tips-become.jpg?w=1600&h=1600&q=88&f=75befc746fb83a0c568c44ca07bc5e64',
+    description: 'live virtual life making choices, birth to death simulator'
   },
   {
     id: 'btd4',
     title: 'Bloons TD 4',
     url: 'https://bloons-td.gitlab.io/file/',
-    image: 'https://assets-prd.ignimgs.com/2022/08/16/bloons-td4-button-1660612386362.jpg'
+    image: 'https://assets-prd.ignimgs.com/2022/08/16/bloons-td4-button-1660612386362.jpg',
+    description: 'place monkeys to pop balloons, tower defense classic'
   },
   {
     id: 'ovo',
     title: 'OvO',
     url: 'https://ovoclassic-pro.github.io/file/',
-    image: 'https://play-lh.googleusercontent.com/v7KwGdPjJGjJjRXn46sck4DwDBdKSeRzGN44CjiXUtKV0jjOi51Bt4wcXud0m-SkXg=w240-h480-rw'
+    image: 'https://play-lh.googleusercontent.com/v7KwGdPjJGjJjRXn46sck4DwDBdKSeRzGN44CjiXUtKV0jjOi51Bt4wcXud0m-SkXg=w240-h480-rw',
+    description: 'parkour platformer with simple stick figure, precision required'
   },
   {
     id: 'dogeminer',
     title: "Doge Miner",
     url: 'https://doge-miner.gitlab.io/file/',
-    image: 'https://play-lh.googleusercontent.com/7diC1RZgf6Z5XCspiwJMYD3vQz5TmjFElLw5qnPJZjcjNXgfhepPJzmIBijgraJRd8uv'
+    image: 'https://play-lh.googleusercontent.com/7diC1RZgf6Z5XCspiwJMYD3vQz5TmjFElLw5qnPJZjcjNXgfhepPJzmIBijgraJRd8uv',
+    description: 'mine dogecoin with shiba inu, such wow much clicker'
   },
   {
     id: 'aquapark',
     title: 'aquapark.io',
     url: 'https://the.deconstructors.co.uk/tam-slippery-water-slides/',
-    image: 'https://play-lh.googleusercontent.com/pNI21ILS4I9IAzveYzjbfk5D5LGuL03b0Ea4OtlFRLD_yk7KYLBeLlBmsvhH7Uj-dQn6'
+    image: 'https://play-lh.googleusercontent.com/pNI21ILS4I9IAzveYzjbfk5D5LGuL03b0Ea4OtlFRLD_yk7KYLBeLlBmsvhH7Uj-dQn6',
+    description: 'race down water slides pushing others off, slippery fun'
   },
   {
     id: '2048',
     title: '2048',
     url: 'https://glebbahmutov.com/2048/',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/2048_logo.svg/220px-2048_logo.svg.png'
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/2048_logo.svg/220px-2048_logo.svg.png',
+    description: 'combine number tiles to reach 2048, simple but addictive'
   },
   {
     id: 'roblox',
@@ -457,67 +487,78 @@ var games = [
     id: 'recoil',
     title: 'Recoil',
     url: 'https://23azostore.github.io/s6/recoil/',
-    image: 'https://vgmsite.com/soundtracks/recoil-windows-gamerip-1999/8842460-recoil-windows-other.jpg'
+    image: 'https://vgmsite.com/soundtracks/recoil-windows-gamerip-1999/8842460-recoil-windows-other.jpg',
+    description: 'tank combat with destructible terrain, old school action'
   },
   {
     id: 'vex8',
     title: 'Vex 8',
     url: 'https://rawcdn.githack.com/nightrose-labs/quartz/8ad8d5b123954f4a5d7e35ca84d5aacba0061eec/2/6dcc5fd9-a43a-4e13-9b6f-456a416e1059/index.html',
-    image: 'https://static.keygames.com/4/117014/103021/1024x1024/vex-8.webp'
+    image: 'https://static.keygames.com/4/117014/103021/1024x1024/vex-8.webp',
+    description: 'parkour through deadly obstacle courses, stick figure pain'
   },
   {
     id: 'thefinalearth2',
     title: 'The Final Earth 2',
     url: 'https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://529473016-184630684593625815.preview.editmysite.com/uploads/b/139890129-811652923688457694/files/tfe2.xml&',
-    image: 'https://play-lh.googleusercontent.com/oAzUAWZS6R4iPUIWF-DxGgx0Jr4ssCO2BjVA3vmA8033Y9j6bp9FGMz9JkcS9TPrp4Q'
+    image: 'https://play-lh.googleusercontent.com/oAzUAWZS6R4iPUIWF-DxGgx0Jr4ssCO2BjVA3vmA8033Y9j6bp9FGMz9JkcS9TPrp4Q',
+    description: 'build vertical city in space, earth exploded again'
   },
   {
     id: 'snowrider',
     title: 'Snow Rider',
     url: 'https://drippy-cat.github.io/snowrider3D/',
-    image: 'https://play-lh.googleusercontent.com/rvs-Y7c8PCBSkXoDGeEXtzSfPmxZ6IY2czOhpMQmH8jOs3qGOiMTtzIbA9qJTaT9qhk'
+    image: 'https://play-lh.googleusercontent.com/rvs-Y7c8PCBSkXoDGeEXtzSfPmxZ6IY2czOhpMQmH8jOs3qGOiMTtzIbA9qJTaT9qhk',
+    description: 'snowboard down mountain dodging trees and rocks'
   },
   {
     id: '1on1basketball',
     title: '1 On 1 Basketball',
     url: 'https://google-opensocial.googleusercontent.com/gadgets/ifr?url=https://s3.amazonaws.com/production-assetsbucket-8ljvyr1xczmb/1ee20621-61bc-4ec8-a8ec-5e839c2e6edc%2F1-on-1-basketball.xml',
-    image: 'https://tgkathletics.com/wp-content/uploads/2020/01/1-on-1-Bball-5.jpg'
+    image: 'https://tgkathletics.com/wp-content/uploads/2020/01/1-on-1-Bball-5.jpg',
+    description: 'basketball one versus one, dribble and shoot to win'
   },
   {
     id: 'johnnyupgrade',
     title: 'Johnny Upgrade',
     url: 'https://slope-game.github.io/new3623/johnny-upgrade/',
-    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwR255KbD3yFlHuogEuNIk4uOYWciMrqTiPqsstZUIAPhyn8eomyvJ8hh6rX-MUJiRlSc&usqp=CAU'
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwR255KbD3yFlHuogEuNIk4uOYWciMrqTiPqsstZUIAPhyn8eomyvJ8hh6rX-MUJiRlSc&usqp=CAU',
+    description: 'platformer where you buy upgrades with collected coins'
   },
   {
     id: 'holeio',
     title: 'Hole.io',
     url: 'https://holeioonline.github.io/file/',
-    image: 'https://play-lh.googleusercontent.com/PTnoGeHV-bsIF79sW4IX4MzKAKaWj9fBWGvR4AOA4tmW0eYjPo3bVdpPYR7GGeX-0w'
+    image: 'https://play-lh.googleusercontent.com/PTnoGeHV-bsIF79sW4IX4MzKAKaWj9fBWGvR4AOA4tmW0eYjPo3bVdpPYR7GGeX-0w',
+    description: 'control black hole eating everything in city, grow bigger'
   },
   {
     id: 'penguinio',
     title: "Penguin.io",
     url: 'https://penguins-io.com/',
-    image: 'https://play-lh.googleusercontent.com/YsT4stD48fWw0XuIT87ilZtBfTkOGlxj3PpWI9qeFUkrvpu1xjemXzqf12DxBvv-Ikk'
+    image: 'https://play-lh.googleusercontent.com/YsT4stD48fWw0XuIT87ilZtBfTkOGlxj3PpWI9qeFUkrvpu1xjemXzqf12DxBvv-Ikk',
+    description: 'push other penguins off ice platforms, last one standing'
   },
   {
     id: 'brawlguys',
     title: 'Brawl Guys',
     url: 'https://html5.gamemonetize.co/ddek6s43vtxox5ocpsctljrtny62f1ss/',
-    image: 'https://play-lh.googleusercontent.com/EiElcSrd6-o-19roiswSx0AZPzsq6qF3hUGHsSWDl5UVtj7G23DHkneM8ucwqyOmEg'
+    image: 'https://play-lh.googleusercontent.com/EiElcSrd6-o-19roiswSx0AZPzsq6qF3hUGHsSWDl5UVtj7G23DHkneM8ucwqyOmEg',
+    description: 'fall guys style multiplayer minigames, beans battle royale'
   },
   {
     id: 'helixjump',
     title: 'Helix Jump',
     url: 'https://the.deconstructors.co.uk/tam-helix-jump-3d/',
-    image: 'https://play-lh.googleusercontent.com/cZHORa1z78dfMsP_nxCkplmHGUx5wfjY0x2jK59GWL7rUL5o6c_KiQ7QL9o4T22qbH8'
+    image: 'https://play-lh.googleusercontent.com/cZHORa1z78dfMsP_nxCkplmHGUx5wfjY0x2jK59GWL7rUL5o6c_KiQ7QL9o4T22qbH8',
+    description: 'bounce ball down spiral tower avoiding colored platforms'
   },
   {
     id: 'raccoonretail',
     title: 'Raccoon Retail',
     url: 'https://www.coolmathgames.com/0-raccoon-retail/play',
-    image: 'https://play-lh.googleusercontent.com/zI8P-Gej0l8WK9_rRrVJuHQfZqA97ncD1RCN8qdLbmwl0uxPI8o5JLBsnJz5hxLKTYE'
+    image: 'https://play-lh.googleusercontent.com/zI8P-Gej0l8WK9_rRrVJuHQfZqA97ncD1RCN8qdLbmwl0uxPI8o5JLBsnJz5hxLKTYE',
+    description: 'manage store and help customers as raccoon shopkeeper'
   }
 ]
 games.sort(function (a, b) {
