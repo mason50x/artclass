@@ -309,9 +309,11 @@ margin: 5px auto;
   background-color: white;
   display: block;
   margin: 0;
-
+  padding: 0;
   border: none;
-
+  position: absolute;
+  top: 80px;
+  left: 0;
   height: calc(100vh - 80px);
   width: 100vw;
 }
