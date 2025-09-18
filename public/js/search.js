@@ -19,10 +19,10 @@ function createTab(url = null) {
 
   const tab = {
     id: tabId,
-    title: url ? getDomainFromUrl(url) : 'New Tab',
-    url: url,
-    history: url ? [url] : [],
-    historyIndex: url ? 0 : -1,
+    title: 'New Tab',
+    url: null,
+    history: [],
+    historyIndex: -1,
     element: null,
     contentElement: null,
     iframe: null,
