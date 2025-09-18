@@ -286,4 +286,11 @@ var apps = [
       'image': 'https://play-lh.googleusercontent.com/rrFtf3hQpmMUmwHdcsvsV6vNpjMP9wsbvt6PpVg6sUleu0iJrlqVQizckc49dNkFQho',
       'description': 'online games portal, millions of free browser games'
     },
+    {
+      'id': 'chatgpt',
+      'title': 'ChatGPT',
+      'url': 'https://chat.openai.com',
+      'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMdM9MEQ0ExL1PmInT3U5I8v63YXBEdoIT0Q&s',
+      'description': 'ai chatbot that answers questions and helps with tasks'
+    },
   ]
