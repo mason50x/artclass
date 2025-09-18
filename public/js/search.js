@@ -7,6 +7,7 @@ const fullscreenBtn = document.querySelector("#fullscreen-btn");
 const tabBar = document.querySelector(".tab-bar");
 const newTabBtn = document.querySelector(".new-tab-btn");
 const browserContent = document.querySelector("#browser-content");
+const urlFavicon = document.querySelector(".url-favicon");
 
 let tabs = [];
 let activeTabId = null;
@@ -34,6 +35,7 @@ function createTab(url = null) {
   tabElement.className = 'tab';
   tabElement.id = tabId;
   tabElement.innerHTML = `
+    <img class="tab-favicon" src="./assets/images/logo.png" alt="" />
     <span class="tab-title">${tab.title}</span>
     <button class="tab-close" onclick="closeTab('${tabId}')">&times;</button>
   `;
@@ -53,6 +55,7 @@ function createTab(url = null) {
   startPageElement.className = 'start-page';
   startPageElement.innerHTML = `
     <div class="start-content">
+      <img src="./assets/images/logo.png" alt="Infinite" class="start-logo"/>
       <h1>Welcome to Infinite Search</h1>
       <p>Enter a URL or search term in the address bar above</p>
     </div>
@@ -85,6 +88,26 @@ function createTab(url = null) {
   }
 
   return tabId;
+}
+
+// Favicon helpers
+function getFaviconUrlFromHostname(hostname) {
+  if (!hostname) return './assets/images/logo.png';
+  return `https://icons.duckduckgo.com/ip3/${hostname}.ico`;
+}
+
+function updateFaviconsForTab(tab) {
+  const hostname = tab.url ? getDomainFromUrl(tab.url) : null;
+  const favSrc = getFaviconUrlFromHostname(hostname);
+  const tabFav = tab.element.querySelector('.tab-favicon');
+  if (tabFav) {
+    tabFav.onerror = () => (tabFav.src = './assets/images/logo.png');
+    tabFav.src = favSrc;
+  }
+  if (activeTabId === tab.id && urlFavicon) {
+    urlFavicon.onerror = () => (urlFavicon.src = './assets/images/logo.png');
+    urlFavicon.src = favSrc;
+  }
 }
 
 function switchToTab(tabId) {
@@ -153,6 +176,9 @@ function navigateTabToUrl(tabId, inputValue) {
   tab.title = getDomainFromUrl(url);
   tab.element.querySelector('.tab-title').textContent = tab.title;
 
+  // Update favicons
+  updateFaviconsForTab(tab);
+
   // Navigate iframe
   tab.startPage.style.display = 'none';
   tab.iframe.style.display = 'block';
@@ -167,6 +193,11 @@ function navigateTabToUrl(tabId, inputValue) {
 function updateUIForTab(tab) {
   urlInput.value = tab.url || '';
   updateNavButtons(tab);
+  // Sync address bar favicon
+  if (urlFavicon) {
+    const favSrc = tab.url ? getFaviconUrlFromHostname(getDomainFromUrl(tab.url)) : './assets/images/logo.png';
+    urlFavicon.src = favSrc;
+  }
 }
 
 function updateNavButtons(tab = null) {
@@ -213,6 +244,9 @@ backBtn.addEventListener("click", function() {
     tab.title = getDomainFromUrl(url);
     tab.element.querySelector('.tab-title').textContent = tab.title;
 
+    // Update favicons
+    updateFaviconsForTab(tab);
+
     // Update UI
     updateUIForTab(tab);
   }
@@ -229,6 +263,9 @@ forwardBtn.addEventListener("click", function() {
     // Update tab title
     tab.title = getDomainFromUrl(url);
     tab.element.querySelector('.tab-title').textContent = tab.title;
+
+    // Update favicons
+    updateFaviconsForTab(tab);
 
     // Update UI
     updateUIForTab(tab);
@@ -308,6 +345,7 @@ function goBackToSearch() {
     tab.historyIndex = -1;
     tab.title = 'New Tab';
     tab.element.querySelector('.tab-title').textContent = 'New Tab';
+    updateFaviconsForTab(tab);
     updateUIForTab(tab);
   }
 }
