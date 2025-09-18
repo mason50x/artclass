@@ -208,6 +208,12 @@ backBtn.addEventListener("click", function() {
     const url = tab.history[tab.historyIndex];
     tab.iframe.src = __uv$config.prefix + __uv$config.encodeUrl(url);
     tab.url = url;
+
+    // Update tab title
+    tab.title = getDomainFromUrl(url);
+    tab.element.querySelector('.tab-title').textContent = tab.title;
+
+    // Update UI
     updateUIForTab(tab);
   }
 });
@@ -219,6 +225,12 @@ forwardBtn.addEventListener("click", function() {
     const url = tab.history[tab.historyIndex];
     tab.iframe.src = __uv$config.prefix + __uv$config.encodeUrl(url);
     tab.url = url;
+
+    // Update tab title
+    tab.title = getDomainFromUrl(url);
+    tab.element.querySelector('.tab-title').textContent = tab.title;
+
+    // Update UI
     updateUIForTab(tab);
   }
 });
