@@ -12,15 +12,14 @@
 
       gtag('config', 'G-V2V4G2SVFN');
     </script>
-    <link
-      rel="shortcut icon"
-      href="./assets/images/logo.png"
-      type="image/png"
-    />
+    <link rel="preload" href="./assets/images/logo.png" as="image" type="image/png" />
+    <link rel="icon" href="./assets/images/logo.png" type="image/png" />
+    <link rel="shortcut icon" href="./assets/images/logo.png" type="image/png" />
     <title>Infinite \ Settings</title>
 
     <link rel="stylesheet" href="./css/master.css" />
 
+    <script src="./js/auth.js"></script>
     <script src="/uv/uv.bundle.js" charset="UTF-8"></script>
     <script src="/uv/uv.config.js"></script>
     <script src="./js/preload.js"></script>
@@ -53,10 +52,10 @@
       <h1>Settings</h1>
 
       <h2>Tab cloaking</h2>
-      <input type="text" id="tabname" placeholder="Tab name" />
-      <button onclick="setTab()" class="secondary">Set tab name</button> <br />
-      <input type="text" id="tabicon" placeholder="Tab icon" />
-      <button onclick="setTab()" class="secondary">Set tab icon</button> <br />
+      <input type="text" id="tabname" placeholder="Tab name" aria-label="Custom tab name" />
+      <button onclick="setTab()" class="secondary" aria-label="Apply tab name">Set tab name</button> <br />
+      <input type="text" id="tabicon" placeholder="Tab icon" aria-label="Custom tab icon URL" />
+      <button onclick="setTab()" class="secondary" aria-label="Apply tab icon">Set tab icon</button> <br />
 
       <button class="secondary" onclick="setTabPreset('default')">
         <img src="/assets/images/logo.png" />

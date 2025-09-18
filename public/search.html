@@ -36,7 +36,10 @@
 
   <div class="center-container">
     <h1>Search</h1>
-    <input class="pxyinput" type="text" placeholder="Search..." />
+    <input class="pxyinput" type="text" placeholder="Search..." aria-label="Enter URL to browse" />
+    <div id="error-message" style="display: none; color: #ff6b6b; margin-top: 10px; padding: 10px; background: rgba(255, 107, 107, 0.1); border-radius: 5px; border: 1px solid rgba(255, 107, 107, 0.3);">
+      Please enter a valid URL (e.g., google.com or https://example.com)
+    </div>
   </div>
   <iframe class="frame"></iframe>
 </body>

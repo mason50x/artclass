@@ -29,7 +29,10 @@ function showUpdateLog() {
 }
 
 
-if (window.self !== window.self) document.querySelector('#launchab').style.display = 'none'
+if (window.self !== window.top) {
+  const launchButton = document.querySelector('#launchab');
+  if (launchButton) launchButton.style.display = 'none';
+}
 
 
 
