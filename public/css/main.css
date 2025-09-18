@@ -291,10 +291,11 @@ button:hover {
  }
 
 #search {
-background-color: #111;
-transition: 0.4s border;
-border-radius: 5px;
-border: none;
+background: rgba(255, 255, 255, 0.2);
+backdrop-filter: blur(10px);
+border: 2px solid rgba(255, 255, 255, 0.3);
+border-radius: 9999px;
+box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 font-size: 20px;
 width: 500px;
 height: 45px;
@@ -302,6 +303,7 @@ color: white;
 text-align: center;
 padding: 5px 15px;
 margin: 5px auto;
+transition: all 0.3s ease;
 }
 
  .frame {
