@@ -321,3 +321,15 @@ function toggleFullscreen() {
     document.exitFullscreen();
   }
 }
+
+function updateFullscreenButton() {
+  const icon = fullscreenBtn.querySelector('i');
+  if (document.fullscreenElement) {
+    icon.className = 'fas fa-compress';
+  } else {
+    icon.className = 'fas fa-expand';
+  }
+}
+
+// Listen for fullscreen changes
+document.addEventListener('fullscreenchange', updateFullscreenButton);
