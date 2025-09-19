@@ -15,6 +15,17 @@ let tabCounter = 0;
 
 // Tab management functions
 function createTab(url = null) {
+  // Check tab limit
+  if (tabs.length >= 5) {
+    showTabLimitWarning();
+    return null;
+  }
+
+  // Show performance warning at 3 tabs
+  if (tabs.length >= 2) {
+    showPerformanceWarning();
+  }
+
   tabCounter++;
   const tabId = `tab-${tabCounter}`;
 
@@ -289,7 +300,9 @@ fullscreenBtn.addEventListener("click", function() {
 
 newTabBtn.addEventListener("click", function() {
   const newTabId = createTab();
-  switchToTab(newTabId);
+  if (newTabId) {
+    switchToTab(newTabId);
+  }
 });
 
 // Initialize with first tab
@@ -337,6 +350,70 @@ function showError() {
   setTimeout(() => {
     errorMessage.style.display = 'none';
   }, 3000);
+}
+
+function showPerformanceWarning() {
+  // Only show once per session
+  if (sessionStorage.getItem('performanceWarningShown')) return;
+
+  const warningDiv = document.createElement('div');
+  warningDiv.style.cssText = `
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(255, 165, 0, 0.9);
+    color: black;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 165, 0, 0.3);
+    z-index: 10000;
+    max-width: 300px;
+    font-size: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  `;
+  warningDiv.innerHTML = `
+    <strong>Performance Warning</strong><br>
+    Having multiple tabs may impact performance. Consider closing unused tabs.
+  `;
+
+  document.body.appendChild(warningDiv);
+  sessionStorage.setItem('performanceWarningShown', 'true');
+
+  setTimeout(() => {
+    if (warningDiv.parentNode) {
+      warningDiv.remove();
+    }
+  }, 5000);
+}
+
+function showTabLimitWarning() {
+  const warningDiv = document.createElement('div');
+  warningDiv.style.cssText = `
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(255, 107, 107, 0.9);
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 107, 107, 0.3);
+    z-index: 10000;
+    max-width: 300px;
+    font-size: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  `;
+  warningDiv.innerHTML = `
+    <strong>Tab Limit Reached</strong><br>
+    Maximum of 5 tabs allowed. Please close a tab to open a new one.
+  `;
+
+  document.body.appendChild(warningDiv);
+
+  setTimeout(() => {
+    if (warningDiv.parentNode) {
+      warningDiv.remove();
+    }
+  }, 4000);
 }
 
 function goBackToSearch() {
