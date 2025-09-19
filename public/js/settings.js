@@ -37,6 +37,30 @@ function setTabPreset(tab) {
     setTab(tabPresets[tab].name, tabPresets[tab].icon)
 }
 
+function resetToDefault() {
+    // Clear custom tab settings
+    localStorage.removeItem("tabName")
+    localStorage.removeItem("tabIcon")
+
+    // Reset to default Infinite settings
+    setTab(tabPresets.default.name, tabPresets.default.icon)
+
+    // Clear the input fields
+    document.querySelector("#tabname").value = ""
+    document.querySelector("#tabicon").value = ""
+
+    // Show confirmation
+    const button = event.target
+    const originalText = button.textContent
+    button.textContent = "Reset Complete!"
+    button.style.backgroundColor = "#27ae60"
+
+    setTimeout(() => {
+        button.textContent = originalText
+        button.style.backgroundColor = "#3498db"
+    }, 2000)
+}
+
 if (localStorage.getItem("tabName")) document.querySelector("#tabname").value = localStorage.getItem("tabName")
 if (localStorage.getItem("tabIcon")) document.querySelector("#tabicon").value = localStorage.getItem("tabIcon")
 
