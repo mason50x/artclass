@@ -403,14 +403,21 @@ class ConstellationBackground {
     createStars() {
         const numStars = Math.floor((this.canvas.width * this.canvas.height) / 8000);
 
+        // Use seeded random for consistent star positions across tabs
+        let seed = 12345;
+        const seededRandom = () => {
+            seed = (seed * 9301 + 49297) % 233280;
+            return seed / 233280;
+        };
+
         for (let i = 0; i < numStars; i++) {
             this.stars.push({
-                x: Math.random() * this.canvas.width,
-                y: Math.random() * this.canvas.height,
-                size: Math.random() * 2 + 0.5,
-                opacity: Math.random() * 0.6 + 0.4,
-                vx: (Math.random() - 0.5) * 2.5,
-                vy: (Math.random() - 0.5) * 2.5
+                x: seededRandom() * this.canvas.width,
+                y: seededRandom() * this.canvas.height,
+                size: seededRandom() * 2 + 0.5,
+                opacity: 0.8,
+                vx: 0,
+                vy: 0
             });
         }
     }
@@ -424,8 +431,6 @@ class ConstellationBackground {
             this.ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
             this.ctx.fill();
             this.ctx.restore();
-
-            star.opacity = 0.8;
         });
     }
 
@@ -456,35 +461,7 @@ class ConstellationBackground {
     }
 
     updateStars() {
-        this.stars.forEach(star => {
-            // Gentle drift
-            star.vx += (Math.random() - 0.5) * 0.002;
-            star.vy += (Math.random() - 0.5) * 0.002;
-
-            star.vx *= 0.995;
-            star.vy *= 0.995;
-
-            star.x += star.vx;
-            star.y += star.vy;
-
-            // Keep stars within frame boundaries
-            if (star.x < 0) {
-                star.x = 0;
-                star.vx = Math.abs(star.vx) * 0.5;
-            }
-            if (star.x > this.canvas.width) {
-                star.x = this.canvas.width;
-                star.vx = -Math.abs(star.vx) * 0.5;
-            }
-            if (star.y < 0) {
-                star.y = 0;
-                star.vy = Math.abs(star.vy) * 0.5;
-            }
-            if (star.y > this.canvas.height) {
-                star.y = this.canvas.height;
-                star.vy = -Math.abs(star.vy) * 0.5;
-            }
-        });
+        // Stars are now static - no movement
     }
 
     animate() {
