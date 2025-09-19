@@ -120,6 +120,24 @@
             transform: translateY(-2px);
         }
 
+        .forgot-password-button {
+            background: transparent;
+            color: #667eea;
+            border: 1px solid #e1e5e9;
+            padding: 8px 16px;
+            border-radius: 9999px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 10px;
+        }
+
+        .forgot-password-button:hover {
+            background: #f8f9fa;
+            border-color: #667eea;
+        }
+
         .error-message {
             color: #e74c3c;
             font-size: 14px;
@@ -199,12 +217,24 @@
             animation: periodicSpin 8s ease-in-out infinite;
         }
 
+        .error-spin {
+            animation: errorSpin 0.6s ease-in-out;
+        }
+
+        @keyframes errorSpin {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+            100% { transform: rotate(0deg); }
+        }
+
     </style>
 </head>
 <body>
     <div class="auth-container">
         <div class="auth-logo">
-            <img src="./assets/images/white_logo.png" alt="Infinite" class="pulse-logo" style="max-width: 200px; height: auto; margin-bottom: 30px;" />
+            <img src="./assets/images/white_logo.png" alt="Infinite" class="pulse-logo" style="max-width: 120px; height: auto; margin-bottom: 15px;" />
+            <p style="color: #666; font-size: 20px; margin: 0 0 30px 0; font-weight: 400;">Continue to Infinite</p>
         </div>
 
         <form class="login-form" id="loginForm">
@@ -220,6 +250,8 @@
 
             <button type="submit" class="login-button">Continue</button>
 
+            <button type="button" class="forgot-password-button" id="forgotPasswordButton">Forgot Password?</button>
+
             <div class="error-message" id="errorMessage">
                 Invalid credentials. Please try again.
             </div>
@@ -232,7 +264,7 @@
 
     <div class="unlock-animation" id="unlockAnimation">
         <div style="text-align: center;">
-            <img src="./assets/images/white_logo.png" alt="Infinite" class="pulse-logo" style="width: 200px; height: auto; margin-bottom: 30px;" />
+            <img src="./assets/images/white_logo.png" alt="Infinite" class="pulse-logo" style="width: 120px; height: auto; margin-bottom: 30px;" />
             <p style="font-size: 48px; margin: 0; font-weight: 600; color: #333;">Welcome to Infinite, Nerd</p>
         </div>
     </div>
@@ -247,6 +279,77 @@
             return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
         }
 
+        // Cookie utility functions
+        function setCookie(name, value, hours) {
+            const expires = new Date();
+            expires.setTime(expires.getTime() + (hours * 60 * 60 * 1000));
+            document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+        }
+
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for(let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        function deleteCookie(name) {
+            document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+        }
+
+        // Rate limiting functions
+        function getFailedAttempts() {
+            const attempts = getCookie('auth_failed_attempts');
+            return attempts ? JSON.parse(attempts) : [];
+        }
+
+        function addFailedAttempt() {
+            const attempts = getFailedAttempts();
+            const now = Date.now();
+            attempts.push(now);
+            setCookie('auth_failed_attempts', JSON.stringify(attempts), 1);
+        }
+
+        function cleanOldAttempts() {
+            const attempts = getFailedAttempts();
+            const oneHourAgo = Date.now() - (60 * 60 * 1000);
+            const recentAttempts = attempts.filter(timestamp => timestamp > oneHourAgo);
+
+            if (recentAttempts.length !== attempts.length) {
+                if (recentAttempts.length === 0) {
+                    deleteCookie('auth_failed_attempts');
+                } else {
+                    setCookie('auth_failed_attempts', JSON.stringify(recentAttempts), 1);
+                }
+            }
+
+            return recentAttempts;
+        }
+
+        function isRateLimited() {
+            const recentAttempts = cleanOldAttempts();
+            return recentAttempts.length >= 3;
+        }
+
+        function getTimeUntilReset() {
+            const attempts = getFailedAttempts();
+            if (attempts.length === 0) return 0;
+
+            const oldestAttempt = Math.min(...attempts);
+            const oneHourFromOldest = oldestAttempt + (60 * 60 * 1000);
+            const timeLeft = oneHourFromOldest - Date.now();
+
+            return Math.max(0, timeLeft);
+        }
+
+        function clearFailedAttempts() {
+            deleteCookie('auth_failed_attempts');
+        }
+
         // Encrypted credential hashes (SHA-256 of 'dog')
         const VALID_EMAIL_HASH = 'cd6357efdd966de8c0cb2f876cc89ec74ce35f0968e11743987084bd42fb8944';
         const VALID_PASSWORD_HASH = 'cd6357efdd966de8c0cb2f876cc89ec74ce35f0968e11743987084bd42fb8944';
@@ -254,8 +357,6 @@
         document.getElementById('loginForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
             const errorMessage = document.getElementById('errorMessage');
             const successMessage = document.getElementById('successMessage');
 
@@ -263,12 +364,27 @@
             errorMessage.style.display = 'none';
             successMessage.style.display = 'none';
 
+            // Check rate limiting first
+            if (isRateLimited()) {
+                const timeLeft = getTimeUntilReset();
+                const minutesLeft = Math.ceil(timeLeft / (1000 * 60));
+                errorMessage.textContent = `Too many failed attempts. Please try again in ${minutesLeft} minute${minutesLeft !== 1 ? 's' : ''}.`;
+                errorMessage.style.display = 'block';
+                return;
+            }
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
             // Hash the input credentials
             const emailHash = await hashCredential(email);
             const passwordHash = await hashCredential(password);
 
             // Check credentials against encrypted hashes
             if (emailHash === VALID_EMAIL_HASH && passwordHash === VALID_PASSWORD_HASH) {
+                // Clear failed attempts on successful login
+                clearFailedAttempts();
+
                 // Store authentication status
                 localStorage.setItem('infinite_authenticated', 'true');
 
@@ -284,7 +400,20 @@
                     window.location.href = '/index.html';
                 }, 5000);
             } else {
-                // Show error message
+                // Add failed attempt to rate limiting
+                addFailedAttempt();
+
+                // Check if this puts them over the limit
+                const recentAttempts = cleanOldAttempts();
+                if (recentAttempts.length >= 3) {
+                    const timeLeft = getTimeUntilReset();
+                    const minutesLeft = Math.ceil(timeLeft / (1000 * 60));
+                    errorMessage.textContent = `Too many failed attempts. Please try again in ${minutesLeft} minute${minutesLeft !== 1 ? 's' : ''}.`;
+                } else {
+                    const attemptsLeft = 3 - recentAttempts.length;
+                    errorMessage.textContent = `Invalid credentials. ${attemptsLeft} attempt${attemptsLeft !== 1 ? 's' : ''} remaining.`;
+                }
+
                 errorMessage.style.display = 'block';
 
                 // Clear the form
@@ -297,6 +426,22 @@
         if (localStorage.getItem('infinite_authenticated') === 'true') {
             window.location.href = '/index.html';
         }
+
+        // Clean old attempts on page load
+        cleanOldAttempts();
+
+        // Forgot password button handler
+        document.getElementById('forgotPasswordButton').addEventListener('click', function() {
+            const errorMessage = document.getElementById('errorMessage');
+            const successMessage = document.getElementById('successMessage');
+
+            // Hide success message
+            successMessage.style.display = 'none';
+
+            // Show error message
+            errorMessage.textContent = 'Unknown error occurred';
+            errorMessage.style.display = 'block';
+        });
     </script>
 </body>
 </html>
