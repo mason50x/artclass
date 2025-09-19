@@ -54,6 +54,7 @@ function createTab(url = null) {
   const startPageElement = document.createElement('div');
   startPageElement.className = 'start-page';
   startPageElement.innerHTML = `
+    <canvas id="constellation-canvas-${tabId}"></canvas>
     <div class="start-content">
       <img src="./assets/images/logo.png" alt="Infinite" class="start-logo"/>
       <h1>Welcome to Infinite Search</h1>
@@ -81,6 +82,9 @@ function createTab(url = null) {
   browserContent.appendChild(contentElement);
 
   tabs.push(tab);
+
+  // Initialize constellation background for the start page
+  initializeConstellation(tabId);
 
   // Navigate to URL if provided
   if (url) {
@@ -371,3 +375,153 @@ function updateFullscreenButton() {
 
 // Listen for fullscreen changes
 document.addEventListener('fullscreenchange', updateFullscreenButton);
+
+// Constellation background for start pages
+class ConstellationBackground {
+    constructor(canvasId) {
+        this.canvas = document.getElementById(canvasId);
+        if (!this.canvas) return;
+
+        this.ctx = this.canvas.getContext('2d');
+        this.stars = [];
+        this.mouse = { x: 0, y: 0 };
+        this.maxDistance = 150;
+        this.animationId = null;
+
+        this.init();
+        this.createStars();
+        this.animate();
+        this.bindEvents();
+    }
+
+    init() {
+        const rect = this.canvas.parentElement.getBoundingClientRect();
+        this.canvas.width = rect.width;
+        this.canvas.height = rect.height;
+    }
+
+    createStars() {
+        const numStars = Math.floor((this.canvas.width * this.canvas.height) / 8000);
+
+        for (let i = 0; i < numStars; i++) {
+            this.stars.push({
+                x: Math.random() * this.canvas.width,
+                y: Math.random() * this.canvas.height,
+                size: Math.random() * 2 + 0.5,
+                opacity: Math.random() * 0.6 + 0.4,
+                vx: (Math.random() - 0.5) * 2.5,
+                vy: (Math.random() - 0.5) * 2.5
+            });
+        }
+    }
+
+    drawStars() {
+        this.stars.forEach(star => {
+            this.ctx.save();
+            this.ctx.globalAlpha = star.opacity;
+            this.ctx.fillStyle = '#ffffff';
+            this.ctx.beginPath();
+            this.ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+            this.ctx.fill();
+            this.ctx.restore();
+
+            star.opacity = 0.8;
+        });
+    }
+
+    drawConnections() {
+        this.stars.forEach((star, i) => {
+            // Connect to other nearby stars
+            for (let j = i + 1; j < this.stars.length; j++) {
+                const otherStar = this.stars[j];
+                const distance = Math.sqrt(
+                    Math.pow(star.x - otherStar.x, 2) +
+                    Math.pow(star.y - otherStar.y, 2)
+                );
+
+                if (distance < 120) {
+                    this.ctx.save();
+                    const opacity = (1 - distance / 120) * 0.6;
+                    this.ctx.globalAlpha = opacity;
+                    this.ctx.strokeStyle = '#ffffff';
+                    this.ctx.lineWidth = 0.5;
+                    this.ctx.beginPath();
+                    this.ctx.moveTo(star.x, star.y);
+                    this.ctx.lineTo(otherStar.x, otherStar.y);
+                    this.ctx.stroke();
+                    this.ctx.restore();
+                }
+            }
+        });
+    }
+
+    updateStars() {
+        this.stars.forEach(star => {
+            // Gentle drift
+            star.vx += (Math.random() - 0.5) * 0.002;
+            star.vy += (Math.random() - 0.5) * 0.002;
+
+            star.vx *= 0.995;
+            star.vy *= 0.995;
+
+            star.x += star.vx;
+            star.y += star.vy;
+
+            // Keep stars within frame boundaries
+            if (star.x < 0) {
+                star.x = 0;
+                star.vx = Math.abs(star.vx) * 0.5;
+            }
+            if (star.x > this.canvas.width) {
+                star.x = this.canvas.width;
+                star.vx = -Math.abs(star.vx) * 0.5;
+            }
+            if (star.y < 0) {
+                star.y = 0;
+                star.vy = Math.abs(star.vy) * 0.5;
+            }
+            if (star.y > this.canvas.height) {
+                star.y = this.canvas.height;
+                star.vy = -Math.abs(star.vy) * 0.5;
+            }
+        });
+    }
+
+    animate() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+        this.updateStars();
+        this.drawConnections();
+        this.drawStars();
+
+        this.animationId = requestAnimationFrame(() => this.animate());
+    }
+
+    bindEvents() {
+        const resizeHandler = () => {
+            if (this.canvas && this.canvas.parentElement) {
+                const rect = this.canvas.parentElement.getBoundingClientRect();
+                this.canvas.width = rect.width;
+                this.canvas.height = rect.height;
+                this.stars = [];
+                this.createStars();
+            }
+        };
+
+        window.addEventListener('resize', resizeHandler);
+    }
+
+    destroy() {
+        if (this.animationId) {
+            cancelAnimationFrame(this.animationId);
+        }
+    }
+}
+
+// Initialize constellation for new start pages
+function initializeConstellation(tabId) {
+    const canvasId = `constellation-canvas-${tabId}`;
+    setTimeout(() => {
+        new ConstellationBackground(canvasId);
+    }, 100); // Small delay to ensure DOM is ready
+}
