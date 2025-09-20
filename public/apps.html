@@ -67,7 +67,7 @@
     right: 0;
     background: #111;
     border: 1px solid #333;
-    border-radius: 5px;
+    border-radius: 15px;
     max-height: 200px;
     overflow-y: auto;
     z-index: 1000;
@@ -81,20 +81,38 @@
   }
 
   .suggestion-item {
-    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
     cursor: pointer;
     color: white;
     border-bottom: 1px solid #333;
-    transition: background-color 0.2s;
+    transition: all 0.3s ease;
+    gap: 12px;
   }
 
   .suggestion-item:hover,
   .suggestion-item.highlighted {
     background-color: #0284d4;
+    border-radius: 8px;
+    margin: 2px 4px;
+    border-bottom: 1px solid transparent;
   }
 
   .suggestion-item:last-child {
     border-bottom: none;
+  }
+
+  .suggestion-favicon {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
+  .suggestion-text {
+    flex: 1;
+    font-size: 14px;
   }
 
   .search-container {
@@ -107,12 +125,11 @@
   const suggestionsContainer = document.querySelector('#suggestions')
   const items = document.querySelectorAll('.card')
   let currentHighlight = -1
-  let allAppTitles = []
+  let allApps = []
 
-  // Wait for apps to load, then extract titles
+  // Wait for apps to load, then extract app data
   setTimeout(() => {
-    const appCards = document.querySelectorAll('.card h4')
-    allAppTitles = Array.from(appCards).map(card => card.textContent)
+    allApps = apps // Use the apps array from apps.js
   }, 100)
 
   function showSuggestions(query) {
@@ -121,8 +138,8 @@
       return
     }
 
-    const matches = allAppTitles
-      .filter(title => title.toLowerCase().includes(query.toLowerCase()))
+    const matches = allApps
+      .filter(app => app.title.toLowerCase().includes(query.toLowerCase()))
       .slice(0, 5) // Limit to 5 suggestions
 
     if (matches.length === 0) {
@@ -131,7 +148,12 @@
     }
 
     suggestionsContainer.innerHTML = matches
-      .map((title, index) => `<div class="suggestion-item" data-index="${index}">${title}</div>`)
+      .map((app, index) => `
+        <div class="suggestion-item" data-index="${index}">
+          <img class="suggestion-favicon" src="${app.image}" alt="${app.title}" onerror="this.src='./assets/images/logo.png'">
+          <span class="suggestion-text">${app.title}</span>
+        </div>
+      `)
       .join('')
 
     suggestionsContainer.style.display = 'block'
@@ -201,7 +223,8 @@
     } else if (event.key === 'Enter') {
       event.preventDefault()
       if (currentHighlight >= 0 && suggestions[currentHighlight]) {
-        selectSuggestion(suggestions[currentHighlight].textContent)
+        const title = suggestions[currentHighlight].querySelector('.suggestion-text').textContent
+        selectSuggestion(title)
       }
     } else if (event.key === 'Escape') {
       hideSuggestions()
@@ -209,8 +232,10 @@
   })
 
   suggestionsContainer.addEventListener('click', function (event) {
-    if (event.target.classList.contains('suggestion-item')) {
-      selectSuggestion(event.target.textContent)
+    const suggestionItem = event.target.closest('.suggestion-item')
+    if (suggestionItem) {
+      const title = suggestionItem.querySelector('.suggestion-text').textContent
+      selectSuggestion(title)
     }
   })
 
