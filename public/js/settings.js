@@ -64,6 +64,59 @@ function resetToDefault() {
 if (localStorage.getItem("tabName")) document.querySelector("#tabname").value = localStorage.getItem("tabName")
 if (localStorage.getItem("tabIcon")) document.querySelector("#tabicon").value = localStorage.getItem("tabIcon")
 
+function sharePassword(button) {
+    // Generate or get a shareable password/code
+    const shareCode = generateShareCode()
+
+    // Copy to clipboard
+    navigator.clipboard.writeText(shareCode).then(() => {
+        showCopySuccess(button, shareCode)
+    }).catch(() => {
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea')
+        textArea.value = shareCode
+        document.body.appendChild(textArea)
+        textArea.select()
+        document.execCommand('copy')
+        document.body.removeChild(textArea)
+
+        showCopySuccess(button, shareCode)
+    })
+}
+
+function showCopySuccess(button, shareCode) {
+    console.log('showCopySuccess called with:', button, shareCode)
+
+    const originalText = button.textContent
+    const originalBg = button.style.backgroundColor
+
+    // Simple visual feedback first
+    button.textContent = `✓ Copied: ${shareCode}`
+    button.style.backgroundColor = "#27ae60"
+    button.style.transform = "scale(1.05)"
+    button.style.transition = "all 0.3s ease"
+
+    // Add pulse animation
+    button.style.animation = "pulse 0.6s ease-in-out"
+
+    setTimeout(() => {
+        button.textContent = originalText
+        button.style.backgroundColor = originalBg || "#2ecc71"
+        button.style.transform = "scale(1)"
+        button.style.animation = ""
+    }, 3000)
+}
+
+function generateShareCode() {
+    // Generate a simple share code (you can customize this logic)
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+    let result = 'INF-'
+    for (let i = 0; i < 8; i++) {
+        result += chars.charAt(Math.floor(Math.random() * chars.length))
+    }
+    return result
+}
+
 function logout() {
     localStorage.clear()
     window.location.href = '/'
