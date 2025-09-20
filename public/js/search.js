@@ -70,6 +70,28 @@ function createTab(url = null) {
       <img src="./assets/images/logo.png" alt="Infinite" class="start-logo"/>
       <h1>Welcome to Infinite Search</h1>
       <p>Enter a URL or search term in the address bar above</p>
+
+      <div class="quick-links">
+        <h3>Quick Links</h3>
+        <div class="link-grid">
+          <a href="#" class="quick-link" data-url="https://youtube.com">
+            <div class="link-icon">📺</div>
+            <span>YouTube</span>
+          </a>
+          <a href="#" class="quick-link" data-url="https://eaglercraft.com">
+            <div class="link-icon">🎮</div>
+            <span>Eaglercraft</span>
+          </a>
+          <a href="#" class="quick-link" data-url="https://spotify.com">
+            <div class="link-icon">🎵</div>
+            <span>Spotify</span>
+          </a>
+          <a href="#" class="quick-link" data-url="https://netflix.com">
+            <div class="link-icon">🎬</div>
+            <span>Netflix</span>
+          </a>
+        </div>
+      </div>
     </div>
   `;
 
@@ -86,6 +108,16 @@ function createTab(url = null) {
     if (!e.target.classList.contains('tab-close')) {
       switchToTab(tabId);
     }
+  });
+
+  // Add event listeners for quick links
+  const quickLinks = startPageElement.querySelectorAll('.quick-link');
+  quickLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const url = link.getAttribute('data-url');
+      navigateTabToUrl(tabId, url);
+    });
   });
 
   // Insert tab before the new tab button
