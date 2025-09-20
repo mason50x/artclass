@@ -23,6 +23,16 @@
     <script src="./js/preload.js"></script>
 
     <script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script>
+
+    <style>
+      .tab-presets {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+    </style>
   </head>
 
   <body>
@@ -59,29 +69,28 @@
         Reset to Default
       </button>
       <br />
-      <button class="secondary" onclick="setTabPreset('google')">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Google_Favicon_2025.svg/1920px-Google_Favicon_2025.svg.png"
-        />
-      </button>
-      <br />
-      <button class="secondary" onclick="setTabPreset('drive')">
-        <img
-          src="https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png"
-        />
-      </button>
-      <br />
-      <button class="secondary" onclick="setTabPreset('docs')">
-        <img
-          src="https://ssl.gstatic.com/docs/documents/images/kix-favicon7.ico"
-        />
-      </button>
-      <br />
-      <button class="secondary" onclick="setTabPreset('classroom')">
-        <img
-          src="https://ssl.gstatic.com/classroom/ic_product_classroom_32.png"
-        />
-      </button>
+      <div class="tab-presets">
+        <button class="secondary" onclick="setTabPreset('google')">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Google_Favicon_2025.svg/1920px-Google_Favicon_2025.svg.png"
+          />
+        </button>
+        <button class="secondary" onclick="setTabPreset('drive')">
+          <img
+            src="https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png"
+          />
+        </button>
+        <button class="secondary" onclick="setTabPreset('docs')">
+          <img
+            src="https://ssl.gstatic.com/docs/documents/images/kix-favicon7.ico"
+          />
+        </button>
+        <button class="secondary" onclick="setTabPreset('classroom')">
+          <img
+            src="https://ssl.gstatic.com/classroom/ic_product_classroom_32.png"
+          />
+        </button>
+      </div>
 
       <br /><br />
 
