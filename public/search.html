@@ -304,6 +304,28 @@
       color: rgba(255, 255, 255, 0.7);
       font-size: 1.1rem;
     }
+
+    /* Viewport fullscreen styles for tab content */
+    .tab-content.viewport-fullscreen {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      z-index: 10000 !important;
+      background: white !important;
+    }
+
+    .tab-content.viewport-fullscreen .browser-frame {
+      width: 100% !important;
+      height: 100% !important;
+      display: block !important;
+    }
+
+    .tab-content.viewport-fullscreen .start-page {
+      width: 100% !important;
+      height: 100% !important;
+    }
   </style>
   <script src="/uv/uv.bundle.js" charset="UTF-8"></script>
   <script src="/uv/uv.config.js"></script>

@@ -215,8 +215,12 @@ function updateUIForTab(tab) {
   }
 }
 
+function getActiveTab() {
+  return tabs.find(t => t.id === activeTabId);
+}
+
 function updateNavButtons(tab = null) {
-  if (!tab) tab = tabs.find(t => t.id === activeTabId);
+  if (!tab) tab = getActiveTab();
   if (!tab) return;
 
   backBtn.disabled = tab.historyIndex <= 0;
@@ -432,18 +436,74 @@ function goBackToSearch() {
 }
 
 function toggleFullscreen() {
-  if (!document.fullscreenElement) {
-    document.querySelector('.browser-container').requestFullscreen().catch(err => {
-      console.log(`Error attempting to enable fullscreen: ${err.message}`);
-    });
-  } else {
-    document.exitFullscreen();
+  const activeTab = getActiveTab();
+  if (!activeTab) return;
+
+  const activeContent = activeTab.contentElement;
+  if (!activeContent) return;
+
+  try {
+    if (!document.fullscreenElement) {
+      // Try to put the active tab content in fullscreen
+      activeContent.requestFullscreen().then(() => {
+        // Success - content is now fullscreen
+        updateFullscreenButton();
+      }).catch(err => {
+        console.warn('Browser fullscreen failed, using viewport fullscreen:', err);
+        // Fallback: create viewport fullscreen experience
+        makeTabContentFullViewport(activeContent);
+      });
+    } else {
+      // Exit fullscreen
+      document.exitFullscreen().then(() => {
+        updateFullscreenButton();
+      });
+    }
+  } catch (err) {
+    console.warn('Fullscreen API not supported, using viewport fallback');
+    makeTabContentFullViewport(activeContent);
   }
 }
 
-function updateFullscreenButton() {
+function makeTabContentFullViewport(contentElement) {
+  const nav = document.querySelector('nav');
+  const browserChrome = document.querySelector('.browser-chrome');
+
+  // Toggle between fullscreen viewport and normal view
+  if (contentElement.classList.contains('viewport-fullscreen')) {
+    // Exit viewport fullscreen
+    contentElement.classList.remove('viewport-fullscreen');
+    if (nav) nav.style.display = '';
+    if (browserChrome) browserChrome.style.display = '';
+    document.body.style.overflow = '';
+
+    updateFullscreenButton(false);
+  } else {
+    // Enter viewport fullscreen
+    contentElement.classList.add('viewport-fullscreen');
+    if (nav) nav.style.display = 'none';
+    if (browserChrome) browserChrome.style.display = 'none';
+    document.body.style.overflow = 'hidden';
+
+    updateFullscreenButton(true);
+  }
+}
+
+function updateFullscreenButton(forceState = null) {
   const icon = fullscreenBtn.querySelector('i');
-  if (document.fullscreenElement) {
+  const activeTab = getActiveTab();
+
+  let isFullscreen = false;
+
+  if (forceState !== null) {
+    isFullscreen = forceState;
+  } else if (document.fullscreenElement) {
+    isFullscreen = true;
+  } else if (activeTab && activeTab.contentElement && activeTab.contentElement.classList.contains('viewport-fullscreen')) {
+    isFullscreen = true;
+  }
+
+  if (isFullscreen) {
     icon.className = 'fas fa-compress';
   } else {
     icon.className = 'fas fa-expand';
@@ -451,7 +511,23 @@ function updateFullscreenButton() {
 }
 
 // Listen for fullscreen changes
-document.addEventListener('fullscreenchange', updateFullscreenButton);
+document.addEventListener('fullscreenchange', () => {
+  // If exiting fullscreen, make sure to clean up viewport fullscreen state
+  if (!document.fullscreenElement) {
+    const activeTab = getActiveTab();
+    if (activeTab && activeTab.contentElement && activeTab.contentElement.classList.contains('viewport-fullscreen')) {
+      // Clean up viewport fullscreen when exiting browser fullscreen
+      const nav = document.querySelector('nav');
+      const browserChrome = document.querySelector('.browser-chrome');
+
+      activeTab.contentElement.classList.remove('viewport-fullscreen');
+      if (nav) nav.style.display = '';
+      if (browserChrome) browserChrome.style.display = '';
+      document.body.style.overflow = '';
+    }
+  }
+  updateFullscreenButton();
+});
 
 // Constellation background for start pages
 class ConstellationBackground {
