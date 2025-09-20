@@ -72,23 +72,18 @@ function createTab(url = null) {
       <p>Enter a URL or search term in the address bar above</p>
 
       <div class="quick-links">
-        <h3>Quick Links</h3>
-        <div class="link-grid">
+        <div class="link-row">
           <a href="#" class="quick-link" data-url="https://youtube.com">
-            <div class="link-icon">📺</div>
-            <span>YouTube</span>
+            <img class="link-favicon" src="https://www.google.com/s2/favicons?domain=youtube.com&sz=32" alt="YouTube" />
           </a>
           <a href="#" class="quick-link" data-url="https://eaglercraft.com">
-            <div class="link-icon">🎮</div>
-            <span>Eaglercraft</span>
+            <img class="link-favicon" src="https://www.google.com/s2/favicons?domain=eaglercraft.com&sz=32" alt="Eaglercraft" />
           </a>
           <a href="#" class="quick-link" data-url="https://spotify.com">
-            <div class="link-icon">🎵</div>
-            <span>Spotify</span>
+            <img class="link-favicon" src="https://www.google.com/s2/favicons?domain=spotify.com&sz=32" alt="Spotify" />
           </a>
           <a href="#" class="quick-link" data-url="https://netflix.com">
-            <div class="link-icon">🎬</div>
-            <span>Netflix</span>
+            <img class="link-favicon" src="https://www.google.com/s2/favicons?domain=netflix.com&sz=32" alt="Netflix" />
           </a>
         </div>
       </div>
@@ -117,6 +112,15 @@ function createTab(url = null) {
       e.preventDefault();
       const url = link.getAttribute('data-url');
       navigateTabToUrl(tabId, url);
+    });
+  });
+
+  // Add error handling for favicons
+  const favicons = startPageElement.querySelectorAll('.link-favicon');
+  favicons.forEach(favicon => {
+    favicon.addEventListener('error', () => {
+      // Fallback to a generic icon if favicon fails to load
+      favicon.src = './assets/images/logo.png';
     });
   });
 
