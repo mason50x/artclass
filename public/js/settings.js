@@ -115,14 +115,37 @@ function showCopySuccess(button, shareCode) {
   }, 3000);
 }
 
+// Hardcoded share codes
+const SHARE_CODES = [
+  "INF-ALPHA001",
+  "INF-BETA2024",
+  "INF-GAMMA99X",
+  "INF-DELTA777",
+  "INF-ECHO2025",
+  "INF-FOXTROT1",
+  "INF-GOLF456Z",
+  "INF-HOTEL8X9",
+  "INF-INDIA321",
+  "INF-JULIET90A",
+  "INF-KILO555B",
+  "INF-LIMA789C",
+  "INF-MIKE123D",
+  "INF-NOVMBR4E",
+  "INF-OSCAR66F",
+  "INF-PAPA999G",
+  "INF-QUEBEC7H",
+  "INF-ROMEO88I",
+  "INF-SIERRA9J",
+  "INF-TANGO10K"
+];
+
+let currentCodeIndex = 0;
+
 function generateShareCode() {
-  // Generate a simple share code (you can customize this logic)
-  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-  let result = "INF-";
-  for (let i = 0; i < 8; i++) {
-    result += chars.charAt(Math.floor(Math.random() * chars.length));
-  }
-  return result;
+  // Return the next share code in the list, cycling back to start when done
+  const code = SHARE_CODES[currentCodeIndex];
+  currentCodeIndex = (currentCodeIndex + 1) % SHARE_CODES.length;
+  return code;
 }
 
 function logout() {
