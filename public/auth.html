@@ -267,6 +267,32 @@
         color: #000;
         text-decoration: none;
       }
+
+      .loading-dots span {
+        animation: loading-dots 1.5s infinite;
+        opacity: 0;
+      }
+
+      .loading-dots span:nth-child(1) {
+        animation-delay: 0s;
+      }
+
+      .loading-dots span:nth-child(2) {
+        animation-delay: 0.5s;
+      }
+
+      .loading-dots span:nth-child(3) {
+        animation-delay: 1s;
+      }
+
+      @keyframes loading-dots {
+        0%, 60%, 100% {
+          opacity: 0;
+        }
+        30% {
+          opacity: 1;
+        }
+      }
     </style>
   </head>
   <body>
@@ -324,7 +350,11 @@
           style="width: 120px; height: auto; margin-bottom: 30px"
         />
         <p style="font-size: 48px; margin: 0; font-weight: 600; color: #333">
-          Redirecting to Infinite...
+          Redirecting to Infinite<span class="loading-dots">
+            <span>.</span>
+            <span>.</span>
+            <span>.</span>
+          </span>
         </p>
       </div>
     </div>
