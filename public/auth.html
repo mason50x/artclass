@@ -140,10 +140,6 @@
         margin-top: 10px;
       }
 
-      .forgot-password-button:hover {
-        background: #f8f9fa;
-        border-color: #667eea;
-      }
 
       .error-message {
         color: #e74c3c;
@@ -274,7 +270,6 @@
     </style>
   </head>
   <body>
-    <a href="https://www.infinite.com/" class="back-button"> Back </a>
 
     <div class="auth-container">
       <div class="auth-logo">
@@ -309,13 +304,6 @@
 
         <button type="submit" class="login-button">Continue</button>
 
-        <button
-          type="button"
-          class="forgot-password-button"
-          id="forgotPasswordButton"
-        >
-          Forgot Password?
-        </button>
 
         <div class="error-message" id="errorMessage">
           Invalid credentials. Please try again.
@@ -486,7 +474,7 @@
             // Redirect to main page after showing welcome message
             setTimeout(() => {
               window.location.href = "/index.html";
-            }, 5000);
+            }, 2000);
           } else {
             // Add failed attempt to rate limiting
             addFailedAttempt();
