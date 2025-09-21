@@ -1,4 +1,4 @@
-import { createBareServer } from '@tomphttp/bare-server-node';
+import { createBareServer } from "@tomphttp/bare-server-node";
 import express from "express";
 import { createServer } from "node:http";
 import { uvPath } from "@titaniumnetwork-dev/ultraviolet";
@@ -13,8 +13,8 @@ const app = express();
 
 // Add error handling
 app.use((err, req, res, next) => {
-  console.error('Express error:', err);
-  res.status(500).send('Internal Server Error');
+  console.error("Express error:", err);
+  res.status(500).send("Internal Server Error");
 });
 
 app.use(express.static(publicPath));
@@ -22,7 +22,7 @@ app.use("/uv/", express.static(uvPath));
 
 // Error for everything else
 app.use((req, res) => {
-  res.status(404); 
+  res.status(404);
   res.sendFile(join(publicPath, "404.html"));
 });
 
@@ -36,9 +36,9 @@ server.on("request", (req, res) => {
       app(req, res);
     }
   } catch (error) {
-    console.error('Request error:', error);
+    console.error("Request error:", error);
     if (!res.headersSent) {
-      res.status(500).send('Server Error');
+      res.status(500).send("Server Error");
     }
   }
 });
@@ -51,23 +51,23 @@ server.on("upgrade", (req, socket, head) => {
       socket.end();
     }
   } catch (error) {
-    console.error('Upgrade error:', error);
+    console.error("Upgrade error:", error);
     socket.end();
   }
 });
 
 // Add global error handlers
-server.on('error', (error) => {
-  console.error('Server error:', error);
+server.on("error", (error) => {
+  console.error("Server error:", error);
 });
 
-process.on('uncaughtException', (error) => {
-  console.error('Uncaught Exception:', error);
+process.on("uncaughtException", (error) => {
+  console.error("Uncaught Exception:", error);
   process.exit(1);
 });
 
-process.on('unhandledRejection', (reason, promise) => {
-  console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+process.on("unhandledRejection", (reason, promise) => {
+  console.error("Unhandled Rejection at:", promise, "reason:", reason);
 });
 
 let port = parseInt(process.env.PORT || "");
@@ -91,7 +91,11 @@ server.on("listening", () => {
   // Log memory usage periodically
   setInterval(() => {
     const memUsage = process.memoryUsage();
-    console.log(`Memory usage: RSS=${Math.round(memUsage.rss/1024/1024)}MB, Heap=${Math.round(memUsage.heapUsed/1024/1024)}MB`);
+    console.log(
+      `Memory usage: RSS=${Math.round(
+        memUsage.rss / 1024 / 1024
+      )}MB, Heap=${Math.round(memUsage.heapUsed / 1024 / 1024)}MB`
+    );
   }, 60000); // Every minute
 });
 

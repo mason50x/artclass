@@ -2,17 +2,31 @@
 <html>
   <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V2V4G2SVFN"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-V2V4G2SVFN"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-      gtag('config', 'G-V2V4G2SVFN');
+      gtag("config", "G-V2V4G2SVFN");
     </script>
-    <link rel="preload" href="./assets/images/logo.png" as="image" type="image/png" />
+    <link
+      rel="preload"
+      href="./assets/images/logo.png"
+      as="image"
+      type="image/png"
+    />
     <link rel="icon" href="./assets/images/logo.png" type="image/png" />
-    <link rel="shortcut icon" href="./assets/images/logo.png" type="image/png" />
+    <link
+      rel="shortcut icon"
+      href="./assets/images/logo.png"
+      type="image/png"
+    />
     <title>Infinite</title>
 
     <link rel="stylesheet" href="./css/master.css" />
@@ -22,7 +36,11 @@
     <script src="/uv/uv.config.js"></script>
     <script src="./js/preload.js"></script>
 
-    <script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script>
+    <script
+      id="aclib"
+      type="text/javascript"
+      src="//acscdn.com/script/aclib.js"
+    ></script>
 
     <style>
       .tab-presets {
@@ -64,7 +82,9 @@
         <div class="navitem"><a href="/gs.html">Games</a></div>
         <div class="navitem"><a href="/apps.html">Apps</a></div>
         <div class="navitem"><a href="/search.html">Search</a></div>
-        <div class="navitem"><a selected href="/settings.html">Settings</a></div>
+        <div class="navitem">
+          <a selected href="/settings.html">Settings</a>
+        </div>
       </div>
     </nav>
 
@@ -72,12 +92,32 @@
       <h1>Settings</h1>
 
       <h2>Tab cloaking</h2>
-      <input type="text" id="tabname" placeholder="Tab name" aria-label="Custom tab name" />
-      <button onclick="setTab()" class="secondary" aria-label="Apply tab name">Set tab name</button> <br />
-      <input type="text" id="tabicon" placeholder="Tab icon" aria-label="Custom tab icon URL" />
-      <button onclick="setTab()" class="secondary" aria-label="Apply tab icon">Set tab icon</button> <br />
+      <input
+        type="text"
+        id="tabname"
+        placeholder="Tab name"
+        aria-label="Custom tab name"
+      />
+      <button onclick="setTab()" class="secondary" aria-label="Apply tab name">
+        Set tab name
+      </button>
+      <br />
+      <input
+        type="text"
+        id="tabicon"
+        placeholder="Tab icon"
+        aria-label="Custom tab icon URL"
+      />
+      <button onclick="setTab()" class="secondary" aria-label="Apply tab icon">
+        Set tab icon
+      </button>
+      <br />
 
-      <button class="action-button" onclick="resetToDefault()" style="background-color: #3498db; margin-bottom: 10px;">
+      <button
+        class="action-button"
+        onclick="resetToDefault()"
+        style="background-color: #3498db; margin-bottom: 10px"
+      >
         Reset to Default
       </button>
       <br />
@@ -107,12 +147,23 @@
       <br /><br />
 
       <h2>Account</h2>
-      <br>
-      <button onclick="sharePassword(this)" class="action-button" style="background-color: #2ecc71; margin-right: 10px;">Share Password</button>
-      <button onclick="logout()" class="action-button danger" style="background-color: #e74c3c;">Logout</button>
+      <br />
+      <button
+        onclick="sharePassword(this)"
+        class="action-button"
+        style="background-color: #2ecc71; margin-right: 10px"
+      >
+        Share Password
+      </button>
+      <button
+        onclick="logout()"
+        class="action-button danger"
+        style="background-color: #e74c3c"
+      >
+        Logout
+      </button>
 
       <br /><br />
-
     </div>
   </body>
 
@@ -122,8 +173,8 @@
   <script src="./js/constellations.js"></script>
 
   <script type="text/javascript">
-      aclib.runAutoTag({
-          zoneId: '6hmeyutild',
-      });
+    aclib.runAutoTag({
+      zoneId: "6hmeyutild",
+    });
   </script>
 </html>

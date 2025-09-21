@@ -1,459 +1,480 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <link
+      rel="shortcut icon"
+      href="./assets/images/icon.png"
+      type="image/png"
+    />
+    <title>Infinite</title>
 
-<head>
-  <link rel="shortcut icon" href="./assets/images/icon.png" type="image/png" />
-  <title>Infinite</title>
+    <link rel="stylesheet" href="./css/master.css" />
+    <style>
+      .browser-container {
+        position: fixed;
+        top: 55px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(10px);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
 
-  <link rel="stylesheet" href="./css/master.css" />
-  <style>
-    .browser-container {
-      position: fixed;
-      top: 55px;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(10px);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
+      .browser-chrome {
+        background: rgba(255, 255, 255, 0.08);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
 
-    .browser-chrome {
-      background: rgba(255, 255, 255, 0.08);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
+      .tab-bar {
+        display: flex;
+        align-items: center;
+        padding: 4px 8px 0 8px;
+        background: rgba(255, 255, 255, 0.02);
+      }
 
-    .tab-bar {
-      display: flex;
-      align-items: center;
-      padding: 4px 8px 0 8px;
-      background: rgba(255, 255, 255, 0.02);
-    }
+      .tab {
+        display: flex;
+        align-items: center;
+        padding: 6px 10px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 6px 6px 0 0;
+        margin-right: 3px;
+        min-width: 160px;
+        max-width: 200px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
 
-    .tab {
-      display: flex;
-      align-items: center;
-      padding: 6px 10px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 6px 6px 0 0;
-      margin-right: 3px;
-      min-width: 160px;
-      max-width: 200px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
+      .tab.active {
+        background: rgba(255, 255, 255, 0.1);
+        border-bottom-color: transparent;
+      }
 
-    .tab.active {
-      background: rgba(255, 255, 255, 0.1);
-      border-bottom-color: transparent;
-    }
+      .tab-title {
+        flex: 1;
+        color: white;
+        font-size: 13px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-align: left;
+      }
 
-    .tab-title {
-      flex: 1;
-      color: white;
-      font-size: 13px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      text-align: left;
-    }
+      .tab-close {
+        background: none;
+        border: none;
+        color: rgba(255, 255, 255, 0.6);
+        cursor: pointer;
+        margin-left: 6px;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        font-size: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+        padding: 0;
+        line-height: 18px;
+        aspect-ratio: 1 / 1;
+        opacity: 0;
+      }
 
-    .tab-close {
-      background: none;
-      border: none;
-      color: rgba(255, 255, 255, 0.6);
-      cursor: pointer;
-      margin-left: 6px;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      font-size: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s ease;
-      padding: 0;
-      line-height: 18px;
-      aspect-ratio: 1 / 1;
-      opacity: 0;
-    }
+      .tab:hover .tab-close {
+        opacity: 1;
+      }
 
-    .tab:hover .tab-close {
-      opacity: 1;
-    }
+      .tab-close:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+      }
 
-    .tab-close:hover {
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-    }
+      .new-tab-btn {
+        background: none;
+        border: none;
+        color: rgba(255, 255, 255, 0.6);
+        cursor: pointer;
+        width: 24px;
+        height: 24px;
+        border-radius: 4px;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+      }
 
-    .new-tab-btn {
-      background: none;
-      border: none;
-      color: rgba(255, 255, 255, 0.6);
-      cursor: pointer;
-      width: 24px;
-      height: 24px;
-      border-radius: 4px;
-      font-size: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s ease;
-    }
+      .new-tab-btn:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+      }
 
-    .new-tab-btn:hover {
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-    }
+      .browser-controls {
+        display: flex;
+        align-items: center;
+        padding: 8px 12px;
+        gap: 10px;
+      }
 
-    .browser-controls {
-      display: flex;
-      align-items: center;
-      padding: 8px 12px;
-      gap: 10px;
-    }
+      .nav-buttons {
+        display: flex;
+        gap: 4px;
+      }
 
-    .nav-buttons {
-      display: flex;
-      gap: 4px;
-    }
+      .nav-btn {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: white;
+        width: 28px;
+        height: 28px;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+        font-size: 11px;
+      }
 
-    .nav-btn {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: white;
-      width: 28px;
-      height: 28px;
-      border-radius: 5px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s ease;
-      font-size: 11px;
-    }
+      .nav-btn:hover:not(:disabled) {
+        background: rgba(255, 255, 255, 0.1);
+      }
 
-    .nav-btn:hover:not(:disabled) {
-      background: rgba(255, 255, 255, 0.1);
-    }
+      .nav-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
 
-    .nav-btn:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-    }
+      .address-bar {
+        flex: 1;
+      }
 
-    .address-bar {
-      flex: 1;
-    }
+      .url-input-container {
+        display: flex;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 18px;
+        padding: 0 10px;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+        height: 32px;
+      }
 
-    .url-input-container {
-      display: flex;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.1);
-      border: 2px solid rgba(255, 255, 255, 0.2);
-      border-radius: 18px;
-      padding: 0 10px;
-      backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
-      height: 32px;
-    }
+      .url-input-container:focus-within {
+        border-color: #0284d4;
+        box-shadow: 0 0 0 3px rgba(2, 132, 212, 0.1);
+      }
 
-    .url-input-container:focus-within {
-      border-color: #0284d4;
-      box-shadow: 0 0 0 3px rgba(2, 132, 212, 0.1);
-    }
+      .url-icon {
+        color: rgba(255, 255, 255, 0.5);
+        margin-right: 8px;
+        font-size: 14px;
+      }
 
-    .url-icon {
-      color: rgba(255, 255, 255, 0.5);
-      margin-right: 8px;
-      font-size: 14px;
-    }
+      /* Favicon images for address bar and tabs */
+      .url-favicon {
+        width: 16px;
+        height: 16px;
+        margin-right: 8px;
+        opacity: 0.7;
+        border-radius: 3px;
+      }
 
-    /* Favicon images for address bar and tabs */
-    .url-favicon {
-      width: 16px;
-      height: 16px;
-      margin-right: 8px;
-      opacity: 0.7;
-      border-radius: 3px;
-    }
+      .tab-favicon {
+        width: 14px;
+        height: 14px;
+        margin-right: 6px;
+        border-radius: 3px;
+      }
 
-    .tab-favicon {
-      width: 14px;
-      height: 14px;
-      margin-right: 6px;
-      border-radius: 3px;
-    }
+      .url-input {
+        flex: 1;
+        background: transparent !important;
+        background-color: transparent !important;
+        border: none;
+        color: white;
+        font-size: 13px;
+        padding: 6px 0;
+        outline: none;
+        margin: 0 !important;
+        border-radius: 0 !important;
+      }
 
-    .url-input {
-      flex: 1;
-      background: transparent !important;
-      background-color: transparent !important;
-      border: none;
-      color: white;
-      font-size: 13px;
-      padding: 6px 0;
-      outline: none;
-      margin: 0 !important;
-      border-radius: 0 !important;
-    }
+      .url-input::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+      }
 
-    .url-input::placeholder {
-      color: rgba(255, 255, 255, 0.5);
-    }
+      .go-btn {
+        background: #0284d4;
+        border: none;
+        color: white;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 6px;
+        transition: all 0.2s ease;
+        font-size: 10px;
+        padding: 0;
+        min-width: 24px;
+        max-width: 24px;
+        flex-shrink: 0;
+      }
 
-    .go-btn {
-      background: #0284d4;
-      border: none;
-      color: white;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-left: 6px;
-      transition: all 0.2s ease;
-      font-size: 10px;
-      padding: 0;
-      min-width: 24px;
-      max-width: 24px;
-      flex-shrink: 0;
-    }
+      .go-btn:hover {
+        background: #0369a1;
+      }
 
-    .go-btn:hover {
-      background: #0369a1;
-    }
+      .browser-menu {
+        display: flex;
+      }
 
-    .browser-menu {
-      display: flex;
-    }
+      .browser-content {
+        flex: 1;
+        position: relative;
+        overflow: hidden;
+      }
 
-    .browser-content {
-      flex: 1;
-      position: relative;
-      overflow: hidden;
-    }
+      .tab-content {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+      }
 
-    .tab-content {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      display: none;
-    }
+      .tab-content.active {
+        display: block;
+      }
 
-    .tab-content.active {
-      display: block;
-    }
+      .browser-frame {
+        width: 100%;
+        height: 100%;
+        border: none;
+        background: white;
+        display: none;
+      }
 
-    .browser-frame {
-      width: 100%;
-      height: 100%;
-      border: none;
-      background: white;
-      display: none;
-    }
+      .start-page {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.02);
+        position: relative;
+      }
 
-    .start-page {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255, 255, 255, 0.02);
-      position: relative;
-    }
+      canvas[id^="constellation-canvas"] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        pointer-events: none;
+      }
 
-    canvas[id^="constellation-canvas"] {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-      pointer-events: none;
-    }
+      .start-content {
+        text-align: center;
+        position: relative;
+        z-index: 2;
+      }
 
-    .start-content {
-      text-align: center;
-      position: relative;
-      z-index: 2;
-    }
+      .start-content h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: white;
+      }
 
-    .start-content h1 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: white;
-    }
+      .start-logo {
+        width: 92px;
+        height: 92px;
+        margin-bottom: 12px;
+        opacity: 0.9;
+      }
 
-    .start-logo {
-      width: 92px;
-      height: 92px;
-      margin-bottom: 12px;
-      opacity: 0.9;
-    }
+      .start-content p {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 1.1rem;
+      }
 
-    .start-content p {
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 1.1rem;
-    }
+      .quick-links {
+        margin-top: 2rem;
+      }
 
-    .quick-links {
-      margin-top: 2rem;
-    }
+      .link-row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
+      }
 
-    .link-row {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1.5rem;
-    }
+      .quick-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
 
-    .quick-link {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
+      .quick-link:hover {
+        transform: translateY(-2px);
+      }
 
-    .quick-link:hover {
-      transform: translateY(-2px);
-    }
+      .link-favicon {
+        width: 32px;
+        height: 32px;
+        margin-bottom: 0.5rem;
+        border-radius: 4px;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        transition: all 0.3s ease;
+      }
 
-    .link-favicon {
-      width: 32px;
-      height: 32px;
-      margin-bottom: 0.5rem;
-      border-radius: 4px;
-      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
-      transition: all 0.3s ease;
-    }
+      .quick-link:hover .link-favicon {
+        transform: scale(1.1);
+        filter: drop-shadow(0 4px 8px rgba(2, 132, 212, 0.4));
+      }
 
-    .quick-link:hover .link-favicon {
-      transform: scale(1.1);
-      filter: drop-shadow(0 4px 8px rgba(2, 132, 212, 0.4));
-    }
+      /* Viewport fullscreen styles for tab content */
+      .tab-content.viewport-fullscreen {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        z-index: 10000 !important;
+        background: white !important;
+      }
 
+      .tab-content.viewport-fullscreen .browser-frame {
+        width: 100% !important;
+        height: 100% !important;
+        display: block !important;
+      }
 
-    /* Viewport fullscreen styles for tab content */
-    .tab-content.viewport-fullscreen {
-      position: fixed !important;
-      top: 0 !important;
-      left: 0 !important;
-      width: 100vw !important;
-      height: 100vh !important;
-      z-index: 10000 !important;
-      background: white !important;
-    }
+      .tab-content.viewport-fullscreen .start-page {
+        width: 100% !important;
+        height: 100% !important;
+      }
+    </style>
+    <script src="/uv/uv.bundle.js" charset="UTF-8"></script>
+    <script src="/uv/uv.config.js"></script>
+    <script src="./js/preload.js"></script>
 
-    .tab-content.viewport-fullscreen .browser-frame {
-      width: 100% !important;
-      height: 100% !important;
-      display: block !important;
-    }
+    <script
+      id="aclib"
+      type="text/javascript"
+      src="//acscdn.com/script/aclib.js"
+    ></script>
+  </head>
 
-    .tab-content.viewport-fullscreen .start-page {
-      width: 100% !important;
-      height: 100% !important;
-    }
-  </style>
-  <script src="/uv/uv.bundle.js" charset="UTF-8"></script>
-  <script src="/uv/uv.config.js"></script>
-  <script src="./js/preload.js"></script>
-
-  <script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script>
-</head>
-
-<body theme="main">
-  <nav>
-    <div class="logo">
-      <a href="/">
-        <img src="./assets/images/logo.png" alt="Logo" draggable="false" />
-        <h1>Infinite</h1>
-      </a>
-    </div>
-
-    <p id="time"></p>
-
-    <div class="navitems">
-      <div class="navitem"><a href="/">Home</a></div>
-      <div class="navitem"><a href="/gs.html">Games</a></div>
-      <div class="navitem"><a href="/apps.html">Apps</a></div>
-      <div class="navitem"><a href="/search.html" selected>Search</a></div>
-      <div class="navitem"><a href="/settings.html">Settings</a></div>
-    </div>
-  </nav>
-
-  <div class="browser-container">
-    <!-- Browser Chrome -->
-    <div class="browser-chrome">
-      <!-- Tab Bar -->
-      <div class="tab-bar">
-        <div class="tab active" id="tab1">
-          <span class="tab-title">New Tab</span>
-          <button class="tab-close">&times;</button>
-        </div>
-        <button class="new-tab-btn">+</button>
+  <body theme="main">
+    <nav>
+      <div class="logo">
+        <a href="/">
+          <img src="./assets/images/logo.png" alt="Logo" draggable="false" />
+          <h1>Infinite</h1>
+        </a>
       </div>
 
-      <!-- Browser Controls -->
-      <div class="browser-controls">
-        <div class="nav-buttons">
-          <button class="nav-btn" id="back-btn" disabled>
-            <i class="fas fa-arrow-left"></i>
-          </button>
-          <button class="nav-btn" id="forward-btn" disabled>
-            <i class="fas fa-arrow-right"></i>
-          </button>
-          <button class="nav-btn" id="refresh-btn">
-            <i class="fas fa-redo"></i>
-          </button>
+      <p id="time"></p>
+
+      <div class="navitems">
+        <div class="navitem"><a href="/">Home</a></div>
+        <div class="navitem"><a href="/gs.html">Games</a></div>
+        <div class="navitem"><a href="/apps.html">Apps</a></div>
+        <div class="navitem"><a href="/search.html" selected>Search</a></div>
+        <div class="navitem"><a href="/settings.html">Settings</a></div>
+      </div>
+    </nav>
+
+    <div class="browser-container">
+      <!-- Browser Chrome -->
+      <div class="browser-chrome">
+        <!-- Tab Bar -->
+        <div class="tab-bar">
+          <div class="tab active" id="tab1">
+            <span class="tab-title">New Tab</span>
+            <button class="tab-close">&times;</button>
+          </div>
+          <button class="new-tab-btn">+</button>
         </div>
 
-        <div class="address-bar">
-          <div class="url-input-container">
-            <img class="url-favicon" src="./assets/images/logo.png" alt="" />
-            <input class="url-input" type="text" placeholder="Enter URL..." aria-label="Enter URL to browse" />
-            <button class="go-btn">
+        <!-- Browser Controls -->
+        <div class="browser-controls">
+          <div class="nav-buttons">
+            <button class="nav-btn" id="back-btn" disabled>
+              <i class="fas fa-arrow-left"></i>
+            </button>
+            <button class="nav-btn" id="forward-btn" disabled>
               <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="nav-btn" id="refresh-btn">
+              <i class="fas fa-redo"></i>
+            </button>
+          </div>
+
+          <div class="address-bar">
+            <div class="url-input-container">
+              <img class="url-favicon" src="./assets/images/logo.png" alt="" />
+              <input
+                class="url-input"
+                type="text"
+                placeholder="Enter URL..."
+                aria-label="Enter URL to browse"
+              />
+              <button class="go-btn">
+                <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="browser-menu">
+            <button class="nav-btn" id="fullscreen-btn">
+              <i class="fas fa-expand"></i>
             </button>
           </div>
         </div>
+      </div>
 
-        <div class="browser-menu">
-          <button class="nav-btn" id="fullscreen-btn">
-            <i class="fas fa-expand"></i>
-          </button>
-        </div>
+      <!-- Content Area -->
+      <div class="browser-content" id="browser-content">
+        <!-- Tabs content will be dynamically added here -->
+      </div>
+
+      <div
+        id="error-message"
+        style="
+          display: none;
+          color: #ff6b6b;
+          margin-top: 10px;
+          padding: 10px;
+          background: rgba(255, 107, 107, 0.1);
+          border-radius: 5px;
+          border: 1px solid rgba(255, 107, 107, 0.3);
+        "
+      >
+        Please enter a valid URL (e.g., google.com or https://example.com)
       </div>
     </div>
+  </body>
 
-    <!-- Content Area -->
-    <div class="browser-content" id="browser-content">
-      <!-- Tabs content will be dynamically added here -->
-    </div>
+  <script src="./js/index.js"></script>
+  <script src="./js/search.js"></script>
 
-    <div id="error-message" style="display: none; color: #ff6b6b; margin-top: 10px; padding: 10px; background: rgba(255, 107, 107, 0.1); border-radius: 5px; border: 1px solid rgba(255, 107, 107, 0.3);">
-      Please enter a valid URL (e.g., google.com or https://example.com)
-    </div>
-  </div>
-</body>
-
-<script src="./js/index.js"></script>
-<script src="./js/search.js"></script>
-
-<script type="text/javascript">
+  <script type="text/javascript">
     aclib.runAutoTag({
-        zoneId: '6hmeyutild',
+      zoneId: "6hmeyutild",
     });
-</script>
-
+  </script>
 </html>

@@ -1,44 +1,44 @@
 .cardgroup {
-    padding: 15px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  padding: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .card i {
-    font-size: 100px;
-    margin-top: 5px;
+  font-size: 100px;
+  margin-top: 5px;
 }
 
 .card img {
-    aspect-ratio: 1 / 1;
-    height: 100px;
-    margin-top: 5px;
-    border-radius: 20px;
+  aspect-ratio: 1 / 1;
+  height: 100px;
+  margin-top: 5px;
+  border-radius: 20px;
 }
 
 .card {
-    border-radius: 3vh;
-    font-family: "Inter";
-    cursor: pointer;
-    transition: all 0.3s;
-    padding: 1rem;
-    margin: 3px;
-    text-align: center;
-    width: 10%;
+  border-radius: 3vh;
+  font-family: "Inter";
+  cursor: pointer;
+  transition: all 0.3s;
+  padding: 1rem;
+  margin: 3px;
+  text-align: center;
+  width: 10%;
 }
 
 .card:hover {
-    -webkit-box-shadow: 0px 2px 23px 5px #ffffff;
-    -moz-box-shadow: 0px 2px 23px 5px #ffffff;
-    box-shadow: 0px 2px 23px 5px #ffffff;
-    /*transform: scale(1.05);*/
+  -webkit-box-shadow: 0px 2px 23px 5px #ffffff;
+  -moz-box-shadow: 0px 2px 23px 5px #ffffff;
+  box-shadow: 0px 2px 23px 5px #ffffff;
+  /*transform: scale(1.05);*/
 }
 
-.card>* {
-    flex: 1 1 160px;
+.card > * {
+  flex: 1 1 160px;
 }
 
 .description {
-    font-size: 10px;
+  font-size: 10px;
 }

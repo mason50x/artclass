@@ -31,19 +31,19 @@ function createTab(url = null) {
 
   const tab = {
     id: tabId,
-    title: 'New Tab',
+    title: "New Tab",
     url: null,
     history: [],
     historyIndex: -1,
     element: null,
     contentElement: null,
     iframe: null,
-    startPage: null
+    startPage: null,
   };
 
   // Create tab element
-  const tabElement = document.createElement('div');
-  tabElement.className = 'tab';
+  const tabElement = document.createElement("div");
+  tabElement.className = "tab";
   tabElement.id = tabId;
   tabElement.innerHTML = `
     <img class="tab-favicon" src="./assets/images/logo.png" alt="" />
@@ -52,18 +52,18 @@ function createTab(url = null) {
   `;
 
   // Create tab content
-  const contentElement = document.createElement('div');
-  contentElement.className = 'tab-content';
+  const contentElement = document.createElement("div");
+  contentElement.className = "tab-content";
   contentElement.id = `content-${tabId}`;
 
   // Create iframe for this tab
-  const iframe = document.createElement('iframe');
-  iframe.className = 'browser-frame';
-  iframe.style.display = 'none';
+  const iframe = document.createElement("iframe");
+  iframe.className = "browser-frame";
+  iframe.style.display = "none";
 
   // Create start page for this tab
-  const startPageElement = document.createElement('div');
-  startPageElement.className = 'start-page';
+  const startPageElement = document.createElement("div");
+  startPageElement.className = "start-page";
   startPageElement.innerHTML = `
     <canvas id="constellation-canvas-${tabId}"></canvas>
     <div class="start-content">
@@ -99,28 +99,28 @@ function createTab(url = null) {
   tab.startPage = startPageElement;
 
   // Add event listener for tab switching
-  tabElement.addEventListener('click', (e) => {
-    if (!e.target.classList.contains('tab-close')) {
+  tabElement.addEventListener("click", (e) => {
+    if (!e.target.classList.contains("tab-close")) {
       switchToTab(tabId);
     }
   });
 
   // Add event listeners for quick links
-  const quickLinks = startPageElement.querySelectorAll('.quick-link');
-  quickLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
+  const quickLinks = startPageElement.querySelectorAll(".quick-link");
+  quickLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
       e.preventDefault();
-      const url = link.getAttribute('data-url');
+      const url = link.getAttribute("data-url");
       navigateTabToUrl(tabId, url);
     });
   });
 
   // Add error handling for favicons
-  const favicons = startPageElement.querySelectorAll('.link-favicon');
-  favicons.forEach(favicon => {
-    favicon.addEventListener('error', () => {
+  const favicons = startPageElement.querySelectorAll(".link-favicon");
+  favicons.forEach((favicon) => {
+    favicon.addEventListener("error", () => {
       // Fallback to a generic icon if favicon fails to load
-      favicon.src = './assets/images/logo.png';
+      favicon.src = "./assets/images/logo.png";
     });
   });
 
@@ -143,36 +143,36 @@ function createTab(url = null) {
 
 // Favicon helpers
 function getFaviconUrlFromHostname(hostname) {
-  if (!hostname) return './assets/images/logo.png';
+  if (!hostname) return "./assets/images/logo.png";
   return `https://icons.duckduckgo.com/ip3/${hostname}.ico`;
 }
 
 function updateFaviconsForTab(tab) {
   const hostname = tab.url ? getDomainFromUrl(tab.url) : null;
   const favSrc = getFaviconUrlFromHostname(hostname);
-  const tabFav = tab.element.querySelector('.tab-favicon');
+  const tabFav = tab.element.querySelector(".tab-favicon");
   if (tabFav) {
-    tabFav.onerror = () => (tabFav.src = './assets/images/logo.png');
+    tabFav.onerror = () => (tabFav.src = "./assets/images/logo.png");
     tabFav.src = favSrc;
   }
   if (activeTabId === tab.id && urlFavicon) {
-    urlFavicon.onerror = () => (urlFavicon.src = './assets/images/logo.png');
+    urlFavicon.onerror = () => (urlFavicon.src = "./assets/images/logo.png");
     urlFavicon.src = favSrc;
   }
 }
 
 function switchToTab(tabId) {
   // Remove active class from all tabs
-  tabs.forEach(tab => {
-    tab.element.classList.remove('active');
-    tab.contentElement.classList.remove('active');
+  tabs.forEach((tab) => {
+    tab.element.classList.remove("active");
+    tab.contentElement.classList.remove("active");
   });
 
   // Add active class to selected tab
-  const tab = tabs.find(t => t.id === tabId);
+  const tab = tabs.find((t) => t.id === tabId);
   if (tab) {
-    tab.element.classList.add('active');
-    tab.contentElement.classList.add('active');
+    tab.element.classList.add("active");
+    tab.contentElement.classList.add("active");
     activeTabId = tabId;
 
     // Update UI based on tab state
@@ -181,7 +181,7 @@ function switchToTab(tabId) {
 }
 
 function closeTab(tabId) {
-  const tabIndex = tabs.findIndex(t => t.id === tabId);
+  const tabIndex = tabs.findIndex((t) => t.id === tabId);
   if (tabIndex === -1) return;
 
   const tab = tabs[tabIndex];
@@ -214,7 +214,7 @@ function navigateTabToUrl(tabId, inputValue) {
     return;
   }
 
-  const tab = tabs.find(t => t.id === tabId);
+  const tab = tabs.find((t) => t.id === tabId);
   if (!tab) return;
 
   // Update tab history
@@ -225,14 +225,14 @@ function navigateTabToUrl(tabId, inputValue) {
 
   // Update tab title
   tab.title = getDomainFromUrl(url);
-  tab.element.querySelector('.tab-title').textContent = tab.title;
+  tab.element.querySelector(".tab-title").textContent = tab.title;
 
   // Update favicons
   updateFaviconsForTab(tab);
 
   // Navigate iframe
-  tab.startPage.style.display = 'none';
-  tab.iframe.style.display = 'block';
+  tab.startPage.style.display = "none";
+  tab.iframe.style.display = "block";
   tab.iframe.src = __uv$config.prefix + __uv$config.encodeUrl(url);
 
   // Update UI if this is the active tab
@@ -242,17 +242,19 @@ function navigateTabToUrl(tabId, inputValue) {
 }
 
 function updateUIForTab(tab) {
-  urlInput.value = tab.url || '';
+  urlInput.value = tab.url || "";
   updateNavButtons(tab);
   // Sync address bar favicon
   if (urlFavicon) {
-    const favSrc = tab.url ? getFaviconUrlFromHostname(getDomainFromUrl(tab.url)) : './assets/images/logo.png';
+    const favSrc = tab.url
+      ? getFaviconUrlFromHostname(getDomainFromUrl(tab.url))
+      : "./assets/images/logo.png";
     urlFavicon.src = favSrc;
   }
 }
 
 function getActiveTab() {
-  return tabs.find(t => t.id === activeTabId);
+  return tabs.find((t) => t.id === activeTabId);
 }
 
 function updateNavButtons(tab = null) {
@@ -273,7 +275,7 @@ function getDomainFromUrl(url) {
   try {
     return new URL(url).hostname;
   } catch (e) {
-    return 'New Tab';
+    return "New Tab";
   }
 }
 
@@ -283,12 +285,12 @@ urlInput.addEventListener("keyup", function (event) {
   }
 });
 
-goBtn.addEventListener("click", function() {
+goBtn.addEventListener("click", function () {
   navigateToUrl(urlInput.value);
 });
 
-backBtn.addEventListener("click", function() {
-  const tab = tabs.find(t => t.id === activeTabId);
+backBtn.addEventListener("click", function () {
+  const tab = tabs.find((t) => t.id === activeTabId);
   if (tab && tab.historyIndex > 0) {
     tab.historyIndex--;
     const url = tab.history[tab.historyIndex];
@@ -297,7 +299,7 @@ backBtn.addEventListener("click", function() {
 
     // Update tab title
     tab.title = getDomainFromUrl(url);
-    tab.element.querySelector('.tab-title').textContent = tab.title;
+    tab.element.querySelector(".tab-title").textContent = tab.title;
 
     // Update favicons
     updateFaviconsForTab(tab);
@@ -307,8 +309,8 @@ backBtn.addEventListener("click", function() {
   }
 });
 
-forwardBtn.addEventListener("click", function() {
-  const tab = tabs.find(t => t.id === activeTabId);
+forwardBtn.addEventListener("click", function () {
+  const tab = tabs.find((t) => t.id === activeTabId);
   if (tab && tab.historyIndex < tab.history.length - 1) {
     tab.historyIndex++;
     const url = tab.history[tab.historyIndex];
@@ -317,7 +319,7 @@ forwardBtn.addEventListener("click", function() {
 
     // Update tab title
     tab.title = getDomainFromUrl(url);
-    tab.element.querySelector('.tab-title').textContent = tab.title;
+    tab.element.querySelector(".tab-title").textContent = tab.title;
 
     // Update favicons
     updateFaviconsForTab(tab);
@@ -327,18 +329,18 @@ forwardBtn.addEventListener("click", function() {
   }
 });
 
-refreshBtn.addEventListener("click", function() {
-  const tab = tabs.find(t => t.id === activeTabId);
+refreshBtn.addEventListener("click", function () {
+  const tab = tabs.find((t) => t.id === activeTabId);
   if (tab && tab.iframe.src) {
     tab.iframe.src = tab.iframe.src;
   }
 });
 
-fullscreenBtn.addEventListener("click", function() {
+fullscreenBtn.addEventListener("click", function () {
   toggleFullscreen();
 });
 
-newTabBtn.addEventListener("click", function() {
+newTabBtn.addEventListener("click", function () {
   const newTabId = createTab();
   if (newTabId) {
     switchToTab(newTabId);
@@ -346,9 +348,9 @@ newTabBtn.addEventListener("click", function() {
 });
 
 // Initialize with first tab
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener("DOMContentLoaded", function () {
   // Remove the existing static tab
-  const existingTab = document.querySelector('#tab1');
+  const existingTab = document.querySelector("#tab1");
   if (existingTab) {
     existingTab.remove();
   }
@@ -385,18 +387,18 @@ function validateURL(input) {
 }
 
 function showError() {
-  const errorMessage = document.getElementById('error-message');
-  errorMessage.style.display = 'block';
+  const errorMessage = document.getElementById("error-message");
+  errorMessage.style.display = "block";
   setTimeout(() => {
-    errorMessage.style.display = 'none';
+    errorMessage.style.display = "none";
   }, 3000);
 }
 
 function showPerformanceWarning() {
   // Only show once per session
-  if (sessionStorage.getItem('performanceWarningShown')) return;
+  if (sessionStorage.getItem("performanceWarningShown")) return;
 
-  const warningDiv = document.createElement('div');
+  const warningDiv = document.createElement("div");
   warningDiv.style.cssText = `
     position: fixed;
     bottom: 20px;
@@ -417,7 +419,7 @@ function showPerformanceWarning() {
   `;
 
   document.body.appendChild(warningDiv);
-  sessionStorage.setItem('performanceWarningShown', 'true');
+  sessionStorage.setItem("performanceWarningShown", "true");
 
   setTimeout(() => {
     if (warningDiv.parentNode) {
@@ -427,7 +429,7 @@ function showPerformanceWarning() {
 }
 
 function showTabLimitWarning() {
-  const warningDiv = document.createElement('div');
+  const warningDiv = document.createElement("div");
   warningDiv.style.cssText = `
     position: fixed;
     bottom: 20px;
@@ -457,15 +459,15 @@ function showTabLimitWarning() {
 }
 
 function goBackToSearch() {
-  const tab = tabs.find(t => t.id === activeTabId);
+  const tab = tabs.find((t) => t.id === activeTabId);
   if (tab) {
-    tab.iframe.style.display = 'none';
-    tab.startPage.style.display = 'flex';
+    tab.iframe.style.display = "none";
+    tab.startPage.style.display = "flex";
     tab.url = null;
     tab.history = [];
     tab.historyIndex = -1;
-    tab.title = 'New Tab';
-    tab.element.querySelector('.tab-title').textContent = 'New Tab';
+    tab.title = "New Tab";
+    tab.element.querySelector(".tab-title").textContent = "New Tab";
     updateFaviconsForTab(tab);
     updateUIForTab(tab);
   }
@@ -481,14 +483,20 @@ function toggleFullscreen() {
   try {
     if (!document.fullscreenElement) {
       // Try to put the active tab content in fullscreen
-      activeContent.requestFullscreen().then(() => {
-        // Success - content is now fullscreen
-        updateFullscreenButton();
-      }).catch(err => {
-        console.warn('Browser fullscreen failed, using viewport fullscreen:', err);
-        // Fallback: create viewport fullscreen experience
-        makeTabContentFullViewport(activeContent);
-      });
+      activeContent
+        .requestFullscreen()
+        .then(() => {
+          // Success - content is now fullscreen
+          updateFullscreenButton();
+        })
+        .catch((err) => {
+          console.warn(
+            "Browser fullscreen failed, using viewport fullscreen:",
+            err
+          );
+          // Fallback: create viewport fullscreen experience
+          makeTabContentFullViewport(activeContent);
+        });
     } else {
       // Exit fullscreen
       document.exitFullscreen().then(() => {
@@ -496,37 +504,37 @@ function toggleFullscreen() {
       });
     }
   } catch (err) {
-    console.warn('Fullscreen API not supported, using viewport fallback');
+    console.warn("Fullscreen API not supported, using viewport fallback");
     makeTabContentFullViewport(activeContent);
   }
 }
 
 function makeTabContentFullViewport(contentElement) {
-  const nav = document.querySelector('nav');
-  const browserChrome = document.querySelector('.browser-chrome');
+  const nav = document.querySelector("nav");
+  const browserChrome = document.querySelector(".browser-chrome");
 
   // Toggle between fullscreen viewport and normal view
-  if (contentElement.classList.contains('viewport-fullscreen')) {
+  if (contentElement.classList.contains("viewport-fullscreen")) {
     // Exit viewport fullscreen
-    contentElement.classList.remove('viewport-fullscreen');
-    if (nav) nav.style.display = '';
-    if (browserChrome) browserChrome.style.display = '';
-    document.body.style.overflow = '';
+    contentElement.classList.remove("viewport-fullscreen");
+    if (nav) nav.style.display = "";
+    if (browserChrome) browserChrome.style.display = "";
+    document.body.style.overflow = "";
 
     updateFullscreenButton(false);
   } else {
     // Enter viewport fullscreen
-    contentElement.classList.add('viewport-fullscreen');
-    if (nav) nav.style.display = 'none';
-    if (browserChrome) browserChrome.style.display = 'none';
-    document.body.style.overflow = 'hidden';
+    contentElement.classList.add("viewport-fullscreen");
+    if (nav) nav.style.display = "none";
+    if (browserChrome) browserChrome.style.display = "none";
+    document.body.style.overflow = "hidden";
 
     updateFullscreenButton(true);
   }
 }
 
 function updateFullscreenButton(forceState = null) {
-  const icon = fullscreenBtn.querySelector('i');
+  const icon = fullscreenBtn.querySelector("i");
   const activeTab = getActiveTab();
 
   let isFullscreen = false;
@@ -535,31 +543,39 @@ function updateFullscreenButton(forceState = null) {
     isFullscreen = forceState;
   } else if (document.fullscreenElement) {
     isFullscreen = true;
-  } else if (activeTab && activeTab.contentElement && activeTab.contentElement.classList.contains('viewport-fullscreen')) {
+  } else if (
+    activeTab &&
+    activeTab.contentElement &&
+    activeTab.contentElement.classList.contains("viewport-fullscreen")
+  ) {
     isFullscreen = true;
   }
 
   if (isFullscreen) {
-    icon.className = 'fas fa-compress';
+    icon.className = "fas fa-compress";
   } else {
-    icon.className = 'fas fa-expand';
+    icon.className = "fas fa-expand";
   }
 }
 
 // Listen for fullscreen changes
-document.addEventListener('fullscreenchange', () => {
+document.addEventListener("fullscreenchange", () => {
   // If exiting fullscreen, make sure to clean up viewport fullscreen state
   if (!document.fullscreenElement) {
     const activeTab = getActiveTab();
-    if (activeTab && activeTab.contentElement && activeTab.contentElement.classList.contains('viewport-fullscreen')) {
+    if (
+      activeTab &&
+      activeTab.contentElement &&
+      activeTab.contentElement.classList.contains("viewport-fullscreen")
+    ) {
       // Clean up viewport fullscreen when exiting browser fullscreen
-      const nav = document.querySelector('nav');
-      const browserChrome = document.querySelector('.browser-chrome');
+      const nav = document.querySelector("nav");
+      const browserChrome = document.querySelector(".browser-chrome");
 
-      activeTab.contentElement.classList.remove('viewport-fullscreen');
-      if (nav) nav.style.display = '';
-      if (browserChrome) browserChrome.style.display = '';
-      document.body.style.overflow = '';
+      activeTab.contentElement.classList.remove("viewport-fullscreen");
+      if (nav) nav.style.display = "";
+      if (browserChrome) browserChrome.style.display = "";
+      document.body.style.overflow = "";
     }
   }
   updateFullscreenButton();
@@ -567,127 +583,128 @@ document.addEventListener('fullscreenchange', () => {
 
 // Constellation background for start pages
 class ConstellationBackground {
-    constructor(canvasId) {
-        this.canvas = document.getElementById(canvasId);
-        if (!this.canvas) return;
+  constructor(canvasId) {
+    this.canvas = document.getElementById(canvasId);
+    if (!this.canvas) return;
 
-        this.ctx = this.canvas.getContext('2d');
-        this.stars = [];
-        this.mouse = { x: 0, y: 0 };
-        this.maxDistance = 150;
-        this.animationId = null;
+    this.ctx = this.canvas.getContext("2d");
+    this.stars = [];
+    this.mouse = { x: 0, y: 0 };
+    this.maxDistance = 150;
+    this.animationId = null;
 
-        this.init();
-        this.createStars();
-        this.animate();
-        this.bindEvents();
+    this.init();
+    this.createStars();
+    this.animate();
+    this.bindEvents();
+  }
+
+  init() {
+    const rect = this.canvas.parentElement.getBoundingClientRect();
+    this.canvas.width = rect.width;
+    this.canvas.height = rect.height;
+  }
+
+  createStars() {
+    const numStars = Math.floor(
+      (this.canvas.width * this.canvas.height) / 8000
+    );
+
+    // Use seeded random for consistent star positions across tabs
+    let seed = 12345;
+    const seededRandom = () => {
+      seed = (seed * 9301 + 49297) % 233280;
+      return seed / 233280;
+    };
+
+    for (let i = 0; i < numStars; i++) {
+      this.stars.push({
+        x: seededRandom() * this.canvas.width,
+        y: seededRandom() * this.canvas.height,
+        size: seededRandom() * 2 + 0.5,
+        opacity: 0.8,
+        vx: 0,
+        vy: 0,
+      });
     }
+  }
 
-    init() {
+  drawStars() {
+    this.stars.forEach((star) => {
+      this.ctx.save();
+      this.ctx.globalAlpha = star.opacity;
+      this.ctx.fillStyle = "#ffffff";
+      this.ctx.beginPath();
+      this.ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+      this.ctx.fill();
+      this.ctx.restore();
+    });
+  }
+
+  drawConnections() {
+    this.stars.forEach((star, i) => {
+      // Connect to other nearby stars
+      for (let j = i + 1; j < this.stars.length; j++) {
+        const otherStar = this.stars[j];
+        const distance = Math.sqrt(
+          Math.pow(star.x - otherStar.x, 2) + Math.pow(star.y - otherStar.y, 2)
+        );
+
+        if (distance < 120) {
+          this.ctx.save();
+          const opacity = (1 - distance / 120) * 0.6;
+          this.ctx.globalAlpha = opacity;
+          this.ctx.strokeStyle = "#ffffff";
+          this.ctx.lineWidth = 0.5;
+          this.ctx.beginPath();
+          this.ctx.moveTo(star.x, star.y);
+          this.ctx.lineTo(otherStar.x, otherStar.y);
+          this.ctx.stroke();
+          this.ctx.restore();
+        }
+      }
+    });
+  }
+
+  updateStars() {
+    // Stars are now static - no movement
+  }
+
+  animate() {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+    this.updateStars();
+    this.drawConnections();
+    this.drawStars();
+
+    this.animationId = requestAnimationFrame(() => this.animate());
+  }
+
+  bindEvents() {
+    const resizeHandler = () => {
+      if (this.canvas && this.canvas.parentElement) {
         const rect = this.canvas.parentElement.getBoundingClientRect();
         this.canvas.width = rect.width;
         this.canvas.height = rect.height;
+        this.stars = [];
+        this.createStars();
+      }
+    };
+
+    window.addEventListener("resize", resizeHandler);
+  }
+
+  destroy() {
+    if (this.animationId) {
+      cancelAnimationFrame(this.animationId);
     }
-
-    createStars() {
-        const numStars = Math.floor((this.canvas.width * this.canvas.height) / 8000);
-
-        // Use seeded random for consistent star positions across tabs
-        let seed = 12345;
-        const seededRandom = () => {
-            seed = (seed * 9301 + 49297) % 233280;
-            return seed / 233280;
-        };
-
-        for (let i = 0; i < numStars; i++) {
-            this.stars.push({
-                x: seededRandom() * this.canvas.width,
-                y: seededRandom() * this.canvas.height,
-                size: seededRandom() * 2 + 0.5,
-                opacity: 0.8,
-                vx: 0,
-                vy: 0
-            });
-        }
-    }
-
-    drawStars() {
-        this.stars.forEach(star => {
-            this.ctx.save();
-            this.ctx.globalAlpha = star.opacity;
-            this.ctx.fillStyle = '#ffffff';
-            this.ctx.beginPath();
-            this.ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
-            this.ctx.fill();
-            this.ctx.restore();
-        });
-    }
-
-    drawConnections() {
-        this.stars.forEach((star, i) => {
-            // Connect to other nearby stars
-            for (let j = i + 1; j < this.stars.length; j++) {
-                const otherStar = this.stars[j];
-                const distance = Math.sqrt(
-                    Math.pow(star.x - otherStar.x, 2) +
-                    Math.pow(star.y - otherStar.y, 2)
-                );
-
-                if (distance < 120) {
-                    this.ctx.save();
-                    const opacity = (1 - distance / 120) * 0.6;
-                    this.ctx.globalAlpha = opacity;
-                    this.ctx.strokeStyle = '#ffffff';
-                    this.ctx.lineWidth = 0.5;
-                    this.ctx.beginPath();
-                    this.ctx.moveTo(star.x, star.y);
-                    this.ctx.lineTo(otherStar.x, otherStar.y);
-                    this.ctx.stroke();
-                    this.ctx.restore();
-                }
-            }
-        });
-    }
-
-    updateStars() {
-        // Stars are now static - no movement
-    }
-
-    animate() {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-        this.updateStars();
-        this.drawConnections();
-        this.drawStars();
-
-        this.animationId = requestAnimationFrame(() => this.animate());
-    }
-
-    bindEvents() {
-        const resizeHandler = () => {
-            if (this.canvas && this.canvas.parentElement) {
-                const rect = this.canvas.parentElement.getBoundingClientRect();
-                this.canvas.width = rect.width;
-                this.canvas.height = rect.height;
-                this.stars = [];
-                this.createStars();
-            }
-        };
-
-        window.addEventListener('resize', resizeHandler);
-    }
-
-    destroy() {
-        if (this.animationId) {
-            cancelAnimationFrame(this.animationId);
-        }
-    }
+  }
 }
 
 // Initialize constellation for new start pages
 function initializeConstellation(tabId) {
-    const canvasId = `constellation-canvas-${tabId}`;
-    setTimeout(() => {
-        new ConstellationBackground(canvasId);
-    }, 100); // Small delay to ensure DOM is ready
+  const canvasId = `constellation-canvas-${tabId}`;
+  setTimeout(() => {
+    new ConstellationBackground(canvasId);
+  }, 100); // Small delay to ensure DOM is ready
 }

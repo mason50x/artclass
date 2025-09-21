@@ -2,17 +2,31 @@
 <html>
   <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V2V4G2SVFN"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-V2V4G2SVFN"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-      gtag('config', 'G-V2V4G2SVFN');
+      gtag("config", "G-V2V4G2SVFN");
     </script>
-    <link rel="preload" href="./assets/images/logo.png" as="image" type="image/png" />
+    <link
+      rel="preload"
+      href="./assets/images/logo.png"
+      as="image"
+      type="image/png"
+    />
     <link rel="icon" href="./assets/images/logo.png" type="image/png" />
-    <link rel="shortcut icon" href="./assets/images/logo.png" type="image/png" />
+    <link
+      rel="shortcut icon"
+      href="./assets/images/logo.png"
+      type="image/png"
+    />
     <title>Infinite</title>
 
     <link rel="stylesheet" href="./css/master.css" />
@@ -27,7 +41,6 @@
         font-weight: 300;
       }
     </style>
-
   </head>
 
   <body>
@@ -53,26 +66,43 @@
 
     <div class="center-container">
       <h1>Welcome to <span>Infinite</span></h1>
-      <div id="random-messages" style="margin-top: 2rem;">
-        <p class="random-message" id="random-message-text" style="font-size: 1.1rem; opacity: 0.9; line-height: 1.6;"></p>
+      <div id="random-messages" style="margin-top: 2rem">
+        <p
+          class="random-message"
+          id="random-message-text"
+          style="font-size: 1.1rem; opacity: 0.9; line-height: 1.6"
+        ></p>
       </div>
 
-      <div class="button-container" style="margin-top: 3rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-        <button onclick="showUpdateLog()" class="action-button modern-btn">Update Log</button>
-        <button onclick="window.location.href='/about.html'" class="action-button modern-btn">About</button>
+      <div
+        class="button-container"
+        style="
+          margin-top: 3rem;
+          display: flex;
+          gap: 1rem;
+          justify-content: center;
+          flex-wrap: wrap;
+        "
+      >
+        <button onclick="showUpdateLog()" class="action-button modern-btn">
+          Update Log
+        </button>
+        <button
+          onclick="window.location.href='/about.html'"
+          class="action-button modern-btn"
+        >
+          About
+        </button>
       </div>
     </div>
 
     <div class="links">
-      <div class="left">
-      </div>
+      <div class="left"></div>
 
-      <div class="right">
-      </div>
+      <div class="right"></div>
     </div>
   </body>
 
   <script src="./js/index.js"></script>
   <script src="./js/constellations.js"></script>
-
 </html>

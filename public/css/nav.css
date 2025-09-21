@@ -31,7 +31,10 @@ nav .logo {
   align-items: center;
 }
 
-nav .logo h1 { margin: 0 0 0 15px; font-size: 30px; }
+nav .logo h1 {
+  margin: 0 0 0 15px;
+  font-size: 30px;
+}
 
 nav .logo a {
   display: flex;
@@ -66,7 +69,6 @@ nav a {
   justify-content: center;
   align-items: center;
   transition: 0.4s all;
-
 }
 
 nav a:visited {
@@ -88,7 +90,7 @@ nav .navitem a {
 }
 
 nav .navitem a::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -139,17 +141,14 @@ nav .navitem a:hover:not([selected]) {
 
 nav .navitem a:hover {
   text-decoration: none;
-  filter: brightness(100%)
+  filter: brightness(100%);
 }
-
-
 
 nav .navitem:not(:last-child)::after {
   content: "/";
   margin: 0 5px;
   color: gray;
-} 
-
+}
 
 /*.tooltip {
   position: relative;

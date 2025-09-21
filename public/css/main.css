@@ -1,312 +1,349 @@
 @import url(cards.css);
 
 body {
-    color: white;
-    background-color: #000000;
-    position: relative;
-    height: 100vh;
-    text-align: center;
-    background-size: cover;
-    -webkit-background-size: cover;
+  color: white;
+  background-color: #000000;
+  position: relative;
+  height: 100vh;
+  text-align: center;
+  background-size: cover;
+  -webkit-background-size: cover;
 }
 
 #constellation-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    z-index: -1;
-    opacity: 0.6;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.6;
 }
 
 /* Hide scrollbar for all browsers */
 ::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 /* Hide scrollbar for Firefox */
 html {
-    scrollbar-width: none;
+  scrollbar-width: none;
 }
 
 /* Hide scrollbar for Internet Explorer and Edge */
 html {
-    -ms-overflow-style: none;
+  -ms-overflow-style: none;
 }
 
-h1 , h2 , h3  {
-    font-family: "Inter", sans-serif;
-    font-weight: 700;
+h1,
+h2,
+h3 {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
 }
-
-h1 { font-size: 50px; }
-
-#splash { font-size: 24px; }
-
-p { font-size: 20px; }
 
 h1 {
-    font-size: 3.5rem;
-    font-weight: 300;
-    line-height: 1.2;
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.02em;
+  font-size: 50px;
+}
+
+#splash {
+  font-size: 24px;
+}
+
+p {
+  font-size: 20px;
+}
+
+h1 {
+  font-size: 3.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
 }
 
 h1 > span {
-    font-family: "Inter", sans-serif;
-    font-weight: 700;
-    background: linear-gradient(135deg, #87ceeb, #0284d4, #00d4ff, #0284d4, #87ceeb);
-    background-size: 200% 100%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shimmer 3s ease-in-out infinite;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  background: linear-gradient(
+    135deg,
+    #87ceeb,
+    #0284d4,
+    #00d4ff,
+    #0284d4,
+    #87ceeb
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s ease-in-out infinite;
 }
 
 @keyframes shimmer {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 @keyframes fadeInShimmer {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    50% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .center-container {
-    position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
-    text-align: center;
-    max-width: 800px;
-    padding: 2rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  max-width: 800px;
+  padding: 2rem;
 }
 
-a, a:visited {
-    color: #0284d4;
-    text-decoration: none;
-    transition: 0.4s all;
+a,
+a:visited {
+  color: #0284d4;
+  text-decoration: none;
+  transition: 0.4s all;
 }
 
 a:hover {
-    text-decoration: underline;
-    filter: brightness(80%);
+  text-decoration: underline;
+  filter: brightness(80%);
 }
 
 button {
-    color: white;
-    background-color: #0284d4;
-    padding: 8px 15px;
-    border: none;
-    font-size: 18px;
-    border-radius: 9999px;
-    transition: 0.4s all;
+  color: white;
+  background-color: #0284d4;
+  padding: 8px 15px;
+  border: none;
+  font-size: 18px;
+  border-radius: 9999px;
+  transition: 0.4s all;
 }
 
-.play { font-family: "Inter"; font-weight: 600; color: white; }
+.play {
+  font-family: "Inter";
+  font-weight: 600;
+  color: white;
+}
 
 button:hover {
-    filter: brightness(80%);
-    cursor: pointer;
+  filter: brightness(80%);
+  cursor: pointer;
 }
 
 .links {
-    position: fixed;
-    bottom: 0;
-    width: 100vw;
-    display: flex;
-    justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
 }
 
 .links .left,
 .links .right {
-    display: flex;
-    font-size: 18px;
-    margin-bottom: 10px;
+  display: flex;
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 
 .links a {
-    margin-right: 25px;
-    color: white;
+  margin-right: 25px;
+  color: white;
 }
 
 .links a:hover {
-    text-decoration: underline;
-    filter: brightness(100%);
+  text-decoration: underline;
+  filter: brightness(100%);
 }
 .links .left {
-    margin-left: 25px;
-    justify-content: flex-start;
+  margin-left: 25px;
+  justify-content: flex-start;
 }
 
 .links .right {
-    justify-content: flex-end;
+  justify-content: flex-end;
 }
 
 .gamecontainer {
-    height: calc(100vh - (75px + 25px));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 15px;
+  height: calc(100vh - (75px + 25px));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px;
 }
 
 #gameInfo {
-    width: 25%;
-    height: 100%;
+  width: 25%;
+  height: 100%;
+}
+
+#frame {
+  width: 75%;
+  height: 100%;
+  border-radius: 20px;
+  background-color: white;
+}
+#gameInfo .gameHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 25% 25px;
+}
+
+#gameInfo div img {
+  aspect-ratio: 1 / 1;
+  height: 75px;
+  border-radius: 5px;
+}
+
+#gameInfo div h3 {
+  margin-left: 15px;
+}
+
+#gameInfo {
+  position: relative;
+}
+
+#gameInfo #menubtns {
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+  text-align: center;
+}
+#menubtns button {
+  border: 3px solid white;
+  font-family: "Inter";
+  padding: 7px 15px;
+  font-size: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  opacity: 0.7;
+  transition: 0.4s all;
+  margin: 5px 5px;
+}
+
+#menubtns button:hover {
+  opacity: 1;
+  scale: 1.1;
+}
+
+#gameInfo #gameDescription {
+  margin: 15px;
+}
+
+.pxyinput {
+  width: 600px;
+  height: 60px;
+  margin: 10px;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  color: white;
+  font-size: 16px;
+  padding: 0 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.pxyinput:focus {
+  outline: none;
+  border-color: #0284d4;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.pxyinput::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.error-message {
+  background: rgba(220, 38, 38, 0.1);
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  color: #ef4444;
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin-top: 15px;
+  font-size: 14px;
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
   }
-  
-  #frame {
-    width: 75%;
-    height: 100%;
-    border-radius: 20px;
-    background-color: white;
-  }
-  #gameInfo .gameHeader {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 25% 25px;
-  }
-  
-  #gameInfo div img {
-    aspect-ratio: 1 / 1;
-    height: 75px;
-    border-radius: 5px;
-  }
-  
-  #gameInfo div h3 { margin-left: 15px; }
-  
-  #gameInfo { position: relative; }
-  
-  #gameInfo #menubtns {
-    position: absolute;
-    bottom: 15px;
-    width: 100%;
-    text-align: center;
-  }
-  #menubtns button {
-    border: 3px solid white;
-    font-family: "Inter";
-    padding: 7px 15px;
-    font-size: 15px;
-    border-radius: 10px;
-    cursor: pointer;
-    height: 50px;
-    width: 50px;
-    background-color: white;
-    color: black;
-    font-weight: bold;
-    opacity: 0.7;
-    transition: 0.4s all;
-    margin: 5px 5px;
-  }
-  
-  #menubtns button:hover {
+  to {
     opacity: 1;
-    scale: 1.1;
+    transform: translateY(0);
   }
-  
-  #gameInfo #gameDescription {
-    margin: 15px;
-  }
+}
 
-  .pxyinput {
-    width: 600px;
-    height: 60px;
-    margin: 10px;
-    border-radius: 12px;
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    color: white;
-    font-size: 16px;
-    padding: 0 20px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  }
+input[type="text"],
+button.secondary,
+select {
+  background-color: #111;
+  transition: 0.4s border;
+  border-radius: 5px;
+  border: none;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  padding: 5px 15px;
+  margin: 5px auto;
+}
+input[type="text"]:focus {
+  outline: none;
+}
 
-  .pxyinput:focus {
-    outline: none;
-    border-color: #0284d4;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-    background: rgba(255, 255, 255, 0.08);
-  }
-
-  .pxyinput::placeholder {
-    color: rgba(255, 255, 255, 0.5);
-  }
-
-  .error-message {
-    background: rgba(220, 38, 38, 0.1);
-    border: 1px solid rgba(220, 38, 38, 0.3);
-    color: #ef4444;
-    padding: 12px 20px;
-    border-radius: 8px;
-    margin-top: 15px;
-    font-size: 14px;
-    backdrop-filter: blur(10px);
-    animation: fadeIn 0.3s ease;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  input[type=text], button.secondary, select {
-     background-color: #111;
-     transition: 0.4s border;
-     border-radius: 5px;
-     border: none;
-     font-size: 20px;
-     color: white;
-     text-align: center;
-     padding: 5px 15px;
-     margin: 5px auto;
-  }
-  input[type=text]:focus {
-    outline: none;
- }
-
- button.secondary img {
+button.secondary img {
   height: 25px;
   width: 25px;
   margin-top: 5px;
   border-radius: 5px;
- }
-
-#search {
-background: rgba(255, 255, 255, 0.1);
-backdrop-filter: blur(10px);
-border: 2px solid rgba(255, 255, 255, 0.3);
-border-radius: 9999px;
-box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-font-size: 20px;
-width: 500px;
-height: 45px;
-color: white;
-text-align: center;
-padding: 5px 15px;
-margin: 5px auto;
-transition: all 0.3s ease;
 }
 
- .frame {
+#search {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 9999px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  font-size: 20px;
+  width: 500px;
+  height: 45px;
+  color: white;
+  text-align: center;
+  padding: 5px 15px;
+  margin: 5px auto;
+  transition: all 0.3s ease;
+}
+
+.frame {
   border-radius: 0;
   background-color: white;
   display: block;
@@ -363,8 +400,6 @@ transition: all 0.3s ease;
   opacity: 1;
 }
 
-
-
 .modern-btn:hover {
   background: linear-gradient(135deg, #0369a1, #0284d4) !important;
   border-color: rgba(2, 132, 212, 0.5) !important;
@@ -373,7 +408,6 @@ transition: all 0.3s ease;
   filter: none;
 }
 
-
 /* Update Log Styles */
 .update-log {
   text-align: center;
@@ -381,7 +415,6 @@ transition: all 0.3s ease;
   margin: 0 auto 30px auto;
   padding: 0 20px;
 }
-
 
 .update-entry {
   background: rgba(255, 255, 255, 0.05);
@@ -440,9 +473,6 @@ transition: all 0.3s ease;
   position: absolute;
   left: 0;
 }
-
-
-
 
 .custom-url-section {
   background: rgba(255, 255, 255, 0.03);
@@ -526,5 +556,3 @@ transition: all 0.3s ease;
   margin: 10px 0;
   font-weight: 500;
 }
-
-

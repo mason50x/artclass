@@ -1,4 +1,3 @@
-
 /**
  * List of hostnames that are allowed to run serviceworkers on http:
  */
@@ -9,7 +8,7 @@ const swAllowedHostnames = ["localhost", "127.0.0.1"];
  * Used in 404.html and index.html
  */
 async function registerSW() {
-  console.log("Starting registration...")
+  console.log("Starting registration...");
   if (
     location.protocol !== "https:" &&
     !swAllowedHostnames.includes(location.hostname)
@@ -20,11 +19,9 @@ async function registerSW() {
     throw new Error("Your browser doesn't support service workers.");
 
   // Ultraviolet has a stock `sw.js` script.
-  await navigator.serviceWorker.register('sw.js', {
+  await navigator.serviceWorker.register("sw.js", {
     scope: __uv$config.prefix,
-  })
-
+  });
 }
 
-
-registerSW()
+registerSW();
