@@ -111,7 +111,11 @@ function createTab(url = null) {
     link.addEventListener("click", (e) => {
       e.preventDefault();
       const url = link.getAttribute("data-url");
-      navigateTabToUrl(tabId, url);
+      // Create new tab instead of navigating current tab
+      const newTabId = createTab(url);
+      if (newTabId) {
+        switchToTab(newTabId);
+      }
     });
   });
 

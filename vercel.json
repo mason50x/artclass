@@ -14,5 +14,6 @@
   ],
   "git": {
     "deploymentEnabled": false
-  }
+  },
+  "cleanUrls": true
 }
