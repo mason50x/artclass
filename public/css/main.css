@@ -211,7 +211,7 @@ button:hover {
 #gameInfo div img {
   aspect-ratio: 1 / 1;
   height: 75px;
-  border-radius: 5px;
+  border-radius: 20px;
 }
 
 #gameInfo div h3 {

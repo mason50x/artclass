@@ -13,7 +13,7 @@ var games = [
     title: "Minecraft",
     description:
       "build blocks, mine resources, survive the night, craft your world",
-    url: "https://eaglercraft.com/mc/1.8.8",
+    url: "https://eaglercraft.com/mc/1.12.2",
     image: "https://art.pixilart.com/sr2b732d91f2f20.png",
   },
   {
