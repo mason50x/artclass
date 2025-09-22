@@ -556,9 +556,9 @@
       cleanOldAttempts();
 
       // Forgot password button handler
-      document
-        .getElementById("forgotPasswordButton")
-        .addEventListener("click", function () {
+      const forgotPasswordButton = document.getElementById("forgotPasswordButton");
+      if (forgotPasswordButton) {
+        forgotPasswordButton.addEventListener("click", function () {
           const errorMessage = document.getElementById("errorMessage");
           const successMessage = document.getElementById("successMessage");
 
@@ -569,6 +569,7 @@
           errorMessage.textContent = "Unknown error occurred";
           errorMessage.style.display = "block";
         });
+      }
     </script>
   </body>
 </html>
