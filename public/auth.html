@@ -360,6 +360,14 @@
     </div>
 
     <script>
+      // Console security warning
+      console.log('%cSECURITY ALERT', 'color: #ff4757; font-size: 24px; font-weight: bold;');
+      console.log('%cIf you are attempting to brute force this authentication system:', 'color: #ff4757; font-size: 16px; font-weight: bold;');
+      console.log('%cSTOP IMMEDIATELY', 'color: #ff4757; font-size: 18px; font-weight: bold;');
+      console.log('%cWe are already aware of your presence', 'color: #2ed573; font-size: 14px; font-weight: bold;');
+      console.log('%cYour IP and activity patterns are being logged', 'color: #3742fa; font-size: 14px;');
+      console.log('%cContinued attempts will result in permanent blacklisting', 'color: #ff4757; font-size: 14px; font-weight: bold;');
+
       // Hash function for credentials
       async function hashCredential(text) {
         const encoder = new TextEncoder();
