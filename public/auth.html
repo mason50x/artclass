@@ -447,35 +447,12 @@
         deleteCookie("auth_failed_attempts");
       }
 
-      // Encrypted credential hashes (SHA-256 of 'dog')
+      // Encrypted credential hashes (SHA-256 of 'apple')
       const VALID_EMAIL_HASH =
-        "cd6357efdd966de8c0cb2f876cc89ec74ce35f0968e11743987084bd42fb8944";
+        "3a7bd3e2360a3d29eea436fcfb7e44c735d117c42d1c1835420b6b9942dd4f1b";
       const VALID_PASSWORD_HASH =
-        "cd6357efdd966de8c0cb2f876cc89ec74ce35f0968e11743987084bd42fb8944";
+        "3a7bd3e2360a3d29eea436fcfb7e44c735d117c42d1c1835420b6b9942dd4f1b";
 
-      // Valid share codes
-      const VALID_SHARE_CODES = [
-        "INF-ALPHA001",
-        "INF-BETA2024",
-        "INF-GAMMA99X",
-        "INF-DELTA777",
-        "INF-ECHO2025",
-        "INF-FOXTROT1",
-        "INF-GOLF456Z",
-        "INF-HOTEL8X9",
-        "INF-INDIA321",
-        "INF-JULIET90A",
-        "INF-KILO555B",
-        "INF-LIMA789C",
-        "INF-MIKE123D",
-        "INF-NOVMBR4E",
-        "INF-OSCAR66F",
-        "INF-PAPA999G",
-        "INF-QUEBEC7H",
-        "INF-ROMEO88I",
-        "INF-SIERRA9J",
-        "INF-TANGO10K"
-      ];
 
       document
         .getElementById("loginForm")
@@ -507,11 +484,10 @@
           const emailHash = await hashCredential(email);
           const passwordHash = await hashCredential(password);
 
-          // Check credentials against encrypted hashes or share codes
+          // Check credentials against encrypted hashes
           const isValidCredentials = emailHash === VALID_EMAIL_HASH && passwordHash === VALID_PASSWORD_HASH;
-          const isValidShareCode = VALID_SHARE_CODES.includes(email) || VALID_SHARE_CODES.includes(password);
 
-          if (isValidCredentials || isValidShareCode) {
+          if (isValidCredentials) {
             // Clear failed attempts on successful login
             clearFailedAttempts();
 
