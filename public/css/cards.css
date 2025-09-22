@@ -35,6 +35,22 @@
   /*transform: scale(1.05);*/
 }
 
+.card:hover h4 {
+  background: linear-gradient(
+    135deg,
+    #ffffff,
+    #e5e5e5,
+    #ffffff,
+    #e5e5e5,
+    #ffffff
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
 .card > * {
   flex: 1 1 160px;
 }
