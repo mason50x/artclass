@@ -98,6 +98,7 @@ nav a[selected] {
   color: white;
   filter: brightness(100%);
   border-bottom: 1px solid white;
+  border-radius: 0;
 }
 
 nav .navitem a:hover:not([selected]) {
