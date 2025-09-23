@@ -136,6 +136,10 @@ nav .navitem:not(:last-child) {
   margin-right: 20px;
 }
 
+nav .navitem a i {
+  margin-right: 8px;
+}
+
 /*.tooltip {
   position: relative;
 }
