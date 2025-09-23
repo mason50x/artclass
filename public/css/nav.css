@@ -138,6 +138,11 @@ nav .navitem:not(:last-child) {
 
 nav .navitem a i {
   margin-right: 8px;
+  transition: transform 0.3s ease;
+}
+
+nav .navitem a:hover i {
+  transform: rotate(15deg);
 }
 
 /*.tooltip {
