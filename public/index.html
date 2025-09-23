@@ -26,6 +26,15 @@
       h1 span {
         font-weight: 300;
       }
+
+      nav .logo img {
+        animation: spinLogo 0.6s linear infinite;
+      }
+
+      @keyframes spinLogo {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
     </style>
   </head>
 
