@@ -23,7 +23,9 @@ nav .navitems {
   margin: 0;
   padding: 0;
   opacity: 1;
-  justify-self: flex-end;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 nav .logo {
@@ -107,10 +109,11 @@ nav .navitem a:hover::before {
 }
 
 nav a[selected] {
-  background-color: white;
+  background-color: transparent;
   text-decoration: none;
-  color: black;
+  color: white;
   filter: brightness(100%);
+  border-bottom: 2px solid white;
 }
 
 nav .navitem a:hover:not([selected]) {
@@ -144,10 +147,8 @@ nav .navitem a:hover {
   filter: brightness(100%);
 }
 
-nav .navitem:not(:last-child)::after {
-  content: "/";
-  margin: 0 5px;
-  color: gray;
+nav .navitem:not(:last-child) {
+  margin-right: 20px;
 }
 
 /*.tooltip {
