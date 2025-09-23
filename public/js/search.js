@@ -69,7 +69,6 @@ function createTab(url = null) {
     <div class="start-content">
       <img src="./assets/images/logo.png" alt="Infinite" class="start-logo"/>
       <h1>Welcome to Infinite Search</h1>
-      <p>Enter a URL or search term in the address bar above</p>
 
       <div class="quick-links">
         <div class="link-row">
