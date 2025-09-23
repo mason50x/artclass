@@ -126,13 +126,6 @@ var apps = [
     description: "online shopping for everything, fast delivery",
   },
   {
-    id: "linkedin",
-    title: "LinkedIn",
-    url: "https://linkedin.com",
-    image: "./assets/cdn/apps/linkedin.png",
-    description: "professional networking and job searching platform",
-  },
-  {
     id: "figma",
     title: "Figma",
     url: "https://figma.com",
@@ -147,13 +140,6 @@ var apps = [
     description: "notes and database hybrid, organize everything",
   },
   {
-    id: "pinterest",
-    title: "Pinterest",
-    url: "https://pinterest.com",
-    image: "./assets/cdn/apps/pinterest.png",
-    description: "discover ideas and inspiration through pins",
-  },
-  {
     id: "onedrive",
     title: "OneDrive",
     url: "https://onedrive.live.com",
@@ -166,13 +152,6 @@ var apps = [
     url: "https://nba.com",
     image: "./assets/cdn/apps/nba.png",
     description: "basketball news scores and highlights",
-  },
-  {
-    id: "poki",
-    title: "Poki",
-    url: "https://poki.com",
-    image: "./assets/cdn/apps/poki.jpg",
-    description: "free online games platform, instant play",
   },
   {
     id: "geforcenow",
@@ -258,6 +237,13 @@ var apps = [
     url: "https://chat.openai.com",
     image: "./assets/cdn/apps/chatgpt.jpg",
     description: "ai chatbot that answers questions and helps with tasks",
+  },
+  {
+    id: "snapchat",
+    title: "Snapchat",
+    url: "https://accounts.snapchat.com/v2/login",
+    image: "./assets/cdn/apps/snapchat.png",
+    description: "share photos and videos with friends, temporary messaging",
   },
 ];
 apps.sort(function (a, b) {
