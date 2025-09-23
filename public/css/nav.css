@@ -105,6 +105,7 @@ nav .navitem a:hover:not([selected]) {
   text-decoration: none;
   color: white;
   filter: brightness(100%);
+  transform: scale(1.1);
 }
 
 /*nav .navitem a::before {
