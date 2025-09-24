@@ -11,7 +11,7 @@ if (params.get("game")) {
   const game = games.find((g) => g.id === gameId);
 
   if (game) {
-    document.title = "Infinite";
+    document.title = "Art Class";
     const gameImage = document.querySelector("#gameImage");
     const gameTitle = document.querySelector("#gameTitle");
     const gameDescription = document.querySelector("#gameDescription");
@@ -31,7 +31,7 @@ if (params.get("game")) {
   const app = apps.find((a) => a.id === appId);
 
   if (app) {
-    document.title = "Infinite";
+    document.title = "Art Class";
     const gameImage = document.querySelector("#gameImage");
     const gameTitle = document.querySelector("#gameTitle");
     const gameDescription = document.querySelector("#gameDescription");

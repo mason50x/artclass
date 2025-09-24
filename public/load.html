@@ -3,17 +3,17 @@
   <head>
     <link
       rel="preload"
-      href="./assets/images/logo.png"
+      href="./assets/images/artclass_logo.png"
       as="image"
       type="image/png"
     />
-    <link rel="icon" href="./assets/images/logo.png" type="image/png" />
+    <link rel="icon" href="./assets/images/artclass_logo.png" type="image/png" />
     <link
       rel="shortcut icon"
-      href="./assets/images/logo.png"
+      href="./assets/images/artclass_logo.png"
       type="image/png"
     />
-    <title>Infinite</title>
+    <title>Art Class</title>
 
     <link rel="stylesheet" href="./css/master.css" />
 
@@ -21,14 +21,46 @@
     <script src="/uv/uv.bundle.js" charset="UTF-8"></script>
     <script src="/uv/uv.config.js"></script>
     <script src="./js/preload.js"></script>
+
+    <script>
+      // Function to highlight navigation based on current content
+      function highlightNavigation() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const isGame = urlParams.get('game');
+        const isApp = urlParams.get('app');
+
+        // Remove any existing selected attributes
+        document.querySelectorAll('nav a[selected]').forEach(a => {
+          a.removeAttribute('selected');
+        });
+
+        // Add selected attribute based on content type
+        if (isGame) {
+          const gamesLink = document.querySelector('nav a[href="/gs.html"]');
+          if (gamesLink) {
+            gamesLink.setAttribute('selected', '');
+          }
+        } else if (isApp) {
+          const appsLink = document.querySelector('nav a[href="/apps.html"]');
+          if (appsLink) {
+            appsLink.setAttribute('selected', '');
+          }
+        }
+      }
+
+      // Run the function when page loads
+      document.addEventListener('DOMContentLoaded', function() {
+        highlightNavigation();
+      });
+    </script>
   </head>
 
   <body>
     <nav>
       <div class="logo">
         <a href="/">
-          <img src="./assets/images/logo.png" alt="Logo" draggable="false" />
-          <h1>Infinite</h1>
+          <img src="./assets/images/artclass_logo.png" alt="Logo" draggable="false" />
+          <h1>Art Class</h1>
         </a>
       </div>
 

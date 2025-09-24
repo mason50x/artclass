@@ -3,17 +3,17 @@
   <head>
     <link
       rel="preload"
-      href="./assets/images/logo.png"
+      href="./assets/images/artclass_logo.png"
       as="image"
       type="image/png"
     />
-    <link rel="icon" href="./assets/images/logo.png" type="image/png" />
+    <link rel="icon" href="./assets/images/artclass_logo.png" type="image/png" />
     <link
       rel="shortcut icon"
-      href="./assets/images/logo.png"
+      href="./assets/images/artclass_logo.png"
       type="image/png"
     />
-    <title>Infinite</title>
+    <title>Art Class</title>
 
     <link rel="stylesheet" href="./css/master.css" />
     <script src="./js/auth.js"></script>
@@ -27,19 +27,20 @@
     <nav>
       <div class="logo">
         <a href="/">
-          <img src="./assets/images/logo.png" alt="Logo" draggable="false" />
-          <h1>Infinite</h1>
+          <img src="./assets/images/artclass_logo.png" alt="Logo" draggable="false" />
+          <h1>Art Class</h1>
         </a>
       </div>
 
       <p id="time"></p>
 
       <div class="navitems">
-        <div class="navitem"><a href="/"><i class="fas fa-home"></i> Home</a></div>
-        <div class="navitem"><a href="/gs.html"><i class="fas fa-gamepad"></i> Games</a></div>
-        <div class="navitem"><a selected href="/apps.html"><i class="fas fa-th"></i> Apps</a></div>
-        <div class="navitem"><a href="/search.html"><i class="fas fa-search"></i> Search</a></div>
-        <div class="navitem"><a href="/settings.html"><i class="fas fa-cog"></i> Settings</a></div>
+        <div class="navitem"><a href="/">Home</a></div>
+        <div class="navitem"><a href="/gs.html">Games</a></div>
+        <div class="navitem"><a selected href="/apps.html">Apps</a></div>
+        <div class="navitem"><a href="/search.html">Search</a></div>
+        <div class="navitem"><a href="/settings.html">Settings</a></div>
+        <div class="navitem"><a href="/ai.html">AI Chat</a></div>
       </div>
     </nav>
 
@@ -163,7 +164,7 @@
         .map(
           (app, index) => `
         <div class="suggestion-item" data-index="${index}">
-          <img class="suggestion-favicon" src="${app.image}" alt="${app.title}" onerror="this.src='./assets/images/logo.png'">
+          <img class="suggestion-favicon" src="${app.image}" alt="${app.title}" onerror="this.src='./assets/images/artclass_logo.png'">
           <span class="suggestion-text">${app.title}</span>
         </div>
       `

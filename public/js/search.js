@@ -46,7 +46,7 @@ function createTab(url = null) {
   tabElement.className = "tab";
   tabElement.id = tabId;
   tabElement.innerHTML = `
-    <img class="tab-favicon" src="./assets/images/logo.png" alt="" />
+    <img class="tab-favicon" src="./assets/images/artclass_logo.png" alt="" />
     <span class="tab-title">${tab.title}</span>
     <button class="tab-close" onclick="closeTab('${tabId}')">&times;</button>
   `;
@@ -67,8 +67,8 @@ function createTab(url = null) {
   startPageElement.innerHTML = `
     <canvas id="constellation-canvas-${tabId}"></canvas>
     <div class="start-content">
-      <img src="./assets/images/logo.png" alt="Infinite" class="start-logo"/>
-      <h1>Welcome to Infinite Search</h1>
+      <img src="./assets/images/artclass_logo.png" alt="Art Class" class="start-logo"/>
+      <h1>Welcome to Art Class Search</h1>
 
       <div class="quick-links">
         <div class="link-row">
@@ -123,7 +123,7 @@ function createTab(url = null) {
   favicons.forEach((favicon) => {
     favicon.addEventListener("error", () => {
       // Fallback to a generic icon if favicon fails to load
-      favicon.src = "./assets/images/logo.png";
+      favicon.src = "./assets/images/artclass_logo.png";
     });
   });
 
@@ -146,7 +146,7 @@ function createTab(url = null) {
 
 // Favicon helpers
 function getFaviconUrlFromHostname(hostname) {
-  if (!hostname) return "./assets/images/logo.png";
+  if (!hostname) return "./assets/images/artclass_logo.png";
   return `https://icons.duckduckgo.com/ip3/${hostname}.ico`;
 }
 
@@ -155,11 +155,11 @@ function updateFaviconsForTab(tab) {
   const favSrc = getFaviconUrlFromHostname(hostname);
   const tabFav = tab.element.querySelector(".tab-favicon");
   if (tabFav) {
-    tabFav.onerror = () => (tabFav.src = "./assets/images/logo.png");
+    tabFav.onerror = () => (tabFav.src = "./assets/images/artclass_logo.png");
     tabFav.src = favSrc;
   }
   if (activeTabId === tab.id && urlFavicon) {
-    urlFavicon.onerror = () => (urlFavicon.src = "./assets/images/logo.png");
+    urlFavicon.onerror = () => (urlFavicon.src = "./assets/images/artclass_logo.png");
     urlFavicon.src = favSrc;
   }
 }
@@ -251,7 +251,7 @@ function updateUIForTab(tab) {
   if (urlFavicon) {
     const favSrc = tab.url
       ? getFaviconUrlFromHostname(getDomainFromUrl(tab.url))
-      : "./assets/images/logo.png";
+      : "./assets/images/artclass_logo.png";
     urlFavicon.src = favSrc;
   }
 }

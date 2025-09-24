@@ -31,8 +31,8 @@ var tabPresets = {
     icon: "https://ssl.gstatic.com/classroom/ic_product_classroom_32.png",
   },
   default: {
-    name: "Infinite",
-    icon: "/assets/images/logo.png",
+    name: "Art Class",
+    icon: "/assets/images/artclass_logo.png",
   },
 };
 
@@ -45,7 +45,7 @@ function resetToDefault() {
   localStorage.removeItem("tabName");
   localStorage.removeItem("tabIcon");
 
-  // Reset to default Infinite settings
+  // Reset to default Art Class settings
   setTab(tabPresets.default.name, tabPresets.default.icon);
 
   // Clear the input fields

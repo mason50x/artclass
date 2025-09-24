@@ -47,6 +47,48 @@ var games = [
     image: "./assets/cdn/games/jacksmith.jpg",
   },
   {
+    id: "coolmath",
+    title: "Cool Math Games",
+    description: "Interactive math games that make learning mathematics engaging and fun",
+    url: "https://www.coolmathgames.com/",
+    image: "./assets/cdn/games/cool_math_games.jpg",
+  },
+  {
+    id: "abcya",
+    title: "ABCya! Educational Games",
+    description: "Educational games for kids covering math, reading, and more",
+    url: "https://www.abcya.com/",
+    image: "./assets/cdn/games/abcya.jpg",
+  },
+  {
+    id: "codecombat",
+    title: "CodeCombat",
+    description: "Learn programming through playing a game - perfect for coding education",
+    url: "https://codecombat.com/",
+    image: "./assets/cdn/games/codecombat.jpg",
+  },
+  {
+    id: "typingclub",
+    title: "TypingClub",
+    description: "Interactive typing lessons to improve keyboard skills",
+    url: "https://www.typingclub.com/",
+    image: "./assets/cdn/games/typingclub.jpg",
+  },
+  {
+    id: "duolingo",
+    title: "Duolingo",
+    description: "Learn languages through bite-sized lessons and gamification",
+    url: "https://www.duolingo.com/",
+    image: "./assets/cdn/games/duolingo.jpg",
+  },
+  {
+    id: "khanacademy",
+    title: "Khan Academy",
+    description: "Free educational resources covering math, science, and more",
+    url: "https://www.khanacademy.org/",
+    image: "./assets/cdn/games/khanacademy.jpg",
+  },
+  {
     id: "thereisnogame",
     title: "There Is No Game",
     description:
